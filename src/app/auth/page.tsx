@@ -13,26 +13,32 @@ import css from './styles.module.css'
 
 type logMethods = 'login' | 'signup'
 
-const LogInForm = () => {
+const LogInForm = () => { 
+    const [ isPswrdVisible, setPswrdVisible ] = useState(false),
+        swapPswrdVisibility = () => { setPswrdVisible(prev => !prev) }
+
     return (
-        <form>
+        <form onSubmit={(e) => { e.preventDefault() }}>
             <div>
                 <Field
                     text="Username"
-                    icon="user"/>
+                    icon="user"
+                />
                 <Field
                     text="email@example.com"
-                    icon="mail"/>
-                <Field
+                    icon="mail"
+                />
+                <Field  
                     text="Password"
-                    type="password"
-                    icon={["invisible", "large"]}
-                    order="field-icon"/>
+                    type={isPswrdVisible ? 'text' : 'password'}
+                    icon={[isPswrdVisible ? 'visible' : 'invisible', "large"]}
+                    order="field-icon"
+                    func={swapPswrdVisibility}
+                />
                 <Field
                     text="Confirm password"
-                    type="password"
-                    icon={["invisible", "large"]}
-                    order="field-icon"/>
+                    type={isPswrdVisible ? 'text' : 'password'}
+                />
             </div>
             <Btn classes="btn-fill">Log In</Btn>
         </form>
@@ -40,17 +46,23 @@ const LogInForm = () => {
 }
 
 const SignUpForm = () => {
+    const [ isPswrdVisible, setPswrdVisible ] = useState(false),
+        swapPswrdVisibility = () => { setPswrdVisible(prev => !prev) }
+        
     return (
-        <form>
+        <form onSubmit={(e) => { e.preventDefault() }}>
             <div>
                 <Field
                     text="Username or email"
-                    icon="user"/>
-                <Field
+                    icon="user"
+                />
+                <Field  
                     text="Password"
-                    type="password"
-                    icon={["invisible", "large"]}
-                    order="field-icon"/>
+                    type={isPswrdVisible ? 'text' : 'password'}
+                    icon={[isPswrdVisible ? 'visible' : 'invisible', "large"]}
+                    order="field-icon"
+                    func={swapPswrdVisibility}
+                />
             </div>
             <Btn classes="btn-fill">Sign Up</Btn>
         </form>
@@ -69,8 +81,8 @@ const Auth = () => {
                 <Heading size="massive">
                     {
                         logMethod === 'login'
-                            ? 'Welcome Back !'
-                            : 'Hello, there !'
+                            ? 'Hello, there !'
+                            : 'Welcome Back !'
                     }
                 </Heading>
                 <Splitter/>

@@ -70,18 +70,3 @@ button {
   border: none;
   cursor: pointer;
 }
-
-/* Icons & imgs */
-svg, .svg_icon {
-  display: inline-flex;
-  width: 2dvh;
-  height: 2dvh;
-  max-width: 2dvh;
-  max-height: 2dvh;
-}
-
-svg path,
-polygon {
-  fill: var(--clr-primary-white) !important;
-  stroke: var(--clr-primary-white) !important;
-}

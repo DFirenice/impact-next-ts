@@ -112,6 +112,7 @@ export default function UIKit () {
                         <Heading level={3}>Headings</Heading>
                     </div>
                     <Heading size="massive">Massive Heading</Heading>
+                    <Heading size="larger">Larger Heading</Heading>
                     <Heading size="large">Large Heading</Heading>
                     <Heading>Initial heading</Heading>
                 </div>

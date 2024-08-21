@@ -1,3 +1,5 @@
+'use client'
+
 export default function getGreetings (username: string = 'User') {
     const localTime = new Date().getHours()
 

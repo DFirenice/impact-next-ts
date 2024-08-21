@@ -20,6 +20,8 @@
         color: inherit;
         font-weight: inherit;
     }
+
+    &:disabled { cursor: default }
 }
 
 .btn.btn-dark {
@@ -82,7 +84,7 @@
     }
 }
 
-.btn.btn-none {
+.btn.btn-none{
     color: var(--clr-white-medium);
     /* border-radius: initial; */
     background: transparent;

@@ -2,7 +2,10 @@
 
 import { forwardRef } from 'react'
 import { FieldProps, IconSize } from './Field.types'
+import type { Ticons } from '@/types/icons'
 import Icon from '@/components/UI/Icon'
+import Btn from '@/components/UI/Btn/Btn'
+
 import css from './Field.module.css'
 
 const Field = forwardRef<HTMLInputElement, FieldProps>((
@@ -11,7 +14,8 @@ const Field = forwardRef<HTMLInputElement, FieldProps>((
         icon = undefined,
         type = 'text',
         focused = false,
-        order = 'icon-field'
+        order = 'icon-field',
+        func = undefined
     },
     ref
 ) => {
@@ -24,7 +28,9 @@ const Field = forwardRef<HTMLInputElement, FieldProps>((
     }
 
     return <div className={css.field}>
-        { icon && <Icon id={iconId} size={iconSize}/> }
+        {icon && <Btn classes="btn-none" {...(func ? {func: func} : {disabled: true})}>
+                <Icon id={iconId as Ticons} size={iconSize}/>
+            </Btn>}
         <input
             ref={ref}
             style={

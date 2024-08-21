@@ -74,8 +74,8 @@
         width: calc(
             100%
             - var(--_border-shift)
-            - var(--initial-inline-padding)
         );
+        margin-block: .25rem; /* Experimental */
 
         &::before, &::after {
             content: '';
