@@ -1,0 +1,18 @@
+.statusTag {
+    --_current-clr: var(--clr-white-medium);
+    
+    display: inline;
+    height: max-content;
+    width: fit-content;
+    padding: .5rem .75rem;
+    border: 2px solid var(--_current-clr);
+    border-radius: var(--radius-medium);
+    text-transform: capitalize;
+    color: var(--_current-clr);
+    
+    & * { color: inherit }
+}
+
+.statusTag-priority-high { --_current-clr: var(--clr-primary-red) }
+.statusTag-priority-medium { --_current-clr: var(--clr-primary-yellow) }
+.statusTag-priority-low { --_current-clr: var(--clr-primary-green) }

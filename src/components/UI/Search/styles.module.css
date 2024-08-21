@@ -1,0 +1,14 @@
+.search {
+    display: flex;
+    flex-direction: row;
+    padding: .75rem 1rem;
+    width: fit-content;
+    height: max-content;
+    min-width: 250px;
+    background: var(--clr-dp-02);
+    color: var(--clr-primary-white);
+    border-radius: var(--radius-low);   
+    gap: .75rem;
+
+    &:first-child { line-height: 0 }
+}

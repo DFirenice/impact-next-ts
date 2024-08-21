@@ -1,0 +1,87 @@
+:root {
+    /* Font sizes */
+    --font-size-default: calc(.25rem + 1dvh);
+    --font-size-massive: calc(var(--font-size-default) * 2.8);
+    --font-size-larger: calc(var(--font-size-default) * 2.1);
+    --font-size-large: calc(var(--font-size-default) * 1.65);
+    --font-size-small: calc(var(--font-size-default) * .9);
+    /* Primary colors */
+    --clr-primary-white: hsl(0 0% 85%);
+    --clr-primary-dark: hsl(0 0% 7%);
+    --clr-primary-red: hsl(0 82% 41%);
+    --clr-primary-yellow: hsl(36 92% 60%);
+    --clr-primary-green: hsl(109 82% 40%) /* OLD: hsla(109, 82%, 40%, 1) */;
+    /* Basic colors */
+    --clr-dp-00: hsl(0 0% 7%); /* (#121212) */
+    --clr-dp-02: hsl(0 0% 10%); /* (#191919) */
+    --clr-dp-04: hsl(0 0% 11%); /* (#1D1D1D) */
+    --clr-dp-06: hsl(0 0% 13%); /* (#202020) */
+    --clr-dp-08: hsl(0 0% 14%); /* (#232323) */
+    --clr-dp-12: hsl(0 0% 16%); /* (#2A2A2A) */
+
+    --clr-blue-02: hsl(210 100% 50%);
+    /* Accent colors */
+    --clr-white-high: hsl(from var(--clr-primary-white) h s 87%);
+    --clr-white-medium: hsl(from var(--clr-primary-white) h s 60%);
+    --clr-disabled: hsl(from var(--clr-primary-white) h s 38%);
+    /* ... */
+    /* Radiuses */
+    --radius-high: 5dvh;
+    --radius-medium: 2dvh;
+    --radius-low: 1dvh;
+    /* Loader */
+    --prtcl-size: calc(.3rem + 1dvh);
+    --clr-loading-glow: rgb(255, 0, 0);
+}
+
+* {
+    color: var(--clr-primary-white);
+    box-sizing: border-box;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 1px;
+}
+
+body {
+  overflow-x: hidden;
+  background: var(--clr-dp-00);
+  margin: 0;
+}
+
+:any-link, a { text-decoration: none }
+input { text-overflow: ellipsis }
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+button, input, select {
+  background: transparent;
+  outline: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Icons & imgs */
+svg, .svg_icon {
+  display: inline-flex;
+  width: 2dvh;
+  height: 2dvh;
+  max-width: 2dvh;
+  max-height: 2dvh;
+}
+
+svg path,
+polygon {
+  fill: var(--clr-primary-white) !important;
+  stroke: var(--clr-primary-white) !important;
+}

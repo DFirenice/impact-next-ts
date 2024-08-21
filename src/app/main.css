@@ -1,0 +1,55 @@
+/* Heading Component */
+.heading {
+    margin: 0;
+    text-transform: capitalize;
+    text-wrap: pretty;
+    font-weight: 600;
+}
+
+.inline_heading {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+}
+
+/* Random active link (Perhaps, not should be here) */
+.active_link {  
+    color: var(--clr-primary-white) !important;
+    text-decoration: underline;
+    text-underline-offset: .5ch;
+    & * { color: inherit }
+}
+
+/* Font sizes */
+*[data-font-size="massive"] { font-size: var(--font-size-massive) }
+*[data-font-size="larger"] { font-size: var(--font-size-larger) }
+*[data-font-size="large"] { font-size: var(--font-size-large) }
+*[data-font-size="small"] { font-size: var(--font-size-small) }
+*[data-font-size="default"] { font-size: var(--font-size-default) }
+
+*[data-font-accent] *,
+*[data-font-size] * {
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+/* Font variations */
+*[data-font-accent="gradient"] {
+    background: -webkit-linear-gradient(
+        0deg,
+        var(--clr-blue-02) -150%,
+        var(--clr-primary-red) 200%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+*[data-font-accent="high"] { color: var(--clr-white-high) }
+*[data-font-accent="medium"] { color: var(--clr-white-medium) }
+*[data-font-accent="low"] { color: var(--clr-disabled) }
+
+*[data-font-weight="bold"] { font-weight: bold }
+*[data-font-weight="normal"] { font-weight: initial }
+*[data-font-weight="light"] { font-weight: 200 }

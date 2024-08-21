@@ -1,0 +1,49 @@
+/* Loading (needs refactoring!) */
+.loader {
+	background-size: cover;
+	position: fixed;
+	z-index: 100;
+	inset: 0;
+}
+
+.loader > div:first-of-type { margin: auto }
+
+.loader > *:last-child {
+	text-align: center;
+	margin-top: calc(55dvh + var(--prtcl-size));
+}
+
+.loader > div:first-of-type > span {
+	position: absolute;
+	inset: 0 0 var(--prtcl-size) var(--prtcl-size);
+	margin: auto;
+	width: var(--prtcl-size);
+	height: var(--prtcl-size);
+	border-radius: 55% 10%;
+	animation: main_loading 2.8s infinite ease-in-out;
+	animation-delay: calc(-2.8s * .7);
+}
+
+@keyframes main_loading {
+	0% {
+		transform: rotate(calc(0deg * var(--order)));
+		transform-origin: bottom left;
+		opacity: 0;
+	}
+	25% { transform: rotate(calc(90deg * var(--order))); }
+	50% {
+		transform: rotate(calc(180deg * var(--order)));
+		box-shadow: 0 0 0 0 var(--clr-loading-glow);
+	}
+	75% {
+		transform: rotate(calc(270deg * var(--order)));
+		box-shadow: 0 0 var(--prtcl-size) 0 var(--clr-loading-glow);
+		transform-origin: bottom left;
+		opacity: 1;
+	}
+	100% {
+		transform: rotate(calc(360deg * var(--order)));
+		transform-origin: top left;
+		opacity: 0;
+	}
+}

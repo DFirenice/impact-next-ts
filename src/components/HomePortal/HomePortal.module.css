@@ -1,0 +1,26 @@
+.portal {
+    cursor: pointer;
+    display: inline-grid;
+    place-items: center;
+    text-align: center;
+    width: fit-content;
+    min-height: 8dvh;
+    padding: 1.5rem 2rem;
+
+    border: .1rem solid var(--clr-dp-04);
+    border-radius: var(--radius-medium);
+
+    &:hover { border-color: var(--clr-dp-12) }
+
+    & > *:first-child {
+        display: flex;
+        align-items: center;
+        gap: .75rem;
+        margin-bottom: .25rem;
+    }
+    
+    & > span {
+        max-width: 28ch;
+        text-wrap: pretty;
+    }
+}

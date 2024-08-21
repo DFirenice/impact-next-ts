@@ -1,0 +1,27 @@
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 7.5dvh;
+    min-height: 100dvh;
+    height: 100%;
+
+    text-align: center;
+    text-wrap: pretty;
+
+    background: 
+        radial-gradient(
+            circle at 50% 50%,
+            hsla(from var(--clr-primary-white) h s 11%) 0%,
+            transparent 50%
+        ),
+        url('../../public/images/BlobsBorders.svg');
+    background-position: center 90%;
+    background-repeat: no-repeat;
+}
+
+.hero_subtitle {
+    max-width: 40ch;
+    margin-inline: auto;
+}

@@ -1,0 +1,102 @@
+.btn {
+    /* Declare a local variable for dynamic color mixing */
+    --_initial-clr: var(--clr-dp-04);
+    -webkit-user-drag: none;
+    font-weight: 600;
+    
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: 1rem 2rem;
+    border-radius: var(--radius-low);
+    color: var(--clr-prime-white);
+    text-transform: capitalize;
+    width: fit-content;
+    height: max-content;
+    
+    border: transparent .1rem solid;
+
+    & * {
+        color: inherit;
+        font-weight: inherit;
+    }
+}
+
+.btn.btn-dark {
+    background: var(--_initial-clr);
+    color: var(--clr-primary-white);
+    
+    &:hover { background: var(--clr-dp-08) }
+}
+
+.btn.btn-light {
+    --_initial-clr: var(--clr-primary-white);
+    background: var(--_initial-clr);
+    color: var(--clr-primary-dark);
+    
+    &:hover {
+        background: color-mix(
+            in srgb,
+            var(--_initial-clr),
+            var(--clr-primary-dark) 17%)
+    }
+}
+
+.btn.btn-fill {
+    /* Declare a local variable for dynamic color mixing */
+    --_initial-clr: var(--clr-blue-02);
+
+    background: var(--_initial-clr);
+    color: var(--clr-primary-white);
+
+    &:hover {
+        background: color-mix(
+            in srgb,
+            var(--_initial-clr),
+            var(--clr-primary-dark) 17%);
+    }
+}
+
+.btn-reject {
+    --_initial-clr: var(--clr-primary-red);
+
+    background: var(--_initial-clr);
+    color: var(--clr-primary-white);
+    
+    &:hover {
+        background: color-mix(
+            in srgb,
+            var(--_initial-clr),
+            var(--clr-primary-dark) 17%);
+    }
+}
+
+.btn.btn-empty {
+    border-color: var(--_initial-clr, var(--clr-primary-white));
+    background: transparent;
+    color: inherit;
+
+    &:hover {
+        background: var(--_initial-clr, var(--clr-primary-white));
+        &:is(.btn-light) { color: var(--clr-primary-dark) }
+    }
+}
+
+.btn.btn-none {
+    color: var(--clr-white-medium);
+    /* border-radius: initial; */
+    background: transparent;
+    padding: 0;
+
+    &:hover { color: var(--clr-primary-white) }
+}
+
+.btn-disabled {
+    --_disabled-clr: hsl(from var(--_initial-clr) h s 15%);
+
+    pointer-events: none;
+    user-select: none;
+    background: var(--_disabled-clr) !important;
+    border-color: var(--_disabled-clr) !important;
+    color: var(--clr-disabled) !important;
+}
