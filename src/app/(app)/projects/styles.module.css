@@ -1,4 +1,35 @@
-.projects {
+.projects_page {
     width: 100%;
     height: 200dvh;
+}
+
+.panel {
+    width: 100%;
+    padding-inline: 1.5rem;
+    box-shadow: 0 0dvh 1rem 0 rgba(0, 0, 0 , .5);
+}
+
+.tabs {
+    --_tab-spacing: 1rem;
+    
+    & > ul {
+        display: flex;
+        flex-direction: row;
+        
+        & > li { padding-block: 1rem }
+        
+        & > li > * {
+            font-weight: initial;
+            height: 100%;
+        }
+        
+        & > li:not(:first-child) {
+            margin-left: calc(var(--_tab-spacing) + 1ch);
+            padding-left: calc(var(--_tab-spacing) + 1ch);
+            display: list-item;
+            list-style: '/';
+        }
+
+        & > li::marker { color: var(--clr-disabled) }
+    }
 }
