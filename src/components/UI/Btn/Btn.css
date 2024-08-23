@@ -90,7 +90,11 @@
     background: transparent;
     padding: 0;
 
-    &:hover { color: var(--clr-primary-white) }
+    &:hover {
+        color: var(--clr-primary-white);
+        background: transparent;
+        padding: 0;
+    }
 }
 
 .btn-disabled {

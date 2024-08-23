@@ -1,6 +1,6 @@
 import { usePathname } from "next/navigation"
 
-export const useActiveLink = (link: string) => {
+export const useActiveLink = (link: string, styles: string = 'btn-fill') => {
     const pathname = usePathname()
-    return pathname === link ? 'btn-fill' : ''
+    return pathname === link ? styles : ''
 }

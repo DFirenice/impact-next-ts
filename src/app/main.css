@@ -14,6 +14,7 @@
 }
 
 /* Random active link (Perhaps, not should be here) */
+/* More likely, only related to the project's form */
 .active_link {  
     color: var(--clr-primary-white) !important;
     text-decoration: underline;
@@ -46,9 +47,9 @@
     -webkit-text-fill-color: transparent;
 }
 
-*[data-font-accent="high"] { color: var(--clr-white-high) }
-*[data-font-accent="medium"] { color: var(--clr-white-medium) }
-*[data-font-accent="low"] { color: var(--clr-disabled) }
+*[data-font-accent="high"] { color: var(--clr-white-high) !important }
+*[data-font-accent="medium"] { color: var(--clr-white-medium) !important }
+*[data-font-accent="low"] { color: var(--clr-disabled) !important }
 
 *[data-font-weight="bold"] { font-weight: bold }
 *[data-font-weight="normal"] { font-weight: initial }

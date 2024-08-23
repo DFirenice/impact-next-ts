@@ -1,12 +1,22 @@
-.projects_page {
+.projects {
     width: 100%;
-    height: 200dvh;
+    height: 100dvh;
+    & > div:last-child { height: 100% }
 }
 
 .panel {
+    display: grid;
+    gap: .25rem;
+    
     width: 100%;
     padding-inline: 1.5rem;
     box-shadow: 0 0dvh 1rem 0 rgba(0, 0, 0 , .5);
+
+    & > div:not(:last-child) {
+        border-bottom: 
+            hsla(from var(--clr-disabled) h s l / .2)
+            .1dvh solid;
+    }
 }
 
 .tabs {
@@ -32,4 +42,9 @@
 
         & > li::marker { color: var(--clr-disabled) }
     }
+}
+
+.tab__active {
+    border-bottom: .15dvh solid var(--clr-white-high);
+    & * { color: var(--clr-white-high) !important }
 }
