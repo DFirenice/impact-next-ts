@@ -10,6 +10,7 @@ import clipboard from '@/assets/icons/clipboard.svg'
 import collection from '@/assets/icons/collection.svg'
 import discussion from '@/assets/icons/discussion.svg'
 import edit from '@/assets/icons/edit.svg'
+import filter from '@/assets/icons/filter.svg'
 import folder from '@/assets/icons/folder.svg'
 import gear from '@/assets/icons/gear.svg'
 import git from '@/assets/icons/git.svg'
@@ -38,6 +39,7 @@ export const icons = {
     collection: collection,
     discussion: discussion,
     edit: edit,
+    filter: filter,
     folder: folder,
     gear: gear,
     git: git,

@@ -8,7 +8,10 @@
     & * { text-transform: none }
 }
 
-.wrapper { margin: auto }
+.wrapper {
+    transform: translateY(-50%);
+    margin: auto;
+}
 
 .image {
     display: flex;
