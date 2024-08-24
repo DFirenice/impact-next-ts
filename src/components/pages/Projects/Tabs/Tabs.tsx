@@ -17,7 +17,7 @@ const Tabs = () => {
                 <ul>
                     {[
                         { link: '/projects', icon: 'folder', tabName: 'Common' },
-                        { link: '/projects/archive', icon: 'archive', tabName: 'Archived' },
+                        { link: '/projects/archived', icon: 'archive', tabName: 'Archived' },
                         { link: '/projects/deleted', icon: 'bin', tabName: 'Deleted' }
                     ].map(({ link, icon, tabName }) => {
                         return (

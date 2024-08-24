@@ -47,8 +47,6 @@
             min-width: 25%;
             padding-inline: 1.25rem !important;
             border-radius: 0;
-            /* Bordered if not last (Splitting) */
-            &:not(:last-child) { border-right: .1dvh solid hsla(from var(--clr-disabled) h s l / 25% ) }
         }
     }
     

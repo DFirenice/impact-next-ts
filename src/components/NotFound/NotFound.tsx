@@ -13,7 +13,7 @@ const NotFound = ({
         <div className={css.wrapper}>
             <div className={css.image}><Icon size="large" id={icon}/></div>
             <div>
-                <Heading size="large"><span data-font-accent="low">{heading}</span></Heading>
+                <Heading size="larger"><span data-font-accent="low">{heading}</span></Heading>
                 <p data-font-accent="low">{subtext}</p>
             </div>
         </div>
