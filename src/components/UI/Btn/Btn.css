@@ -106,3 +106,5 @@
     border-color: var(--_disabled-clr) !important;
     color: var(--clr-disabled) !important;
 }
+
+.btn-icon-only { padding: .5rem .75rem }

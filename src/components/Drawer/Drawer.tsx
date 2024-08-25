@@ -1,10 +1,12 @@
 import { useUser } from '@/contexts/userProvider'
+
 import Search from '@/components/UI/Search/Search'
 import Link from 'next/link'
 import Icon from '@/components/UI/Icon'
 import Btn from '@/components/UI/Btn/Btn'
 import Avatar from '@/components/UI/Avatar/Avatar'
 import Heading from '@/components/Heading'
+import RootLink from '@/components/RootLink'
 
 import css from './Drawer.module.css'
 
@@ -27,15 +29,15 @@ const Drawer = () => {
             <div className={css.category}>
                 <h3>Common</h3>
                 <div className={css.category_list}>
-                    <Btn link="/home"><Icon id="collection"/>Portal hub</Btn>
-                    <Btn link="/delibs"><Icon id="chats"/>Deliberations</Btn>
-                    <Btn link="/planner"><Icon id="calendar"/>Planner</Btn>
+                    <RootLink link="/home"><Icon id="collection"/>Portal hub</RootLink>
+                    <RootLink link="/delibs"><Icon id="chats"/>Deliberations</RootLink>
+                    <RootLink link="/planner"><Icon id="calendar"/>Planner</RootLink>
                 </div>
             </div>
             <div className={css.category}>
                 <h3>Development</h3>
                 <div className={css.category_list}>
-                    <Btn link="/projects"><Icon id="collection"/>Projects</Btn>
+                    <RootLink link="/projects/*"><Icon id="collection"/>Projects</RootLink>
                     <Btn classes="btn-disabled"><Icon id="terminal"/>Sandboxes</Btn>
                 </div>
             </div>
@@ -43,7 +45,7 @@ const Drawer = () => {
             <div className={css.category}>
                 <h3>Impact</h3>
                 <div className={css.category_list}>
-                    <Btn link="/chats"><Icon id="chats"/>All Chats</Btn>
+                    <RootLink link="/chats"><Icon id="chats"/>All Chats</RootLink>
                     <h3 style={{paddingLeft: '.5rem'}}><p>Recent chats</p></h3>
                     <div className={css.recent_chats} style={{paddingLeft: '.5rem'}}>
                         <Link href="/chats/:userid">

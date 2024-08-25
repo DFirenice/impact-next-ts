@@ -1,6 +1,5 @@
 'use client'
 
-import { useActiveLink } from '@/hooks/useActiveLink'
 import { BtnProps } from './Btn.types'
 import Link from 'next/link'
 import './Btn.css'
@@ -12,13 +11,15 @@ const Btn = ({
     children,
     ...rest
 }:BtnProps) => {
+    if (children?.props?.id) { classes += ' btn-icon-only ' }
+    
     if (link) {
         return (
             <Link
                 href={link}
                 role='button'
                 onClick={() => {func}}
-                className={`btn ${classes} ${useActiveLink(link)}`.trim()}
+                className={`btn ${classes}`.trim()}
             >
                 {children}
             </Link>
