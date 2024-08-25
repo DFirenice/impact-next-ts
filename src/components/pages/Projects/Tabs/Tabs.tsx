@@ -21,7 +21,7 @@ const Tabs = () => {
                         { link: '/projects/deleted', icon: 'bin', tabName: 'Deleted' }
                     ].map(({ link, icon, tabName }) => {
                         return (
-                            <li className={`${useActiveLink(link, css.tab__active)}`}>
+                            <li className={`${useActiveLink(link, css.tab__active)}`} key={tabName}>
                                 <Btn classes="btn-none" link={link}>
                                     <Icon id={icon as Ticons}/>
                                     { tabName }
