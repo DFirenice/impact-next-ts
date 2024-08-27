@@ -1,0 +1,32 @@
+.container {
+    width: 100%;
+    padding: 1.5rem 1.25rem;
+    justify-content: space-between;
+
+    & > *:last-child {
+        width: fit-content;
+        margin-right: 1.5rem;
+    }
+    
+    &:hover { background: var(--clr-dp-04) }
+}
+
+.info {
+    & > div {
+        display: flex;
+        gap: .5rem;
+        min-width: 17.5dvw;
+        padding-inline: .25rem;
+    }
+}
+
+.container, .info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.info_name::before {
+    content: '*';
+    color: var(--clr-white-medium);
+}

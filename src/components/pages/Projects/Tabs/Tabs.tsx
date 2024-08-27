@@ -1,13 +1,14 @@
 'use client'
 
 import { useState } from 'react'
+import { useActiveLink } from '@/hooks/useActiveLink'
+
 import Btn from '@/components/UI/Btn/Btn'
 import Icon from '@/components/UI/Icon'
-import { useActiveLink } from '@/hooks/useActiveLink'
+import Search from '@/components/UI/Search/Search'
 
 import type { Ticons } from '@/types/icons'
 import css from './Tabs.module.css'
-import Search from '@/components/UI/Search/Search'
 
 const Tabs = () => {
     const [ searchValue, setSearchValue ] = useState('')

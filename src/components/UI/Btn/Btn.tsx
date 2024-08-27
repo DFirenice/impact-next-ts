@@ -1,6 +1,6 @@
 'use client'
 
-import { BtnProps } from './Btn.types'
+import type { BtnProps } from './Btn.types'
 import Link from 'next/link'
 import './Btn.css'
 
