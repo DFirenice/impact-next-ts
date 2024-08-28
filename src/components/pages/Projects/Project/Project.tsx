@@ -15,7 +15,7 @@ const Project = (
         members
     }: ProjectProps) => {
     const [ isContextOpen, setContextOpen ] = useState(false)
-    function changeIsContextOpen (e) {
+    function changeIsContextOpen (e: Event) {
         e.stopPropagation()
         setContextOpen(prev => !prev)
     }
