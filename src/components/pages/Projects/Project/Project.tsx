@@ -1,5 +1,9 @@
+'use client'
+
+import { useState, useEffect } from 'react'
 import Btn from '@/components/UI/Btn/Btn'
 import Icon from '@/components/UI/Icon'
+import ContextModal from '@/components/UI/ContextModal/ContextModal'
 
 import type { ProjectProps } from './Project.types'
 import css from './Project.module.css'
@@ -10,6 +14,19 @@ const Project = (
         version,
         members
     }: ProjectProps) => {
+    const [ isContextOpen, setContextOpen ] = useState(false)
+    function changeIsContextOpen (e) {
+        e.stopPropagation()
+        setContextOpen(prev => !prev)
+    }
+
+    useEffect(() => {
+        function handleCloseContext () { setContextOpen(false) }
+        
+        window.addEventListener('click', () => {handleCloseContext()})
+        return window.removeEventListener('click', () => {handleCloseContext()})
+    }, [])
+        
     return <div className={css.container}>
         <div className={css.info}>
             <div className={css.info_name}>
@@ -25,8 +42,9 @@ const Project = (
         </div>
         {/* Controls */}
             {/* Menu */}
-        <Btn classes="btn-none">
-            <Icon id="options" style={{rotate: '90deg'}}/>
+        <Btn style={{ position: 'relative' }} func={changeIsContextOpen}>
+            <Icon id="options" styles={{ rotate: '90deg' }}/>
+            <ContextModal items={['Manage', 'Archivate', 'Delete', 'Change Status']} isOpen={isContextOpen}/>
         </Btn>
     </div>
 }

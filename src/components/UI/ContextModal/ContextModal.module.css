@@ -1,0 +1,23 @@
+.container {
+    position: absolute;
+    filter: drop-shadow(0 0 .1dvw var(--clr-primary-dark));
+    width: 100%;
+    min-width: 12.5dvw;
+    max-width: 275px;
+    height: max-content;
+    transform: translateX(calc(-100% - .25dvw));
+    top: 50%;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius-low);
+    overflow: hidden;
+    
+    & > * {
+        width: 100% !important;
+        border-radius: 0 !important;
+        text-wrap: nowrap;
+    }
+}

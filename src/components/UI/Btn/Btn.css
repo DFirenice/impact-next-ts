@@ -84,7 +84,7 @@
     }
 }
 
-.btn.btn-none{
+.btn.btn-none {
     color: var(--clr-white-medium);
     /* border-radius: initial; */
     background: transparent;

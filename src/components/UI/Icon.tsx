@@ -5,10 +5,10 @@ import type { Ticons } from '@/types/icons'
 type IconProps = {
     id: Ticons | undefined
     size?: 'small' | 'normal' | 'large' | undefined
-    style?: React.CSSProperties
-} & React.ImgHTMLAttributes<HTMLImageElement>
+    styles?: React.CSSProperties
+}
 
-export default function Icon({ id, size = 'normal', style, ...rest }: IconProps) {
+export default function Icon({ id, size = 'normal', styles }: IconProps) {
     let imgSizes = {
       width: 16,
       height: 16,
@@ -20,13 +20,12 @@ export default function Icon({ id, size = 'normal', style, ...rest }: IconProps)
     if (id) {
       return (
         <Image
-          style={{ userSelect: 'none', ...style }}
+          style={{ userSelect: 'none', ...styles }}
           draggable={false}
           src={icons[id as Ticons]?.src}
           width={imgSizes.width}
           height={imgSizes.height}
           alt={id}
-          {...rest}
         />
       )
     } else { return 'Error :(' }
