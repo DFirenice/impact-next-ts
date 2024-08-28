@@ -1,7 +1,9 @@
+// EXPERIMENTAL MODAL FEATURE
+// REQUIRES REWORK AND FIXES
+
 'use client'
 
-import { forwardRef } from 'react'
-import Btn from '../Btn/Btn'
+import Btn from '@/components/UI/Btn/Btn'
 
 import type { ContextModalProps } from './ContextModal.types'
 import css from './ContextModal.module.css'

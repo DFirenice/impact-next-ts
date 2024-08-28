@@ -1,8 +1,8 @@
 import './Loader.css'
 import Heading from "@/components/Heading"
 
-export default function Loader () {
-    return <section className="loader">
+export default function Loader ({ as = 'fixed' }: { as?: 'relative' | 'fixed' }) {
+    return <section style={as === 'relative' ? { position: as, width: '100%' } : { position: as }} className="loader">
         <div>
             <span style={{ '--order': '1' } as React.CSSProperties}></span>
             <span style={{ '--order': '2' } as React.CSSProperties}></span>

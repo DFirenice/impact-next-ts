@@ -1,4 +1,5 @@
 .container {
+    z-index: 11;
     position: absolute;
     filter: drop-shadow(0 0 .1dvw var(--clr-primary-dark));
     width: 100%;

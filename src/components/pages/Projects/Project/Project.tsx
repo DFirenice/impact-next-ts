@@ -15,9 +15,12 @@ const Project = (
         members
     }: ProjectProps) => {
     const [ isContextOpen, setContextOpen ] = useState(false)
-    function changeIsContextOpen (e: Event) {
-        e.stopPropagation()
-        setContextOpen(prev => !prev)
+
+    function changeIsContextOpen (e?: React.MouseEvent<HTMLButtonElement>) {
+        if (e) {
+            e!.stopPropagation()
+            setContextOpen(prev => !prev)
+        }
     }
 
     useEffect(() => {
@@ -34,10 +37,10 @@ const Project = (
             </div>
             <div>
                 <span>{version[0]}</span>
-                <span data-font-accent="medium">{version[1]}</span>
+                <span data-font-accent="medium">{ version.length > 0 ? version[1] : 'Unknown' }</span>
             </div>
             <div>
-                <span>{members === 1 ? 'Only You' : `${members} Members`}</span>
+                <span data-font-accent="medium">{members === 1 ? 'Only You' : `${members} Members`}</span>
             </div>
         </div>
         {/* Controls */}
