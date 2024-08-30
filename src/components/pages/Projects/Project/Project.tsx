@@ -1,34 +1,47 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Btn from '@/components/UI/Btn/Btn'
 import Icon from '@/components/UI/Icon'
 import ContextModal from '@/components/UI/ContextModal/ContextModal'
 
-import type { ProjectProps } from './Project.types'
+import type { ProjectProps } from '@app-types/Project.types'
 import css from './Project.module.css'
 
 const Project = (
     { status,
         name,
         version,
-        members
-    }: ProjectProps) => {
-    const [ isContextOpen, setContextOpen ] = useState(false)
+        members,
+        isContextOpen,
+        toggleContextModal
+    }: ProjectProps & {
+            isContextOpen: boolean,
+            toggleContextModal: () => void
+        }) => {
+    // const modalRef = useRef<HTMLDivElement>(null)
 
-    function changeIsContextOpen (e?: React.MouseEvent<HTMLButtonElement>) {
-        if (e) {
-            e!.stopPropagation()
-            setContextOpen(prev => !prev)
-        }
-    }
+    // // Opens through the button
+    // function changeIsContextOpen (e?: React.MouseEvent<HTMLButtonElement>) {
+    //     if (e) {
+    //         e.stopPropagation()
+    //         setContextOpen(prev => !prev)
+    //     }
+    // }
 
-    useEffect(() => {
-        function handleCloseContext () { setContextOpen(false) }
+    // // Outside clicks handler
+    // useEffect(() => {
+    //     function handleClickOutside (e: MouseEvent) {
+    //         if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
+    //             toggleContextModal()
+    //         }
+    //     }
         
-        window.addEventListener('click', () => {handleCloseContext()})
-        return window.removeEventListener('click', () => {handleCloseContext()})
-    }, [])
+    //     window.addEventListener('click', handleClickOutside)
+    //     return () => {
+    //         window.removeEventListener('click', handleClickOutside)
+    //     }
+    // }, [])
         
     return <div className={css.container}>
         <div className={css.info}>
@@ -37,17 +50,30 @@ const Project = (
             </div>
             <div>
                 <span>{version[0]}</span>
-                <span data-font-accent="medium">{ version.length > 0 ? version[1] : 'Unknown' }</span>
+                <span data-font-accent="medium">
+                    { version.length > 0 ? version[1] : 'No-version' }
+                </span>
             </div>
             <div>
-                <span data-font-accent="medium">{members === 1 ? 'Only You' : `${members} Members`}</span>
+                <span data-font-accent="medium">
+                    {members === 1 ? 'Only You' : `${members} Members`}
+                </span>
             </div>
         </div>
-        {/* Controls */}
-            {/* Menu */}
-        <Btn style={{ position: 'relative' }} func={changeIsContextOpen}>
+        {/* Open Context Btn */}
+        <Btn style={{ position: 'relative' }} func={toggleContextModal}>
             <Icon id="options" styles={{ rotate: '90deg' }}/>
-            <ContextModal items={['Manage', 'Archivate', 'Delete', 'Change Status']} isOpen={isContextOpen}/>
+            {/* <div ref={modalRef}> */}
+            <div>
+                { /*
+                    1. <button> cannot be a descendant of <button>
+                    2. Div shifts modal (Bug)
+                */ }
+                <ContextModal
+                    items={['Manage', 'Archivate', 'Delete', 'Change Status']}
+                    isOpen={isContextOpen}
+                />
+            </div>
         </Btn>
     </div>
 }
