@@ -29,7 +29,6 @@ const ProjectsPage = () => {
                             name={name}
                             version={version}
                             members={members}
-                            // Experimental
                             isContextOpen={openProjectId === name}
                             toggleContextModal={() => toggleContextModal(name)}
                         />

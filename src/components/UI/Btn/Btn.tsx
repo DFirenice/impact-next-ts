@@ -1,7 +1,11 @@
 'use client'
 
-import type { BtnProps } from './Btn.types'
+import React from 'react'
+
 import Link from 'next/link'
+import Icon from '@/components/UI/Icon'
+
+import type { BtnProps } from './Btn.types'
 import './Btn.css'
 
 const Btn = ({
@@ -11,7 +15,11 @@ const Btn = ({
     children,
     ...rest
 }:BtnProps) => {
-    if (children?.props?.id) { classes += ' btn-icon-only ' }
+    if ( React.isValidElement(children) ) {
+        if (children.type === Icon) {
+            classes += ' btn-icon-only '
+        }
+    }
     
     if (link) {
         return (

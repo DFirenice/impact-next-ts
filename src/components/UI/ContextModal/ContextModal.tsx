@@ -1,8 +1,3 @@
-// EXPERIMENTAL MODAL FEATURE
-// REQUIRES REWORK AND FIXES
-
-'use client'
-
 import Btn from '@/components/UI/Btn/Btn'
 
 import type { ContextModalProps } from './ContextModal.types'
