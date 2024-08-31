@@ -1,5 +1,7 @@
+import { Tstatuses } from "@/data/statuses"
+
 export type ProjectProps = {
-    status: 'Delayed' | 'Production' | 'Development' // Key of custom user's statuses later
+    status: Tstatuses
     name: string
     version: ['Public' | 'Private', string]
     members: number

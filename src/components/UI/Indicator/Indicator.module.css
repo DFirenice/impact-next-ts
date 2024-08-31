@@ -1,0 +1,29 @@
+.indicator {
+    position: relative;
+    display: inline-flex;
+    width: .75dvw;
+    height: .75dvw;
+    max-width: .75dvw;
+    max-height: .75dvw;
+    border-radius: 50%;
+    margin: auto .75rem;
+    /* In case status unmatched */
+    background: var(--clr-loading-glow);
+    &:hover { &::before { opacity: 1 } }
+}
+
+.indicator::before {
+    content: attr(data-indicator-tip);
+    background: var(--clr-dp-00);
+    border-radius: var(--radius-low);
+    border: 1px solid var(--clr-dp-08);
+    padding: .25rem .5rem;
+    text-wrap: nowrap;
+    position: absolute;
+    transform: translateX(-50%);
+    z-index: 10;
+    top: calc(100% + 1dvh);
+    left: 50%;
+    opacity: 0;
+    transition: opacity .3s;
+}

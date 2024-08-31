@@ -24,8 +24,3 @@
     flex-direction: row;
     align-items: center;
 }
-
-.info_name::before {
-    content: '*';
-    color: var(--clr-white-medium);
-}

@@ -10,6 +10,7 @@ import Field from '@/components/UI/Field/Field'
 
 import css from './styles.module.css'
 import { useRef, useState } from 'react'
+import Indicator from '@/components/UI/Indicator/Indicator'
 
 export default function UIKit () {
     // Fields | 'Assign To'
@@ -98,11 +99,36 @@ export default function UIKit () {
                 <div className={css.samples}>
                     <Heading level={3}>Status</Heading>
                 </div>
-                <div className={`${css.samples} ${css.samples_column}`}>
+                <div className={css.samples}>
                     <StatusTag status="high"/>
                     <StatusTag status="medium"/>
                     <StatusTag status="low"/>
                     <StatusTag/>
+                </div>
+                <div className={css.samples}>
+                    <Heading level={3}>Status Indicators</Heading>
+                </div>
+                <div className={`${css.samples} ${css.samples_column}`}>
+                   <div>
+                        <Indicator status='stable'/>
+                        <span>- Stable</span>
+                   </div>
+                   <div>
+                        <Indicator status='release'/>
+                        <span>- Release</span>
+                   </div>
+                   <div>
+                        <Indicator status='dev'/>
+                        <span>- Dev (Development)</span>
+                   </div>
+                   <div>
+                        <Indicator status='temp'/>
+                        <span>- Temp (Temporary)</span>
+                   </div>
+                   <div>
+                        <Indicator status='declined'/>
+                        <span>- Declined</span>
+                   </div>
                 </div>
             </section>
             <section>

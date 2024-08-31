@@ -2,19 +2,19 @@ import type { ProjectProps } from "@app-types/Project.types"
 
 const userProjects: ProjectProps[] = [
     {
-        status: 'Delayed',
+        status: 'dev',
         name: 'Project X',
         version: ['Public', 'v9.01'],
         members: 1
     },
     {
-        status: 'Production',
+        status: 'release',
         name: 'Ray Cast',
         version: ['Private', 'v1.12.2'],
         members: 3
     },
     {
-        status: 'Development',
+        status: 'temp',
         name: 'Test',
         version: ['Private', 'v0.1'],
         members: 2

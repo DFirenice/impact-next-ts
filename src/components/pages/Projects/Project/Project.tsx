@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react'
 import Btn from '@/components/UI/Btn/Btn'
 import Icon from '@/components/UI/Icon'
 import ContextModal from '@/components/UI/ContextModal/ContextModal'
+import Indicator from '@/components/UI/Indicator/Indicator'
 
 import type { ProjectProps } from '@app-types/Project.types'
 import css from './Project.module.css'
@@ -21,7 +22,7 @@ const Project = (
         }) => {
     const modalRef = useRef<HTMLDivElement>(null)
 
-    // // Outside clicks handler
+    // Outside clicks handler
     useEffect(() => {
         function handleClickOutside (e: MouseEvent) {
             if (isContextOpen && modalRef.current && !modalRef.current.contains(e.target as Node)) {
@@ -35,6 +36,7 @@ const Project = (
         }
     }, [isContextOpen, name, toggleContextModal])
 
+    // Context Modal switcher
     function handleBtnClick (e?: React.MouseEvent<HTMLButtonElement>) {
         e?.stopPropagation()
         toggleContextModal(name)
@@ -43,6 +45,7 @@ const Project = (
     return <div className={css.container}>
         <div className={css.info}>
             <div className={css.info_name}>
+                <Indicator status={status}/>
                 <span>{name}</span>
             </div>
             <div>
