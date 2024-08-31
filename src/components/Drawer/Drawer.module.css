@@ -29,11 +29,11 @@
 }
 
 .recent_chats > a {
+    padding-left: 1rem;
     &:hover { background: var(--clr-dp-08); }
     
     & *:has(span) {
         display: flex;
-        align-items: center;
         flex-direction: column;
         & > :is(span, h2, h3) {
             display: inline-block;
@@ -41,10 +41,13 @@
             white-space: nowrap;
             overflow: hidden;
             max-width: 10ch;
-            width: 10ch;
+            /* width: 10ch; */
         }
         
-        & > span { color: var(--clr-white-medium) }
+        & > span {
+            color: var(--clr-white-medium);
+            width: 100%;
+        }
     }
 }
 
@@ -70,7 +73,7 @@
 
         border: none !important; /* Temp. solution (!important) */
         position: relative;
-        padding-left: 1.5rem !important; /* Temp. solution (!important) */
+        /* padding-left: 1.5rem !important; */ /* Temp. solution (!important) */
         margin-left: var(--_border-shift);
         margin-block: 0;
         width: calc(
@@ -89,6 +92,7 @@
             top: 0;
         }
 
+        /* Connecting lines */
         &:not(:last-child)::after {
             border-bottom-width: 2px;
             top: -50%;

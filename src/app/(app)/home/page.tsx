@@ -1,7 +1,7 @@
 'use client' // Use server component instead, additionaly, fix passing event issue
 
 import { useUser } from '@/contexts/userProvider'
-import { userPortals } from '@/data/user'
+import { userPortals } from '@/data/userPortals'
 import Heading from '@/components/Heading'
 import getGreetings from '@/utils/getGreetings'
 import HomePortal from '@/components/HomePortal/HomePortal'

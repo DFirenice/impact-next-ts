@@ -1,9 +1,8 @@
-import tempUserProjects from '@/data/tempUserProjects'
 import NotFound from '@/components/NotFound/NotFound'
 
 const ArchivedProjectsPage = () => {
     return (
-        tempUserProjects.length
+        [].length
             ? 'Archived projects list...'
             : <NotFound
                 heading="Nothing is in archive yet"

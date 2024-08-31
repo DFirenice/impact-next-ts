@@ -1,9 +1,8 @@
-import tempUserProjects from '@/data/tempUserProjects'
 import NotFound from '@/components/NotFound/NotFound'
 
 const DeletedProjectsPage = () => {
     return (
-        tempUserProjects.length
+        [].length
             ? 'Deleted projects list...'
             : <NotFound
                 heading="Your bin is clean"
