@@ -9,9 +9,9 @@ const userProjects: ProjectProps[] = [
     },
     {
         status: 'release',
-        name: 'Ray Cast',
+        name: 'ARay Cast',
         version: ['Private', 'v1.12.2'],
-        members: 3
+        members: 17
     },
     {
         status: 'temp',

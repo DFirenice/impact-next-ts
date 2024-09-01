@@ -3,6 +3,7 @@
 import tempUserProjects from '@/data/tempUserProjects'
 
 import { useState } from 'react'
+import { useSorting } from '@/contexts/SortingContext'
 
 import Btn from '@/components/UI/Btn/Btn'
 import NotFound from '@/components/NotFound/NotFound'
@@ -13,16 +14,24 @@ import css from './styles.module.css'
 
 const ProjectsPage = () => {
     const [openProjectId, setOpenProjectId] = useState<string | null>(null)
+    const { sortingMethod } = useSorting()
 
     const toggleContextModal = (projectId: string) => {
         setOpenProjectId(prev => (prev === projectId ? null : projectId))
     }
 
+    const sortedProjects = [...tempUserProjects].sort((a: any, b: any) => {
+        if (sortingMethod === 'Name') return a.name.localeCompare(b.name)
+        if (sortingMethod === 'Last Modified') return a.version - b.version // Logic Rework
+        if (sortingMethod === 'Members') return b.members - a.members
+        return 0
+    })
+
     return (
-        true
+        sortedProjects.length > 0
             ? (
                 <section className={css.projects_list}>
-                    { tempUserProjects.map(({ status, name, version, members }: ProjectProps) => {
+                    { sortedProjects.map(({ status, name, version, members }: ProjectProps) => {
                         return <Project
                             key={`project_${name}`}
                             status={status}

@@ -5,11 +5,13 @@
 
     & > *:last-child { width: fit-content }
     
-    &:hover { background: var(--clr-dp-04) }
+    &:hover { background: var(--clr-dp-04) !important }
 }
 
 .info {
     padding-left: 1.25rem;
+
+    & span { color: var(--clr-white-medium) }
     
     & > div {
         display: flex;

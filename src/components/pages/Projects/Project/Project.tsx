@@ -46,11 +46,11 @@ const Project = (
         <div className={css.info}>
             <div className={css.info_name}>
                 <Indicator status={status}/>
-                <span>{name}</span>
+                <span data-font-accent="high" >{name}</span>
             </div>
             <div>
                 <span>{version[0]}</span>
-                <span data-font-accent="medium">
+                <span data-font-weight="bold">
                     { version.length > 0 ? version[1] : 'No-version' }
                 </span>
             </div>

@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Rubik } from "next/font/google"
 
 import { UserProvider } from "@/contexts/userProvider"
+import { SortingProvider } from "@/contexts/SortingContext"
 
 import "./globals.css"
 import './main.css'
@@ -22,7 +23,9 @@ export default function RootLayout({
   return (
       <html lang="en">
         <UserProvider>
-          <body className={inter.className}>{children}</body>
+          <SortingProvider>
+            <body className={inter.className}>{children}</body>
+          </SortingProvider>
         </UserProvider>
       </html>
   );

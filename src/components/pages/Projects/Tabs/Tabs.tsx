@@ -2,16 +2,20 @@
 
 import { useState } from 'react'
 import { useActiveLink } from '@/hooks/useActiveLink'
+import { useSorting } from '@/contexts/SortingContext'
 
 import Btn from '@/components/UI/Btn/Btn'
 import Icon from '@/components/UI/Icon'
 import Search from '@/components/UI/Search/Search'
 
+import sortingTabs from '@/data/sortingTabs'
 import type { Ticons } from '@/types/icons'
 import css from './Tabs.module.css'
 
 const Tabs = () => {
     const [ searchValue, setSearchValue ] = useState('')
+    const { sortingMethod, setSortingMethod } = useSorting()
+    
     return <>
         <div className={css.routing_panel}>
             <div className={css.tabs}>
@@ -36,9 +40,20 @@ const Tabs = () => {
         {/* Sorting & search */}
         <div className={css.sorting_panel}>
             <div className={css.sorting_btns}>
-                <Btn classes="btn-none"><Icon id="collection"/>Name</Btn>
-                <Btn classes="btn-none"><Icon id="calendar"/>Last Modified</Btn>
-                <Btn classes="btn-none"><Icon id="user"/>Members</Btn>
+                {
+                    sortingTabs.map(({ method, icon }) => {
+                        return (
+                            <Btn
+                                key={`sortBy_${method}_tab`}
+                                classes={`btn-none ${sortingMethod === method && 'active_link'}`}
+                                func={() => {setSortingMethod(method)}}
+                            >
+                                <Icon id={icon as Ticons}/>
+                                {method}
+                            </Btn>
+                        )
+                    })
+                }
             </div>
             <div className={css.sorting_controls}>
                 <Btn><Icon id="filter"/></Btn>
