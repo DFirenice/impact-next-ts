@@ -3,6 +3,7 @@ import { Rubik } from "next/font/google"
 
 import { UserProvider } from "@/contexts/userProvider"
 import { SortingProvider } from "@/contexts/SortingContext"
+import { FindProvider } from '@/contexts/FindContext'
 
 import "./globals.css"
 import './main.css'
@@ -24,7 +25,9 @@ export default function RootLayout({
       <html lang="en">
         <UserProvider>
           <SortingProvider>
-            <body className={inter.className}>{children}</body>
+            <FindProvider>
+              <body className={inter.className}>{children}</body>
+            </FindProvider>
           </SortingProvider>
         </UserProvider>
       </html>

@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useActiveLink } from '@/hooks/useActiveLink'
 import { useSorting } from '@/contexts/SortingContext'
+import { useFindQuery } from '@/contexts/FindContext'
 
 import Btn from '@/components/UI/Btn/Btn'
 import Icon from '@/components/UI/Icon'
@@ -13,7 +14,7 @@ import type { Ticons } from '@/types/icons'
 import css from './Tabs.module.css'
 
 const Tabs = () => {
-    const [ searchValue, setSearchValue ] = useState('')
+    const { findQuery, setFindQuery } = useFindQuery()
     const { sortingMethod, setSortingMethod } = useSorting()
     
     return <>
@@ -57,7 +58,7 @@ const Tabs = () => {
             </div>
             <div className={css.sorting_controls}>
                 <Btn><Icon id="filter"/></Btn>
-                <Search value={searchValue} onChange={setSearchValue}/>
+                <Search value={findQuery} onChange={setFindQuery} text="Find a project..."/>
             </div>
         </div>
     </>

@@ -4,6 +4,8 @@ import tempUserProjects from '@/data/tempUserProjects'
 
 import { useState } from 'react'
 import { useSorting } from '@/contexts/SortingContext'
+import { useFindQuery } from '@/contexts/FindContext'
+import applyFilter from '@/utils/applyFilter'
 
 import Btn from '@/components/UI/Btn/Btn'
 import NotFound from '@/components/NotFound/NotFound'
@@ -15,6 +17,7 @@ import css from './styles.module.css'
 const ProjectsPage = () => {
     const [openProjectId, setOpenProjectId] = useState<string | null>(null)
     const { sortingMethod } = useSorting()
+    const { findQuery } = useFindQuery()
 
     const toggleContextModal = (projectId: string) => {
         setOpenProjectId(prev => (prev === projectId ? null : projectId))
@@ -27,11 +30,13 @@ const ProjectsPage = () => {
         return 0
     })
 
+    const filteredProjects = applyFilter(findQuery, sortedProjects, 'name')
+
     return (
-        sortedProjects.length > 0
+        filteredProjects.length > 0
             ? (
                 <section className={css.projects_list}>
-                    { sortedProjects.map(({ status, name, version, members }: ProjectProps) => {
+                    { filteredProjects.map(({ status, name, version, members }: ProjectProps) => {
                         return <Project
                             key={`project_${name}`}
                             status={status}
@@ -44,18 +49,29 @@ const ProjectsPage = () => {
                     }) }
                 </section>
             )
-            : <NotFound
-                heading="You don't have any projects yet"
-                subtext={
-                    <>
-                        {`Would you like to `}
-                        <Btn classes="btn-none">
-                            {/* btn-none has a medium accent by the default, but still */}
-                            <span data-font-accent="medium">create one?</span>
-                        </Btn>
-                    </>
-                }
-            />
+            : filteredProjects.length === 0
+                && sortedProjects.length > 0
+                ? (
+                    <NotFound
+                        heading="Project Not Found"
+                        subtext={`Hmm, here is no projects with name "${findQuery}"`}
+                        icon="search"
+                    />
+                )
+                : (
+                    <NotFound
+                        heading="You don't have any projects yet"
+                        subtext={
+                            <>
+                                {`Would you like to `}
+                                <Btn classes="btn-none">
+                                    {/* btn-none has a medium accent by the default, but still */}
+                                    <span data-font-accent="medium">create one?</span>
+                                </Btn>
+                            </>
+                        }
+                    />
+                )
     )
 }
 
