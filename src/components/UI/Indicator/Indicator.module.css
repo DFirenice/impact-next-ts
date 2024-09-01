@@ -13,6 +13,7 @@
 }
 
 .indicator::before {
+    pointer-events: none;
     content: attr(data-indicator-tip);
     background: var(--clr-dp-00);
     border-radius: var(--radius-low);
