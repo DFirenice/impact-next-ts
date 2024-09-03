@@ -22,6 +22,14 @@
     & * { color: inherit }
 }
 
+/* Modals container */
+.modals {
+    position: absolute;
+    z-index: 11;
+    top: 0;
+    left: 0;
+}
+
 /* Font sizes */
 *[data-font-size="massive"] { font-size: var(--font-size-massive) }
 *[data-font-size="larger"] { font-size: var(--font-size-larger) }

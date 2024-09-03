@@ -23,6 +23,7 @@ const ProjectsPage = () => {
         setOpenProjectId(prev => (prev === projectId ? null : projectId))
     }
 
+    // Sorting Tabs first
     const sortedProjects = [...tempUserProjects].sort((a: any, b: any) => {
         if (sortingMethod === 'Name') return a.name.localeCompare(b.name)
         if (sortingMethod === 'Last Modified') return a.version - b.version // Logic Rework
@@ -30,6 +31,7 @@ const ProjectsPage = () => {
         return 0
     })
 
+    // Then filter
     const filteredProjects = applyFilter(findQuery, sortedProjects, 'name')
 
     return (

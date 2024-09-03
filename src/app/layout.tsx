@@ -12,7 +12,7 @@ const inter = Rubik({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Impact Project",
-  description: "Impact - powerful tool for a projects development"
+  description: "Impact - powerful tool for your projects development"
 };
 
 export default function RootLayout({
@@ -26,7 +26,10 @@ export default function RootLayout({
         <UserProvider>
           <SortingProvider>
             <FindProvider>
-              <body className={inter.className}>{children}</body>
+              <body className={inter.className}>
+                {children}
+                <div id="modals"></div>
+              </body>
             </FindProvider>
           </SortingProvider>
         </UserProvider>

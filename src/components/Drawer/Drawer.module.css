@@ -1,6 +1,7 @@
 .drawer {
     --initial-inline-padding: .75rem;
-    background: var(--clr-dp-04);
+    background: var(--clr-dp-00);
+    border-right: 2px solid var(--clr-dp-08);
     padding: 1.5rem var(--initial-inline-padding);
     min-width: 12.5dvw;
     width: min-content;
@@ -84,6 +85,7 @@
 
         &::before, &::after {
             content: '';
+            pointer-events: none;
             position: absolute;
             border: 0 solid var(--clr-disabled);
             height: 100%;
