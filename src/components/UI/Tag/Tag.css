@@ -20,7 +20,7 @@
 .tag.tag-empty {
     color: var(--clr-white-medium);
     background: transparent;
-    border: 2px solid var(--clr-dp-04);
+    border-color: var(--clr-dp-08);
 }
 
 .tag.tag-disabled {

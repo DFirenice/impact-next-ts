@@ -30,6 +30,16 @@
     left: 0;
 }
 
+.modal_container {
+    position: absolute;
+    background: var(--clr-dp-04);
+    border-radius: var(--radius-low);
+    filter: drop-shadow(0 0 .1dvw var(--clr-primary-dark));
+    z-index: 11;
+    padding: 1.25rem;
+    margin-block: 1dvh;
+}
+
 /* Font sizes */
 *[data-font-size="massive"] { font-size: var(--font-size-massive) }
 *[data-font-size="larger"] { font-size: var(--font-size-larger) }
