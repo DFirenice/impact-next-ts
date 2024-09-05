@@ -1,5 +1,4 @@
 .tag {
-    display: inline-flex;
     width: fit-content;
     height: max-content;
     text-transform: lowercase;
@@ -9,12 +8,24 @@
     color: var(--clr-white-high);
     padding: .25rem .75rem;
 
-    & * { color: inherit }
+    &, & * {
+        display: inline-flex;
+        align-items: center;
+        color: inherit;
+        gap: .5rem;
+    }
 }
 
 .tag.tag-light {
     background: var(--clr-primary-white);
     color: var(--clr-primary-dark);
+
+    & > span > div { display: none }
+    
+    &:hover > span > div {
+        display: inline-flex;
+        filter: brightness(0);
+    }
 }
 
 .tag.tag-empty {

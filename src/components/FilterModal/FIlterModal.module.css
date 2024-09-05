@@ -1,0 +1,21 @@
+.container,
+.container h2 {
+    display: flex;
+    gap: .75rem;
+}
+
+.container {
+    flex-direction: column;
+
+    & > h2 { align-items: center }
+    
+    & ul:first-of-type {
+        /* display: grid;
+        grid-template-columns: repeat(2, 1fr); */
+        /* gap: .25rem; */
+        & > li {
+            display: inline-flex;
+            & { margin: .115rem }
+        }
+    }
+}

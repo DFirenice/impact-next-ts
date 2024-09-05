@@ -47,6 +47,8 @@
 *[data-font-size="small"] { font-size: var(--font-size-small) }
 *[data-font-size="default"] { font-size: var(--font-size-default) }
 
+*[data-cursor="pointer"] { cursor: pointer }
+
 *[data-font-accent] *,
 *[data-font-size] * {
     font-weight: inherit;

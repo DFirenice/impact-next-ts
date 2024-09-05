@@ -8,7 +8,7 @@ import useModal from '@/hooks/useModal'
 import Btn from '@/components/UI/Btn/Btn'
 import Icon from '@/components/UI/Icon'
 import Search from '@/components/UI/Search/Search'
-import Tag from '@/components/UI/Tag/Tag'
+import FilterModal from '@/components/FilterModal/FilterModal'
 
 import sortingTabs from '@/data/sortingTabs'
 import type { Ticons } from '@/types/icons'
@@ -21,16 +21,7 @@ const Tabs = () => {
 
     // Replace type any
     const handleFilterClick = (e: any) => {
-        const modalContent = <div>
-            <div><span data-font-accent="medium">Filters:</span></div>
-            <div>
-                <ul>
-                    <li><Tag>FrontEnd</Tag></li>
-                    <li><Tag>BackEnd</Tag></li>
-                    <li><Tag>FullStack</Tag></li>
-                </ul>
-            </div>
-        </div>
+        const modalContent = <FilterModal/>
         setModal(modalContent, e.currentTarget as Element)
     }
     
