@@ -15,7 +15,7 @@ const useModal = () => {
 
                 setModalStyle({
                     top: bcr.bottom + window.scrollY,
-                    left: bcr.left + window.scrollX,
+                    left: bcr.left + window.scrollX + bcr.width / 2
                 })
             } else {
                 // Full-screen modal if no relative element is provided
@@ -57,7 +57,11 @@ const useModal = () => {
                 ref={modalContainerRef}
                 onClick={(e) => e.stopPropagation()}
                 className="modal_container"
-                style={{ top: modalStyle.top, left: modalStyle.left }}
+                style={{
+                    top: modalStyle.top,
+                    left: modalStyle.left,
+                    transform: 'translateX(-50%)'
+                }}
             >
                 {modalContent}
             </div>,

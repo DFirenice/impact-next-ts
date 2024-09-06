@@ -13,6 +13,7 @@ const Project = (
     { status,
         name,
         version,
+        tags,
         members,
         isContextOpen,
         toggleContextModal
@@ -42,7 +43,7 @@ const Project = (
         toggleContextModal(name)
     }
         
-    return <div className={css.container}>
+    return <div className={css.container} data-project-tags={tags}>
         <div className={css.info}>
             <div className={css.info_name}>
                 <Indicator status={status}/>

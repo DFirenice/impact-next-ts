@@ -12,9 +12,10 @@ const FilterModal = () => {
             </div>
             <div>
                 <ul>
-                    <li><Tag func={() => {console.log('view only Frontend')}}>FrontEnd</Tag></li>
-                    <li><Tag func={() => {console.log('view only Frontend')}}>BackEnd</Tag></li>
-                    <li><Tag func={() => {console.log('view only Frontend')}}>FullStack</Tag></li>
+                    <li><Tag func={() => {console.log('viewing only FrontEnd')}}>FrontEnd</Tag></li>
+                    <li><Tag func={() => {console.log('viewing only BackEnd')}}>BackEnd</Tag></li>
+                    <li><Tag func={() => {console.log('viewing only FullStack')}}>FullStack</Tag></li>
+                    {/* Link to customize tags */}
                     <li><Tag>...</Tag></li>
                 </ul>
             </div>
