@@ -1,8 +1,8 @@
 import Tag from "@/components/UI/Tag/Tag"
-
-import css from './FilterModal.module.css'
 import Heading from "../Heading"
 import Icon from "../UI/Icon"
+
+import css from './FilterModal.module.css'
 
 const FilterModal = () => {
     return (
@@ -12,9 +12,9 @@ const FilterModal = () => {
             </div>
             <div>
                 <ul>
-                    <li><Tag func={() => {console.log('viewing only FrontEnd')}}>FrontEnd</Tag></li>
-                    <li><Tag func={() => {console.log('viewing only BackEnd')}}>BackEnd</Tag></li>
-                    <li><Tag func={() => {console.log('viewing only FullStack')}}>FullStack</Tag></li>
+                    <li><Tag>FrontEnd</Tag></li>
+                    <li><Tag>BackEnd</Tag></li>
+                    <li><Tag>FullStack</Tag></li>
                     {/* Link to customize tags */}
                     <li><Tag>...</Tag></li>
                 </ul>

@@ -1,33 +1,34 @@
 'use client'
 
-import { useState } from 'react'
+import useTagsFilter from '@/hooks/useTagsFilter'
 import Icon from '@/components/UI/Icon'
 
 import { TagProps } from './Tag.types'
 import './Tag.css'
 
-const Tag = ({ children, classes = 'tag-empty', func }: TagProps) => {
-    const [ isActive, setActive ] = useState<boolean>(false)
+const Tag = ({ children, classes = 'tag-empty'}: TagProps) => {
+    const { selectedTags, toggleTag } = useTagsFilter()
+
+    const isActive = selectedTags.includes(children.toLowerCase())
 
     const handleClick = () => {
-        if (func) {
-            setActive(prev => !prev)
-            // Basically operates outer funcs like sorting
-            // to affect some final result
-            func()
+        if (children !== '...') {
+            toggleTag(children)
         }
     }
-    
-    return <div onClick={handleClick}
-        {...(func && { 'data-cursor': "pointer" })}
-        className={`tag ${classes && !isActive ? classes : 'tag-light'}`.trim()}
-    >
-        <span>
-            {children}
-            {/* temporary icon: broken_link */}
-            {isActive && <div><Icon size="small" id="broken_link"/></div>}
-        </span>
-    </div>
+
+    return (
+        <div 
+            onClick={handleClick}
+            // {...(!isStatic && { 'data-cursor': "pointer" })}
+            className={`tag ${isActive ? 'tag-light' : classes}`.trim()}
+        >
+            <span>
+                {children}
+                <div>{isActive && <Icon size="small" id="broken_link"/>}</div>
+            </span>
+        </div>
+    )
 }
 
 export default Tag

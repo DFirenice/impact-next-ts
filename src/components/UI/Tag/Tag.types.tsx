@@ -1,6 +1,4 @@
 export type TagProps = {
-    children: number | string | React.ReactNode
+    children: string
     classes?: string
-    func?: () => void
-    active?: boolean
 }

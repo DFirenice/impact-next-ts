@@ -4,6 +4,6 @@ export type ProjectProps = {
     status: Tstatuses
     name: string
     version: ['Public' | 'Private', string]
-    tags?: string[]
+    tags: string[]
     members: number
 }
