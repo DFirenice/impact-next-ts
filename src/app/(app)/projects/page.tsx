@@ -6,7 +6,6 @@ import { useState } from 'react'
 import { useSorting } from '@/contexts/SortingContext'
 import { useFindQuery } from '@/contexts/FindContext'
 import applyFilter from '@/utils/applyFilter'
-import useTagsFilter from '@/hooks/useTagsFilter'
 
 import Btn from '@/components/UI/Btn/Btn'
 import NotFound from '@/components/NotFound/NotFound'
@@ -19,7 +18,6 @@ const ProjectsPage = () => {
     const [openProjectId, setOpenProjectId] = useState<string | null>(null)
     const { sortingMethod } = useSorting()
     const { findQuery } = useFindQuery()
-    const { applyTags } = useTagsFilter()
 
     const toggleContextModal = (projectId: string) => {
         setOpenProjectId(prev => (prev === projectId ? null : projectId))
@@ -36,8 +34,7 @@ const ProjectsPage = () => {
     // Filter by search query
     const filteredByQuery = applyFilter(findQuery, sortedProjects, 'name')
 
-    // Filter by selected tags
-    const finalFilteredProjects = applyTags(filteredByQuery)
+    const finalFilteredProjects = filteredByQuery
 
     return (
         finalFilteredProjects.length > 0
@@ -46,30 +43,40 @@ const ProjectsPage = () => {
                     {finalFilteredProjects.map(({ status, name, version, members, tags }: ProjectProps) => (
                         <Project
                             key={`project_${name}`}
+                            // Static info
                             status={status}
                             name={name}
                             tags={tags}
                             version={version}
                             members={members}
+                            // Modal menu
                             isContextOpen={openProjectId === name}
                             toggleContextModal={() => toggleContextModal(name)}
                         />
                     ))}
                 </section>
             )
-            : (
-                <NotFound
-                    heading="You don't have any projects yet"
-                    subtext={
-                        <>
-                            {`Would you like to `}
-                            <Btn classes="btn-none">
-                                <span data-font-accent="medium">create one?</span>
-                            </Btn>
-                        </>
-                    }
-                />
-            )
+            : filteredByQuery.length === 0 && findQuery
+                ? (
+                    <NotFound
+                        heading="Project Not Found"
+                        subtext={`Hmm, here is no projects with name "${findQuery}"`}
+                        icon="search"
+                    />
+                )
+                : (
+                    <NotFound
+                        heading="You don't have any projects yet"
+                        subtext={
+                            <>
+                                {`Would you like to `}
+                                <Btn classes="btn-none">
+                                    <span data-font-accent="medium">create one?</span>
+                                </Btn>
+                            </>
+                        }
+                    />
+                )
     )
 }
 
