@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { useSorting } from '@/contexts/SortingContext'
 import { useFindQuery } from '@/contexts/FindContext'
 import applyFilter from '@/utils/applyFilter'
+import { useTagsFilter } from '@/hooks/useTagsFilter'
 
 import Btn from '@/components/UI/Btn/Btn'
 import NotFound from '@/components/NotFound/NotFound'
@@ -18,6 +19,7 @@ const ProjectsPage = () => {
     const [openProjectId, setOpenProjectId] = useState<string | null>(null)
     const { sortingMethod } = useSorting()
     const { findQuery } = useFindQuery()
+    const { applyTags } = useTagsFilter() // Works but doesn't re-render
 
     const toggleContextModal = (projectId: string) => {
         setOpenProjectId(prev => (prev === projectId ? null : projectId))
@@ -34,7 +36,9 @@ const ProjectsPage = () => {
     // Filter by search query
     const filteredByQuery = applyFilter(findQuery, sortedProjects, 'name')
 
-    const finalFilteredProjects = filteredByQuery
+    // Final: tag filtering
+    const finalFilteredProjects = applyTags(filteredByQuery)
+    console.log(finalFilteredProjects)
 
     return (
         finalFilteredProjects.length > 0

@@ -1,13 +1,13 @@
-'use client'
-
 import Icon from '@/components/UI/Icon'
+import { useTagsFilter } from '@/hooks/useTagsFilter'
 
 import { TagProps } from './Tag.types'
 import './Tag.css'
 
 const Tag = ({ children, classes = 'tag-empty'}: TagProps) => {
+    const { toggleTag } = useTagsFilter()
     return (
-        <div 
+        <div onClick={() => { toggleTag('FrontEnd'); console.log('it works') }}
             // {...(!isStatic && { 'data-cursor': "pointer" })}
             // className={`tag ${isActive ? 'tag-light' : classes}`.trim()}
             className={`tag ${classes}`.trim()}
