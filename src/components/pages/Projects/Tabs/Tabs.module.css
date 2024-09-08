@@ -53,10 +53,27 @@
     
     & > div:last-child {
         display: inline-flex;
+        align-items: center;
         flex-direction: row;
         gap: .5rem;
 
-        & > button { height: 100% }
         & img { opacity: .6 }
+    }
+}
+
+.tags_filter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .5rem;
+    
+    & > span {
+        display: grid;
+        place-items: center;
+        background: var(--clr-dp-08);
+        height: 2.5ch;
+        width: 2.5ch;
+        padding: .25rem;
+        border-radius: 50%;
     }
 }

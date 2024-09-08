@@ -1,9 +1,9 @@
-import { useState } from "react"
+import { useTagsFilter as utfContext } from "@/contexts/TagsFilterContext"
 
 import type { ProjectProps } from "@/types/Project.types"
 
 export const useTagsFilter = () => {
-    const [ tagsList, setTagsList ] = useState<string[]>([])
+    const { tagsList, setTagsList } = utfContext()
     
     // Apply Tag Filter
     const applyTags = (projects: ProjectProps[]) => {
@@ -20,7 +20,9 @@ export const useTagsFilter = () => {
         if (tagsList.some(tag => tag.toLowerCase() === toggleTag.toLowerCase())) {
             const clearedTagsList = tagsList.filter(tag => tag !== toggleTag)
             setTagsList(clearedTagsList)
-        } else { setTagsList(prev => [...prev, toggleTag]) }
+        } else {
+            setTagsList([...tagsList, toggleTag])
+        }
     }
 
     return { applyTags, toggleTag, tagsList }

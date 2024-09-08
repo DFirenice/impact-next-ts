@@ -19,7 +19,8 @@ const ProjectsPage = () => {
     const [openProjectId, setOpenProjectId] = useState<string | null>(null)
     const { sortingMethod } = useSorting()
     const { findQuery } = useFindQuery()
-    const { applyTags } = useTagsFilter() // Works but doesn't re-render
+    
+    const { applyTags, tagsList } = useTagsFilter()
 
     const toggleContextModal = (projectId: string) => {
         setOpenProjectId(prev => (prev === projectId ? null : projectId))
@@ -37,14 +38,13 @@ const ProjectsPage = () => {
     const filteredByQuery = applyFilter(findQuery, sortedProjects, 'name')
 
     // Final: tag filtering
-    const finalFilteredProjects = applyTags(filteredByQuery)
-    console.log(finalFilteredProjects)
+    const filteredProjects = applyTags(filteredByQuery)
 
     return (
-        finalFilteredProjects.length > 0
+        filteredProjects.length > 0
             ? (
                 <section className={css.projects_list}>
-                    {finalFilteredProjects.map(({ status, name, version, members, tags }: ProjectProps) => (
+                    {filteredProjects.map(({ status, name, version, members, tags }: ProjectProps) => (
                         <Project
                             key={`project_${name}`}
                             // Static info
@@ -68,19 +68,37 @@ const ProjectsPage = () => {
                         icon="search"
                     />
                 )
-                : (
-                    <NotFound
-                        heading="You don't have any projects yet"
-                        subtext={
-                            <>
-                                {`Would you like to `}
-                                <Btn classes="btn-none">
-                                    <span data-font-accent="medium">create one?</span>
-                                </Btn>
-                            </>
-                        }
-                    />
-                )
+                : tagsList.length > 0
+                    ? (
+                        <NotFound
+                            heading="Projects Not Found"
+                            subtext={
+                                <span data-font-accent="low">
+                                    {'No projects with tag(s): '}
+                                    <span
+                                        data-font-style="italic"
+                                        data-font-accent="low"
+                                    >
+                                        {tagsList.join(', ')}
+                                    </span>
+                                </span>
+                            }
+                            icon='search'
+                        />
+                    )
+                    : (
+                        <NotFound
+                            heading="You don't have any projects yet"
+                            subtext={
+                                <>
+                                    {'Would you like to '}
+                                    <Btn classes="btn-none">
+                                        <span data-font-accent="medium">create one?</span>
+                                    </Btn>
+                                </>
+                            }
+                        />
+                    )
     )
 }
 

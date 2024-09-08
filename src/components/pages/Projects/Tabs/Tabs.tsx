@@ -3,6 +3,7 @@
 import { useActiveLink } from '@/hooks/useActiveLink'
 import { useSorting } from '@/contexts/SortingContext'
 import { useFindQuery } from '@/contexts/FindContext'
+import { useTagsFilter } from '@/contexts/TagsFilterContext'
 import useModal from '@/hooks/useModal'
 
 import Btn from '@/components/UI/Btn/Btn'
@@ -17,7 +18,8 @@ import css from './Tabs.module.css'
 const Tabs = () => {
     const { findQuery, setFindQuery } = useFindQuery(),
         { sortingMethod, setSortingMethod } = useSorting(),
-        { setModal, createModal } = useModal()
+        { setModal, createModal } = useModal(),
+        { tagsList } = useTagsFilter()
 
     // Replace type any
     const handleFilterClick = (e: any) => {
@@ -65,7 +67,10 @@ const Tabs = () => {
                 }
             </div>
             <div className={css.sorting_controls}>
-                <Btn func={handleFilterClick}><Icon id="filter"/></Btn>
+                <div className={css.tags_filter}>
+                    {tagsList.length > 0 ? <span>{tagsList.length}</span> : null}
+                    <Btn func={handleFilterClick}><Icon id="filter"/></Btn>
+                </div>
                 <Search value={findQuery} onChange={setFindQuery} text="Find a project..."/>
                 {createModal}
             </div>

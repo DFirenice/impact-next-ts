@@ -1,16 +1,21 @@
-import Icon from '@/components/UI/Icon'
-import { useTagsFilter } from '@/hooks/useTagsFilter'
+import { useState, useEffect } from 'react'
+import { useTagsFilter } from '@/contexts/TagsFilterContext'
 
 import { TagProps } from './Tag.types'
 import './Tag.css'
 
 const Tag = ({ children, classes = 'tag-empty'}: TagProps) => {
-    const { toggleTag } = useTagsFilter()
+    const [ isActive, setActive ] = useState<boolean>(false)
+    const { tagsList } = useTagsFilter()
+
+    useEffect(() => {
+        setActive(tagsList.some(tag => tag === children))
+    }, [tagsList])
+    
     return (
-        <div onClick={() => { toggleTag('FrontEnd'); console.log('it works') }}
-            // {...(!isStatic && { 'data-cursor': "pointer" })}
-            // className={`tag ${isActive ? 'tag-light' : classes}`.trim()}
-            className={`tag ${classes}`.trim()}
+        <div
+            data-cursor={isActive ? 'pointer' : 'normal'}
+            className={`tag ${isActive ? 'tag-light' : classes}`.trim()}
         >
             <span>
                 {children}
