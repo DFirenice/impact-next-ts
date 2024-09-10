@@ -25,5 +25,7 @@ export const useTagsFilter = () => {
         }
     }
 
-    return { applyTags, toggleTag, tagsList }
+    const clearTags = () => { setTagsList([]) }
+
+    return { applyTags, toggleTag, tagsList, clearTags }
 }

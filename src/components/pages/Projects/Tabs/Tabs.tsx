@@ -66,7 +66,7 @@ const Tabs = () => {
                     })
                 }
             </div>
-            <div className={css.sorting_controls}>
+            <div>
                 <div className={css.tags_filter}>
                     {tagsList.length > 0 ? <span>{tagsList.length}</span> : null}
                     <Btn func={handleFilterClick}><Icon id="filter"/></Btn>

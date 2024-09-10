@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, useEffect } from 'react'
 import { useTagsFilter } from '@/contexts/TagsFilterContext'
 
@@ -14,7 +16,7 @@ const Tag = ({ children, classes = 'tag-empty'}: TagProps) => {
     
     return (
         <div
-            data-cursor={isActive ? 'pointer' : 'normal'}
+            data-cursor="pointer"
             className={`tag ${isActive ? 'tag-light' : classes}`.trim()}
         >
             <span>

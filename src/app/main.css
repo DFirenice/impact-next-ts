@@ -48,6 +48,7 @@
 *[data-font-size="default"] { font-size: var(--font-size-default) }
 
 *[data-cursor="pointer"] { cursor: pointer }
+*[data-cursor="normal"] { cursor: initial }
 
 *[data-font-accent] *,
 *[data-font-size] * {
@@ -70,6 +71,24 @@
 *[data-font-accent="high"] { color: var(--clr-white-high) !important }
 *[data-font-accent="medium"] { color: var(--clr-white-medium) !important }
 *[data-font-accent="low"] { color: var(--clr-disabled) !important }
+
+*[data-global-accent="high"] * {
+    /* color: var(--clr-high) !important;
+    &:is(img) { filter: brightness(.87) } */
+    filter: brightness(.87)
+}
+
+*[data-global-accent="medium"] * {
+    /* color: var(--clr-medium) !important;
+    &:is(img) { filter: brightness(.6) } */
+    filter: brightness(.6)
+}
+
+*[data-global-accent="low"] * {
+    /* color: var(--clr-disabled) !important;
+    &:is(img) { filter: brightness(.38) } */
+    filter: brightness(.38)
+}
 
 *[data-font-weight="bold"] { font-weight: bold }
 *[data-font-weight="normal"] { font-weight: initial }

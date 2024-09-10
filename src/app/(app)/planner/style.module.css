@@ -1,0 +1,12 @@
+.planner {
+    width: 100%;
+    
+    & > section {
+        padding: 3.5dvw;
+        & > div:last-of-type { margin-top: 1.5dvh }
+    }
+    
+    & > section:not(:last-of-type) {
+        border-bottom: 2px solid var(--clr-dp-08);
+    }
+}

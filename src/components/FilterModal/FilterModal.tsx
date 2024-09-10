@@ -2,13 +2,14 @@ import { useTagsFilter } from "@/hooks/useTagsFilter"
 
 import Tag from "@/components/UI/Tag/Tag"
 import Heading from "../Heading"
-import Icon from "../UI/Icon"
+import Icon from "@/components/UI/Icon"
+import Btn from "@/components/UI/Btn/Btn"
 
 import availableTags from "@/data/tags"
 import css from './FilterModal.module.css'
 
 const FilterModal = () => {
-    const { toggleTag } = useTagsFilter()
+    const { toggleTag, clearTags } = useTagsFilter()
     
     return (
         <div className={css.container}>
@@ -31,6 +32,7 @@ const FilterModal = () => {
                    <li><Tag>...</Tag></li>
                 </ul>
             </div>
+            <Btn func={clearTags} classes="btn-none">Clear Selected tags</Btn>
         </div>
     )
 }

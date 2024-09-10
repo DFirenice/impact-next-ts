@@ -25,6 +25,7 @@ import share from '@/assets/icons/share.svg'
 import terminal from '@/assets/icons/terminal.svg'
 import user from '@/assets/icons/user.svg'
 import visible from '@/assets/icons/visible.svg'
+import clock from '@/assets/icons/clock.svg'
 
 export const icons = {
     add: add,
@@ -53,5 +54,6 @@ export const icons = {
     share: share,
     terminal: terminal,
     user: user,
-    visible: visible
+    visible: visible,
+    clock: clock
 }
