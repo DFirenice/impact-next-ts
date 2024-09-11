@@ -3,7 +3,7 @@
     position: absolute;
     filter: drop-shadow(0 0 .1dvw var(--clr-primary-dark));
     width: 100%;
-    min-width: 10dvw;
+    min-width: fit-content;
     max-width: 275px;
     height: max-content;
     transform: translateX(calc(-100% - .25dvw));

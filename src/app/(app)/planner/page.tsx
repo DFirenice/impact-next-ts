@@ -1,6 +1,7 @@
 import Heading from '@/components/Heading'
-import css from './style.module.css'
 import TaskCard from '@/components/TaskCard/TaskCard'
+
+import css from './style.module.css'
 
 const PlannerPage = () => {
     return <section className={css.planner}>

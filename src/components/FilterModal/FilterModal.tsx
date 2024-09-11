@@ -14,7 +14,11 @@ const FilterModal = () => {
     return (
         <div className={css.container}>
             <div>
-                <Heading><Icon id="filter"/>Filters:</Heading>
+                <Heading size="large">
+                    <Icon id="filter"/>
+                    <span>Filters:</span>
+                </Heading>
+                <span data-font-accent="low">Suggested by Impact</span>
             </div>
             <div>
                 <ul>
@@ -32,7 +36,9 @@ const FilterModal = () => {
                    <li><Tag>...</Tag></li>
                 </ul>
             </div>
-            <Btn func={clearTags} classes="btn-none">Clear Selected tags</Btn>
+            <Btn classes="btn-light" func={clearTags}>
+                Clear Selected tags
+            </Btn>
         </div>
     )
 }

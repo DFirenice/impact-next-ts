@@ -4,6 +4,8 @@
     text-transform: capitalize;
     text-wrap: pretty;
     font-weight: 600;
+
+    &:has(img) { align-items: center }
 }
 
 .inline_heading {
@@ -56,7 +58,7 @@
     font-size: inherit;
 }
 
-/* Font variations */
+/* Clr & font clr variations */
 *[data-font-accent="gradient"] {
     background: -webkit-linear-gradient(
         0deg,

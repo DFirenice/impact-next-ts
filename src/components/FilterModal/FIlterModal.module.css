@@ -15,4 +15,6 @@
             & { margin: .115rem }
         }
     }
+
+    & > button { margin-top: .75rem }
 }
