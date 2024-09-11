@@ -1,13 +1,12 @@
 import StatusTag from "@/components/UI/StatusTag/StatusTag"
 import Heading from "@/components/Heading"
 import Icon from "@/components/UI/Icon"
+import TypeTag from "@/components/UI/TypeTag/TypeTag"
 
 import type TaskCardProps from "./TaskCard.types"
 import css from './TaskCard.module.css'
-import { CSSProperties } from "react"
-import Tag from "../UI/Tag/Tag"
 
-const TaskCard = ({ priority }: TaskCardProps) => {
+const TaskCard = ({ priority, tags }: TaskCardProps) => {
     // This sucks, i know
     const markerColor = priority === 'low' ? 'hsl(109 82% 40%)' :
                            priority === 'medium' ? 'hsl(36 92% 60%)' :
@@ -16,7 +15,7 @@ const TaskCard = ({ priority }: TaskCardProps) => {
     return <div className={css.card}>
         <div
             className={css.priority}
-            style={{ '--_priority-clr': markerColor } as CSSProperties}
+            style={{ '--_priority-clr': markerColor } as React.CSSProperties}
         >
             <StatusTag status={priority}/>
         </div>
@@ -32,10 +31,10 @@ const TaskCard = ({ priority }: TaskCardProps) => {
                 </div>
             </div>
             
-            <div>
-                {/* So far, tags should be different ( see @/components/TypeTag ) */}
-                <Tag>Bug</Tag>
-                <Tag>UI</Tag>
+            <div className={css.tags}>
+                {tags.map(
+                    tag => <TypeTag key={`typeTag_${tag}`} status={tag}/>
+                )}
             </div>
 
             <div className={css.extra_info} data-global-accent="medium">

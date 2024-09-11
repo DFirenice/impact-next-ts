@@ -11,7 +11,7 @@ const PlannerPage = () => {
                 <Heading size='larger'>Today's tasks & Upcoming Events</Heading>
             </div>
             <div>
-                tasks & events
+                list of tasks & events
             </div>
         </section>
         <section>
@@ -20,7 +20,10 @@ const PlannerPage = () => {
                 <Heading size='larger'>All assignments</Heading>
             </div>
             <div>
-                <TaskCard priority='medium'/>
+                <div className={css.tasks_group}>
+                    <TaskCard priority='medium' tags={['ui', 'design']}/>
+                    <TaskCard priority='high' tags={['bug', 'backend']}/>
+                </div>
             </div>
         </section>
     </section>

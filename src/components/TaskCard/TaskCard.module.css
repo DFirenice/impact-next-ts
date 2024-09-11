@@ -48,7 +48,14 @@
     gap: .5rem;
 }
 
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .25rem;
+}
+
 .extra_info {
+    gap: 1rem;
     justify-content: space-between;
     border-top: 1px solid var(--clr-dp-08);
     padding-top: 1.25rem;

@@ -10,3 +10,9 @@
         border-bottom: 2px solid var(--clr-dp-08);
     }
 }
+
+.tasks_group {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 1dvh;
+}

@@ -1,2 +1,2 @@
-export type TagTypes = 'ui' | 'bug' | 'frontend' | 'backend'
+export type TagTypes = 'ui' | 'bug' | 'design' | 'frontend' | 'backend'
 // ... and more with time ...

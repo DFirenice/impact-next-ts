@@ -3,9 +3,14 @@ import typeTags from '@/data/typeTags'
 import css from './TypeTag.module.css'
 
 const TypeTag = ({ status }: { status: TagTypes }) => {
-    return <div className={css.typeTag}>
-        <span>{typeTags[`${status}`]}</span>
-    </div>
+    return (
+        <div
+            className={css.tag}
+            style={{ '--_clr-main': typeTags[status].color } as React.CSSProperties}
+        >
+            <span>{typeTags[status].type}</span>
+        </div>
+    )
 }
 
 export default TypeTag
