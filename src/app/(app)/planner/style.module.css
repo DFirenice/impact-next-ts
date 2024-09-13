@@ -11,8 +11,23 @@
     }
 }
 
+.assignments_container {
+    display: flex;
+    gap: 1rem;
+}
+
 .tasks_group {
-    display: inline-flex;
-    flex-direction: column;
-    gap: 1dvh;
+    max-width: fit-content;
+    & > div:first-child {
+        background: var(--clr-dp-04); 
+        border-bottom: 2px solid var(--clr-dp-08);
+        padding: .75rem 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+
+    & > div:last-child {
+        display: inline-flex;
+        flex-direction: column;
+        gap: 1dvh;
+    }
 }

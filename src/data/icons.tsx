@@ -26,6 +26,8 @@ import terminal from '@/assets/icons/terminal.svg'
 import user from '@/assets/icons/user.svg'
 import visible from '@/assets/icons/visible.svg'
 import clock from '@/assets/icons/clock.svg'
+import checkmark from '@/assets/icons/checkmark.svg'
+import cross from '@/assets/icons/cross.svg'
 
 export const icons = {
     add: add,
@@ -55,5 +57,7 @@ export const icons = {
     terminal: terminal,
     user: user,
     visible: visible,
-    clock: clock
+    clock: clock,
+    checkmark: checkmark,
+    cross: cross
 }

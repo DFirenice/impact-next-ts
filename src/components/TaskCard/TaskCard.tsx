@@ -10,7 +10,8 @@ const TaskCard = ({ priority, tags }: TaskCardProps) => {
     // This sucks, i know
     const markerColor = priority === 'low' ? 'hsl(109 82% 40%)' :
                            priority === 'medium' ? 'hsl(36 92% 60%)' :
-                           'hsl(0 82% 41%)'
+                           priority === 'high' ? 'hsl(0 82% 41%)' :
+                           'hsl(0 0% 85%)'
 
     return <div className={css.card}>
         <div

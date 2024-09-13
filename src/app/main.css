@@ -15,6 +15,14 @@
     width: 100%;
 }
 
+/* vertically centered block */
+.block_aligned {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .5rem;
+}
+
 /* Random active link (Perhaps, not should be here) */
 /* More likely, only related to the project's form */
 .active_link {  
