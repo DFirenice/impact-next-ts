@@ -1,0 +1,8 @@
+.container {
+    background: var(--clr-dp-00);
+    display: flex;
+    gap: .25rem;
+    padding: .25rem;
+    border-radius: var(--radius-low);
+    border: 1px solid var(--clr-dp-08);
+}

@@ -1,9 +1,10 @@
 .planner {
+    height: 100%;
     width: 100%;
 
     & > section {
         padding: 2.5rem;
-        & > div:last-of-type { margin-top: 1.5dvh }
+        & > div:last-of-type { margin-top: 2.5dvh }
     }
     
     & > section:not(:last-of-type) {
@@ -11,23 +12,13 @@
     }
 }
 
+.dynamic_assignments { height: 100% }
+
 .assignments_container {
+    height: 100%;
     display: flex;
     gap: 1rem;
-}
-
-.tasks_group {
-    max-width: fit-content;
-    & > div:first-child {
-        background: var(--clr-dp-04); 
-        border-bottom: 2px solid var(--clr-dp-08);
-        padding: .75rem 1.25rem;
-        margin-bottom: 1.5rem;
-    }
-
-    & > div:last-child {
-        display: inline-flex;
-        flex-direction: column;
-        gap: 1dvh;
-    }
+    
+    /* temp solution, should not rely on NotFound existing */
+    & > section > * { transform: translateY(-75%) }
 }

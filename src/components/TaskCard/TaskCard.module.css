@@ -4,6 +4,7 @@
     border-radius: var(--radius-low);
     max-width: 300px;
     width: 100%;
+    height: max-content;
     padding-block: 1.25rem;
     gap: .75rem;
 
