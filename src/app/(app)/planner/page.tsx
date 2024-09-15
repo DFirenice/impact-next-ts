@@ -7,19 +7,24 @@ import TaskCard from '@/components/TaskCard/TaskCard'
 import Switcher from '@/components/UI/Switcher/Switcher'
 import NotFound from '@/components/NotFound/NotFound'
 
+import tempUserTasks from '@/data/tempUserTasks'
 import css from './style.module.css'
 
 const PlannerPage = () => {
     const [ currentSwitch, setCurrentSwitch ] = useState<string>('All')
 
-    // should be a hook which parses user tasks
+    // should be the hook which parses user tasks
     const getUserTasks = () => {
-        return [
-            <TaskCard priority='medium' tags={['ui', 'design']}/>,
-            <TaskCard priority='high' tags={['bug', 'backend']}/>,
-            <TaskCard priority='low' tags={['frontend']}/>,
-            <TaskCard priority='low' tags={['design', 'frontend']}/>
-        ]
+        return tempUserTasks.map(({ associates, body, heading, tags, priority, time }) => {
+            return <TaskCard
+                priority={priority}
+                associates={associates}
+                body={body}
+                heading={heading}
+                tags={tags}
+                time={time}
+            />
+        })
     }
     
     const filteredUserTasks = getUserTasks().filter(task => {

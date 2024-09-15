@@ -17,6 +17,7 @@
 .priority, .wrapper { padding-inline: 1.5rem }
 
 .priority {
+    padding-right: .5rem;
     position: relative;
     --_priority-clr: var(--clr-disabled);
     

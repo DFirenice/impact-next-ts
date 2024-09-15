@@ -23,7 +23,7 @@ const Project = (
         }) => {
     const modalRef = useRef<HTMLDivElement>(null)
 
-    // Outside clicks handler
+    // Outside click handler
     useEffect(() => {
         function handleClickOutside (e: MouseEvent) {
             if (isContextOpen && modalRef.current && !modalRef.current.contains(e.target as Node)) {
@@ -64,6 +64,7 @@ const Project = (
         {/* Open Context Btn */}
         <Btn style={{ position: 'relative' }} func={handleBtnClick}>
             <Icon id="options" styles={{ rotate: '90deg' }}/>
+            {/* Use useContextModal hook instead, however, require some edits within */}
             {
                 isContextOpen &&
                     <div ref={modalRef} style={{ position: 'absolute' }}>

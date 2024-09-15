@@ -15,10 +15,13 @@
 .dynamic_assignments { height: 100% }
 
 .assignments_container {
-    height: 100%;
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
     
     /* temp solution, should not rely on NotFound existing */
-    & > section > * { transform: translateY(-75%) }
+    &:has(section) {
+        height: 100%;
+        & > section > * { transform: translateY(-75%) }
+    }
 }
