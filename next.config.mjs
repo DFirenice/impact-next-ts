@@ -3,11 +3,18 @@
 const nextConfig = {
     images: {
         remotePatterns: [
-            {
+            { // Temporary, is using in Drawer
                 protocol: "https",
                 hostname: "spectrumofroses.com",
-                port: '',
                 pathname: '/wp-content/uploads/**'
+            },
+            {
+                protocol: 'https',
+                hostname: 'avatars.githubusercontent.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'lh3.googleusercontent.com',
             }
         ]
     }

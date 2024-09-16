@@ -1,4 +1,4 @@
-import { useUser } from '@/contexts/userProvider'
+import { useSession } from 'next-auth/react'
 
 import Search from '@/components/UI/Search/Search'
 import Link from 'next/link'
@@ -11,16 +11,18 @@ import RootLink from '@/components/RootLink'
 import css from './Drawer.module.css'
 
 const Drawer = () => {
-    const user = useUser()
+    const { data: session } = useSession()
+    const user = session?.user
+    
     return <section className={css.drawer}>
         <div className={css.wrapper}>
             {/* Account & Search */}
             <div className={css.account}>
                 <div>
-                    <Avatar src="https://spectrumofroses.com/wp-content/uploads/2023/06/blood-on-a-white-rose-red-roses-in-myths-and-legends-Large-1024x574.webp"/>
+                    <Avatar src={user?.image as string}/>
                     <div>
                         <span>Hello,</span>
-                        <Link href="/profie" data-font-weight="bold">{` ${user?.username}`}</Link>
+                        <Link href="/profie" data-font-weight="bold">{` ${user?.name}`}</Link>
                     </div>
                 </div>
                 <Search value="" onChange={() => {}}/>

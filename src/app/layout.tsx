@@ -1,10 +1,10 @@
 import type { Metadata } from "next"
 import { Rubik } from "next/font/google"
 
-import { UserProvider } from "@/contexts/userProvider"
 import { SortingProvider } from "@/contexts/SortingContext"
 import { FindProvider } from '@/contexts/FindContext'
 import { TagsFilterProvider } from "@/contexts/TagsFilterContext"
+import SessionWrapper from "@/components/SessionWrapper"
 
 import "./globals.css"
 import './main.css'
@@ -23,8 +23,8 @@ export default function RootLayout({
 }>) {
 
   return (
-      <html lang="en">
-        <UserProvider>
+      <SessionWrapper>
+        <html lang="en">
           <SortingProvider>
             <FindProvider>
               <TagsFilterProvider>
@@ -35,7 +35,7 @@ export default function RootLayout({
               </TagsFilterProvider>
             </FindProvider>
           </SortingProvider>
-        </UserProvider>
-      </html>
+        </html>
+      </SessionWrapper>
   );
 }

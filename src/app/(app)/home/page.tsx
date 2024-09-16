@@ -1,6 +1,6 @@
 'use client' // Use server component instead, additionaly, fix passing event issue
 
-import { useUser } from '@/contexts/userProvider'
+import { useSession } from 'next-auth/react'
 import { userPortals } from '@/data/userPortals'
 import Heading from '@/components/Heading'
 import getGreetings from '@/utils/getGreetings'
@@ -9,8 +9,8 @@ import HomePortal from '@/components/HomePortal/HomePortal'
 import css from './styles.module.css'
 
 const HomePage = () => {
-    const user = useUser()
-    const { greeting, username } = getGreetings(user?.username)
+    const { data: session } = useSession()
+    const { greeting, username } = getGreetings(session?.user?.name as string)
 
     return <section className={css.home}>
         <div className={css.wrapper}>

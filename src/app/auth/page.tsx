@@ -6,6 +6,7 @@ import Field from "@/components/UI/Field/Field"
 import Icon from "@/components/UI/Icon"
 import Splitter from "@/components/UI/Splitter/Splitter"
 
+import { signIn } from "next-auth/react"
 import { usePathname } from "next/navigation"
 import { useState } from 'react'
 
@@ -70,10 +71,10 @@ const SignUpForm = () => {
 }
 
 const Auth = () => {
-    const pathname = usePathname()
     const [ logMethod, setLogMethod ] = useState<logMethods>('login')
-
+    
     const changeLogMethod = (method:logMethods) => () => { setLogMethod(method) }
+    const continueWithGithub = () => { signIn('github') }
 
     return <section className={css.auth}>
         <div className={css.wrapper}>
@@ -117,7 +118,7 @@ const Auth = () => {
                         <span data-font-accent="low">or</span>
                     </div>
                     <div className={css.methods_list}>
-                        <Btn><Icon size="large" id="git"/></Btn>
+                        <Btn func={continueWithGithub}><Icon size="large" id="git"/></Btn>
                         <Btn classes="btn-light"><Icon size="large" id="google"/></Btn>
                     </div>
                 </div>

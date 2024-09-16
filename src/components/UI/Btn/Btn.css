@@ -97,6 +97,11 @@
     }
 }
 
+.btn-active {
+    background: var(--clr-dp-00);
+    &:hover { background: var(--clr-dp-00) }
+}
+
 .btn-disabled {
     --_disabled-clr: hsl(from var(--_initial-clr) h s 15%);
 
