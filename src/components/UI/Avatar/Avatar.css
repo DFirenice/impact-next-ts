@@ -1,5 +1,7 @@
 .avatar {
     display: inline-flex;
+    height: max-content;
+    width: max-content;
     & img {
         border-radius: 50%;
         max-width: 2.5rem;

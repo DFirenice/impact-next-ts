@@ -1,5 +1,5 @@
 export type BtnProps = {
-    classes?: string    
+    classes?: string
     func?: (e?: React.MouseEvent<HTMLButtonElement>) => void
     children: React.ReactNode
     link?: string

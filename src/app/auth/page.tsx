@@ -7,7 +7,6 @@ import Icon from "@/components/UI/Icon"
 import Splitter from "@/components/UI/Splitter/Splitter"
 
 import { signIn } from "next-auth/react"
-import { usePathname } from "next/navigation"
 import { useState } from 'react'
 
 import css from './styles.module.css'
@@ -74,7 +73,7 @@ const Auth = () => {
     const [ logMethod, setLogMethod ] = useState<logMethods>('login')
     
     const changeLogMethod = (method:logMethods) => () => { setLogMethod(method) }
-    const continueWithGithub = () => { signIn('github') }
+    const continueWithGithub = () => { signIn('github', { callbackUrl: '/home' }) }
 
     return <section className={css.auth}>
         <div className={css.wrapper}>

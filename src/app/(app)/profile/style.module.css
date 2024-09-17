@@ -1,0 +1,25 @@
+.container {
+    width: 100%;
+    & > div { padding-inline: 5dvw }
+}
+
+.profile_info_container {
+    display: flex;
+    max-height: 22.5dvh;
+    height: 22.5dvh;
+
+    border-bottom: 1px solid var(--clr-dp-08);
+    padding-block: 3.5dvh;
+
+    & > div:first-of-type { gap: 1.5rem }
+}
+
+.profile_info {
+}
+
+.profile_controls {
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+    text-wrap: nowrap;
+}

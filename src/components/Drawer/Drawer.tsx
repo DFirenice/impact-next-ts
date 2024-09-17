@@ -22,7 +22,7 @@ const Drawer = () => {
                     <Avatar src={user?.image as string}/>
                     <div>
                         <span>Hello,</span>
-                        <Link href="/profie" data-font-weight="bold">{` ${user?.name}`}</Link>
+                        <Link href="/profile" data-font-weight="bold">{` ${user?.name || 'Guest'}`}</Link>
                     </div>
                 </div>
                 <Search value="" onChange={() => {}}/>
