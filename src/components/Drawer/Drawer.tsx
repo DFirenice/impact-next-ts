@@ -19,10 +19,12 @@ const Drawer = () => {
             {/* Account & Search */}
             <div className={css.account}>
                 <div>
-                    <Avatar src={user?.image as string}/>
+                    <Link href="/profile"><Avatar src={user?.image as string}/></Link>
                     <div>
                         <span>Hello,</span>
-                        <Link href="/profile" data-font-weight="bold">{` ${user?.name || 'Guest'}`}</Link>
+                        <Link href="/profile" data-font-weight="bold">
+                            {` ${user?.name || 'Guest'}`}
+                        </Link>
                     </div>
                 </div>
                 <Search value="" onChange={() => {}}/>

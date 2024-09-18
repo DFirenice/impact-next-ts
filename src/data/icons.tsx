@@ -28,6 +28,7 @@ import visible from '@/assets/icons/visible.svg'
 import clock from '@/assets/icons/clock.svg'
 import checkmark from '@/assets/icons/checkmark.svg'
 import cross from '@/assets/icons/cross.svg'
+import undo from '@/assets/icons/undo.svg'
 
 export const icons = {
     add: add,
@@ -59,5 +60,6 @@ export const icons = {
     visible: visible,
     clock: clock,
     checkmark: checkmark,
-    cross: cross
+    cross: cross,
+    undo: undo
 }

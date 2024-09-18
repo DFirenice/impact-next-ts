@@ -15,27 +15,39 @@ const Profile = () => {
     const handleSignOut = () => { signOut({ callbackUrl: '/' }) }
     
     return <section className={css.container}>
-        <div className={css.profile_info_container}>
-            <div className="block_aligned">
-                <Avatar src={session?.user?.image as string}/>
-                <div className={`inline_heading block_aligned ${css.profile_info}`}>
+            <div className={css.banner}>
+                <Avatar size={window.innerHeight * 0.1} src={session?.user?.image as string}/>
+                <div className="inline_heading block_aligned">
                     <div>
                         <Heading size="large">{session?.user?.name || 'Guest'}</Heading>
-                        <span data-font-accent="low">User's id</span>
+                        <span data-font-accent="low">@User's id</span>
                         <p>User's bio</p>
                     </div>
-                    <div className={css.profile_controls}>
-                        <Btn>
-                            <span>Edit profile</span>
-                            <Icon id='edit'/>
-                        </Btn>
-                        <Btn classes="btn-reject" func={handleSignOut}>
-                            <Icon id="broken_link"/>
-                        </Btn>
-                    </div>
+                    <Btn>
+                        <span>Edit profile</span>
+                        <Icon id='edit'/>
+                    </Btn>
                 </div>
             </div>
-        </div>
+            <div className={css.body}>
+                <div className={css.statistics}>
+                    <Btn classes="btn-none">
+                        <Icon id='folder'/>
+                        <span>0 Projects</span>
+                    </Btn>
+                    <Btn classes="btn-none">
+                        <Icon id='undo'/>
+                        <span>0 Contributions</span>
+                    </Btn>
+                </div>
+                {/* Activity chart */}
+                <div className={css.activity_chart}>
+                    Activity Chart
+                </div>
+                <div>
+                    <Heading size="large">All Projects</Heading>
+                </div>
+            </div>
     </section>
 }
 
