@@ -22,8 +22,7 @@
 }
 
 .activity_chart {
-    background: var(--clr-dp-04);
-    margin-top: 1.5dvh;
+    background: var(--clr-dp-02);
     height: 17.5dvh;
     width: 100%;
 }
