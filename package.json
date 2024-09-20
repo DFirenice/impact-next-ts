@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@visx/event": "^3.3.0",
     "@visx/scale": "^3.5.0",
+    "@visx/tooltip": "^3.3.0",
     "next": "14.2.5",
     "next-auth": "^4.24.7",
     "react": "^18",

@@ -1,0 +1,9 @@
+.tooltip {
+    position: absolute;
+    background: var(--clr-dp-02);
+    border: 1px solid var(--clr-dp-08);
+    color: var(--clr-white-medium);
+    padding: .5rem .75rem;
+    display: inline-flex;
+    pointer-events: none;
+}

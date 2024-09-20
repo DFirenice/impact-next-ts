@@ -22,11 +22,11 @@ const Profile = () => {
 
     const fullYearData = Array.from({ length: 52 }, (_, weekIndex) => {
         return Array.from({ length: 7 }, (_, dayIndex) => {
-        return {
-            week: `Week ${weekIndex + 1}`,
-            day: days[dayIndex],
-            count: Math.floor(Math.random() * 10) // Random data
-        }
+            return {
+                week: `Week ${weekIndex + 1}`,
+                day: days[dayIndex],
+                count: Math.floor(Math.random() * 10) // Random data
+            }
         })
     }).flat()
     
