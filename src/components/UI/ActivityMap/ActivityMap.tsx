@@ -31,14 +31,14 @@ const ActivityMap: React.FC<Props> = ({ data, width, height }) => {
     } = useTooltip()
 
     type Tdatum = {
-        value: number,
+        value: string,
         date: Date
     }
 
     const handleMouseOver = (event: React.MouseEvent<SVGRectElement>, datum: Tdatum ) => {
         const target = event.target as SVGElement
         const coords = localPoint(target.ownerSVGElement || target, event)
-        
+
         showTooltip({
             tooltipData: datum,
             tooltipLeft: coords!.x,
@@ -92,8 +92,8 @@ const ActivityMap: React.FC<Props> = ({ data, width, height }) => {
                 <div
                     className={css_tooltip.tooltip}
                     style={{
-                        top: tooltipTop + 10,
-                        left: tooltipLeft + 15
+                        top: tooltipTop! + 10,
+                        left: tooltipLeft! + 15
                     }}
                 >
                     {`${tooltipData}`}
