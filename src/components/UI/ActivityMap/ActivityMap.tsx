@@ -30,12 +30,7 @@ const ActivityMap: React.FC<Props> = ({ data, width, height }) => {
         tooltipData
     } = useTooltip()
 
-    type Tdatum = {
-        value: string,
-        date: Date
-    }
-
-    const handleMouseOver = (event: React.MouseEvent<SVGRectElement>, datum: Tdatum ) => {
+    const handleMouseOver = (event: React.MouseEvent<SVGRectElement>, datum: string ) => {
         const target = event.target as SVGElement
         const coords = localPoint(target.ownerSVGElement || target, event)
 
