@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef,useState } from 'react'
 import Btn from '@/components/UI/Btn/Btn'
 import Icon from '@/components/UI/Icon'
 import ContextModal from '@/components/UI/ContextModal/ContextModal'
@@ -10,24 +10,27 @@ import type { ProjectProps } from '@app-types/Project.types'
 import css from './Project.module.css'
 
 const Project = (
-    { status,
+    {   status,
         name,
         version,
         tags,
         members,
-        isContextOpen,
+        isContextOpen = false,
         toggleContextModal
     }: ProjectProps & {
-            isContextOpen: boolean,
-            toggleContextModal: (projectId: string) => void
+            isContextOpen?: boolean,
+            toggleContextModal?: (projectId: string) => void
         }) => {
+    const [ hasContext ] = useState(!!toggleContextModal)
     const modalRef = useRef<HTMLDivElement>(null)
 
     // Outside click handler
     useEffect(() => {
         function handleClickOutside (e: MouseEvent) {
-            if (isContextOpen && modalRef.current && !modalRef.current.contains(e.target as Node)) {
-                toggleContextModal(name)
+            if (toggleContextModal) {
+                if (isContextOpen && modalRef.current && !modalRef.current.contains(e.target as Node)) {
+                    toggleContextModal(name)
+                }
             }
         }
         
@@ -40,7 +43,7 @@ const Project = (
     // Context Modal switcher
     function handleBtnClick (e?: React.MouseEvent<HTMLButtonElement>) {
         e?.stopPropagation()
-        toggleContextModal(name)
+        toggleContextModal && toggleContextModal(name)
     }
         
     return <div className={css.container} data-project-tags={tags}>
@@ -61,20 +64,22 @@ const Project = (
                 </span>
             </div>
         </div>
-        {/* Open Context Btn */}
-        <Btn style={{ position: 'relative' }} func={handleBtnClick}>
-            <Icon id="options" styles={{ rotate: '90deg' }}/>
-            {/* Use useContextModal hook instead, however, require some edits within */}
-            {
-                isContextOpen &&
-                    <div ref={modalRef} style={{ position: 'absolute' }}>
-                        <ContextModal
-                            items={['Manage', 'Archivate', 'Delete', 'Change Status']}
-                            isOpen={isContextOpen}
-                        />
-                    </div>
-            }
-        </Btn>
+        {
+            hasContext &&
+                <Btn style={{ position: 'relative' }} func={handleBtnClick}>
+                    <Icon id="options" styles={{ rotate: '90deg' }}/>
+                    {/* Use useContextModal hook instead, however, require some edits within */}
+                    {
+                        isContextOpen &&
+                            <div ref={modalRef} style={{ position: 'absolute' }}>
+                                <ContextModal
+                                    items={['Manage', 'Archivate', 'Delete', 'Change Status']}
+                                    isOpen={isContextOpen}
+                                />
+                            </div>
+                    }
+                </Btn>
+        }
     </div>
 }
 

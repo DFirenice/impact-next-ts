@@ -7,10 +7,12 @@ import { signOut } from 'next-auth/react'
 import Heading from '@/components/Heading'
 import Avatar from '@/components/UI/Avatar/Avatar'
 import Btn from '@/components/UI/Btn/Btn'
-
-import css from './style.module.css'
-import Icon from '@/components/UI/Icon'
 import ActivityMap from '@/components/UI/ActivityMap/ActivityMap'
+import Project from '@/components/pages/Projects/Project/Project'
+
+import userProjects from '@/data/tempUserProjects'
+import Icon from '@/components/UI/Icon'
+import css from './style.module.css'
 
 const Profile = () => {
     const { data: session } = useSession()
@@ -65,8 +67,20 @@ const Profile = () => {
                         height={activityContainer.current?.clientHeight || 0}
                     />
                 </div>
-                <div>
-                    <Heading size="large">All Projects</Heading>
+                <div className={css.projects}>
+                    <Heading level={3} size="large">All Projects</Heading>
+                    <div>
+                        { userProjects.map(({ status, name, version, tags, members }) => {
+                            return <Project
+                                key={`profile_project_${name}`}
+                                status={status}
+                                name={name}
+                                version={version}
+                                tags={tags}
+                                members={members}
+                            />
+                        }) }
+                    </div>
                 </div>
             </div>
     </section>

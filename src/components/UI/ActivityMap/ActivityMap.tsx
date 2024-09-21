@@ -45,18 +45,18 @@ const ActivityMap: React.FC<Props> = ({ data, width, height }) => {
     const xScale = scaleBand<string>({
         domain: weeks,
         range: [0, width],
-        padding: .05
+        padding: .1
     })
 
     const yScale = scaleBand<string>({
         domain: days,
         range: [0, height],
-        padding: .05
+        padding: .1
     })
 
     const colorScale = scaleLinear<string>({
         domain: [0, Math.max(...data.map(d => d.count))],
-        range: ['hsl(109 82% 0% / 15%)', 'hsl(109 82% 40% / 45%)'] // Dark to light
+        range: ['hsl(210 100% 10%)', 'hsl(210 100% 50%)'] // Dark to light
     })
 
     return (
@@ -74,6 +74,8 @@ const ActivityMap: React.FC<Props> = ({ data, width, height }) => {
                             key={i}
                             x={x}
                             y={y}
+                            rx={5}
+                            ry={5}
                             width={xScale.bandwidth()}
                             height={yScale.bandwidth()}
                             onMouseOver={(e) => { handleMouseOver(e, `${d.count} Commit(s) on ${d.day}`) }}
