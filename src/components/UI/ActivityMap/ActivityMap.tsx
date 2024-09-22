@@ -1,3 +1,6 @@
+'use client'
+
+import { useState, useEffect } from 'react'
 import { scaleBand, scaleLinear } from '@visx/scale'
 import { useTooltip } from '@visx/tooltip'
 import { localPoint } from '@visx/event'
@@ -58,6 +61,10 @@ const ActivityMap: React.FC<Props> = ({ data, width, height }) => {
         domain: [0, Math.max(...data.map(d => d.count))],
         range: ['hsl(210 100% 10%)', 'hsl(210 100% 50%)'] // Dark to light
     })
+
+    if (width === 0 || height === 0) {
+        return <div>Loading chart...</div>
+    }
 
     return (
         <div style={{ position: 'relative' }}>

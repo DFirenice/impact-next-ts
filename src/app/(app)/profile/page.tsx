@@ -1,8 +1,7 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { useSession } from 'next-auth/react'
-import { signOut } from 'next-auth/react'
 
 import Heading from '@/components/Heading'
 import Avatar from '@/components/UI/Avatar/Avatar'
@@ -16,9 +15,11 @@ import css from './style.module.css'
 
 const Profile = () => {
     const { data: session } = useSession()
-    const handleSignOut = () => { signOut({ callbackUrl: '/' }) }
     const activityContainer = useRef<HTMLDivElement>(null)
 
+    // State to hold the container dimensions
+    const [ containerSize, setContainerSize ] = useState({ width: 0, height: 0 })
+    
     // Activity map data
     const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 
@@ -31,6 +32,32 @@ const Profile = () => {
             }
         })
     }).flat()
+
+    // Fixes zero-dimensional-container bug
+    useEffect(() => {
+        if (activityContainer.current) {
+            setContainerSize({
+                width: activityContainer.current.clientWidth,
+                height: activityContainer.current.clientHeight
+            })
+        }
+
+        // Resize event
+        const handleResize = () => {
+            if (activityContainer.current) {
+                setContainerSize({
+                    width: activityContainer.current.clientWidth,
+                    height: activityContainer.current.clientHeight
+                })
+            }
+        }
+
+        window.addEventListener('resize', handleResize)
+
+        return () => {
+            window.removeEventListener('resize', handleResize)
+        }
+    }, [])
     
     return <section className={css.container}>
             <div className={css.banner}>
@@ -61,10 +88,9 @@ const Profile = () => {
                 {/* Activity chart */}
                 <div ref={activityContainer} className={css.activity_chart}>
                     <ActivityMap
-                        // size adjustments required
                         data={fullYearData}
-                        width={activityContainer.current?.clientWidth || 0}
-                        height={activityContainer.current?.clientHeight || 0}
+                        width={containerSize.width}
+                        height={containerSize.height}
                     />
                 </div>
                 <div className={css.projects}>

@@ -1,4 +1,5 @@
 import { useSession } from 'next-auth/react'
+import { signOut } from 'next-auth/react'
 
 import Search from '@/components/UI/Search/Search'
 import Link from 'next/link'
@@ -13,6 +14,9 @@ import css from './Drawer.module.css'
 const Drawer = () => {
     const { data: session } = useSession()
     const user = session?.user
+
+    // const handleSignOut = () => { signOut({ callbackUrl: '/' }) }
+    const handleSignOut = () => { console.log('handle open modal') }
     
     return <section className={css.drawer}>
         <div className={css.wrapper}>
@@ -26,6 +30,7 @@ const Drawer = () => {
                             {` ${user?.name || 'Guest'}`}
                         </Link>
                     </div>
+                    <Btn func={handleSignOut}><Icon id='signout'/></Btn>
                 </div>
                 <Search value="" onChange={() => {}}/>
             </div>

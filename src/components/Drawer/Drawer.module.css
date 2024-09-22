@@ -19,6 +19,7 @@
     align-items: center;
     gap: .75rem;
 
+    & > button:last-of-type { margin-left: auto }
     &:not(:last-child, a) { margin-bottom: 1rem }   
 }
 

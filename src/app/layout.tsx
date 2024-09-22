@@ -8,6 +8,7 @@ import SessionWrapper from "@/components/SessionWrapper"
 
 import "./globals.css"
 import './main.css'
+import ConfirmationModal from "@/components/UI/ConfirmationModal/ConfirmationModal"
 
 const inter = Rubik({ subsets: ["latin"] });
 
@@ -31,6 +32,7 @@ export default function RootLayout({
                 <body className={inter.className}>
                   {children}
                   <div id="modals"></div>
+                  <div id="fmodals"><ConfirmationModal func={() => {}}/></div>
                 </body>
               </TagsFilterProvider>
             </FindProvider>

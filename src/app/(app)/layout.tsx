@@ -11,8 +11,7 @@ export default function AppLayout ({ children }: { children: React.ReactNode }) 
     const { data: session } = useSession()
     const router = useRouter()
 
-    // if (session) {
-    if (true) {
+    if (session !== null) {
         return <div className={css.layout}>
             <Drawer/>
             {children}
