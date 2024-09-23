@@ -1,6 +1,8 @@
 import { useSession } from 'next-auth/react'
 import { signOut } from 'next-auth/react'
+import useFModal from '@/hooks/useFModal'
 
+import ConfirmationModal from '@/components/UI/ConfirmationModal/ConfirmationModal'
 import Search from '@/components/UI/Search/Search'
 import Link from 'next/link'
 import Icon from '@/components/UI/Icon'
@@ -12,11 +14,21 @@ import RootLink from '@/components/RootLink'
 import css from './Drawer.module.css'
 
 const Drawer = () => {
+    const { addFModal, fModalPortal } = useFModal()
+    
     const { data: session } = useSession()
     const user = session?.user
 
-    // const handleSignOut = () => { signOut({ callbackUrl: '/' }) }
-    const handleSignOut = () => { console.log('handle open modal') }
+    const handleSignOut = () => {
+        addFModal(<ConfirmationModal
+            func={ () => { signOut({ callbackUrl: '/' }) } }
+            buttonType='btn-reject'
+            content={{
+                heading: 'About to signout?',
+                body: 'You will signout only on this device! You can proceed by clicking "Confirm" button'
+            }}
+        />)
+    }
     
     return <section className={css.drawer}>
         <div className={css.wrapper}>
@@ -31,6 +43,7 @@ const Drawer = () => {
                         </Link>
                     </div>
                     <Btn func={handleSignOut}><Icon id='signout'/></Btn>
+                    { fModalPortal() }
                 </div>
                 <Search value="" onChange={() => {}}/>
             </div>
