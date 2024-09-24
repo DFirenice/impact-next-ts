@@ -24,8 +24,8 @@ const Drawer = () => {
             func={ () => { signOut({ callbackUrl: '/' }) } }
             buttonType='btn-reject'
             content={{
-                heading: 'About to signout?',
-                body: 'You will signout only on this device! You can proceed by clicking "Confirm" button'
+                heading: 'About to logout?',
+                body: 'You will logout only on this device! You can proceed by clicking "Confirm" below'
             }}
         />)
     }

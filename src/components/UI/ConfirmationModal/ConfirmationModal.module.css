@@ -4,7 +4,7 @@
     text-align: center;
     background: var(--clr-dp-02);
     border-radius: var(--radius-medium);
-    filter: drop-shadow(0 0 25dvw var(--clr-primary-red));
+    filter: drop-shadow(0 0 25dvw var(--clr-primary-dark));
     padding: 3dvh 3dvw;
     gap: 1dvh;
 
