@@ -8,7 +8,6 @@ import css from './ConfirmationModal.module.css'
 const boxShadows = {
     'btn-reject': 'var(--clr-primary-red)',
     'btn-fill': 'var(--clr-blue-02)',
-    'btn-dark': 'var(--clr-primary-dark)',
     'btn-light': 'var(--clr-primary-dark)',
 }
 
