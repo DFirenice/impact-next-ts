@@ -12,10 +12,10 @@ const boxShadows = {
     'btn-light': 'var(--clr-primary-dark)',
 }
 
-type TButtonTypes = 'btn-fill' | 'btn-dark' | 'btn-reject' | 'btn-light'
+type TButtonTypes = 'btn-fill' | 'btn-reject' | 'btn-light'
 
 const ConfirmationModal = (
-    { func, buttonType = 'btn-fill', content: {
+    { func, buttonType = 'btn-light', content: {
         heading = 'Are you sure?',
         body = 'Click "Confirm" if you are sure about doing that'
     } = {}}:
