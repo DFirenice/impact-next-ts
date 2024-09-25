@@ -95,7 +95,15 @@ const Drawer = () => {
                 </div>
             </div>
             {/* Settings */}
-            {/* ... */}
+            <div className={css.category_aligned}>
+                <RootLink
+                    data-global-accent="medium"
+                    link="/settings/*"
+                >
+                    <Icon id='gear'/>
+                    <span>Settings</span>
+                </RootLink>
+            </div>
         </div>
     </section>
 }

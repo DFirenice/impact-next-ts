@@ -19,8 +19,6 @@
 }
 
 .wrapper {
-    transform: translateY(-50%);
-    
     text-overflow: ellipsis;
     overflow: hidden;
     margin: auto;

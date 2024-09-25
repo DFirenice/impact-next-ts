@@ -9,7 +9,8 @@
     color: var(--clr-primary-white);
     border-radius: var(--radius-low);   
     padding-left: 1rem;
+    gap: .75rem;
     
-    & > input { padding: .75rem 0 .75rem 1rem; flex: 1;}
+    & > input { padding: .75rem 0 .75rem 0; flex: 1 }
     &:first-child { line-height: 0 }
 }

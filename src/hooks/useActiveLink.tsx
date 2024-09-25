@@ -1,6 +1,6 @@
 import { usePathname } from "next/navigation"
 
-export const useActiveLink = (link: string, styles: string = 'btn-fill') => {
+export const useActiveLink = (link: string, styles: string = 'btn-fill'): string => {
     const pathname = usePathname()
     
     if (link.at(-1) === "*") {

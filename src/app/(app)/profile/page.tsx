@@ -8,6 +8,7 @@ import Avatar from '@/components/UI/Avatar/Avatar'
 import Btn from '@/components/UI/Btn/Btn'
 import ActivityMap from '@/components/UI/ActivityMap/ActivityMap'
 import Project from '@/components/pages/Projects/Project/Project'
+import NotFound from '@/components/NotFound/NotFound'
 
 import userProjects from '@/data/tempUserProjects'
 import Icon from '@/components/UI/Icon'
@@ -96,16 +97,27 @@ const Profile = () => {
                 <div className={css.projects}>
                     <Heading level={3} size="large">All Projects</Heading>
                     <div>
-                        { userProjects.map(({ status, name, version, tags, members }) => {
-                            return <Project
-                                key={`profile_project_${name}`}
-                                status={status}
-                                name={name}
-                                version={version}
-                                tags={tags}
-                                members={members}
-                            />
-                        }) }
+                        {
+                            userProjects.length && userProjects.length > 0
+                                ? userProjects.map(({ status, name, version, tags, members }) => {
+                                    return <Project
+                                        key={`profile_project_${name}`}
+                                        status={status}
+                                        name={name}
+                                        version={version}
+                                        tags={tags}
+                                        members={members}
+                                    />
+                                })
+                                : <div className={css.not_found_container}>
+                                    <NotFound
+                                        icon='collection'
+                                        heading={`${session?.user?.name} has no projects`}
+                                        subtext='Or maybe all of them are private...'
+                                        shift={false}
+                                    />
+                                </div>
+                        }
                     </div>
                 </div>
             </div>

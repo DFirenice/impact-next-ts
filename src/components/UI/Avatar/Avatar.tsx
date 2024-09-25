@@ -4,9 +4,9 @@ import { AvatarProps } from './Avatar.types'
 import './Avatar.css'
 
 const Avatar = ({ src, size = 32, fallback }: AvatarProps) => {
-    const source = src || fallback || '@/app/favicon.ico'
+    const source = src || fallback || '/avatar.png'
     return <div className="avatar">
-        <Image src={src} alt="User's Avatar" width={size} height={size} />    
+        <Image src={source} alt="User's Avatar" width={size} height={size}/>    
     </div>
 }
 

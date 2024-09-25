@@ -30,6 +30,7 @@ import checkmark from '@/assets/icons/checkmark.svg'
 import cross from '@/assets/icons/cross.svg'
 import undo from '@/assets/icons/undo.svg'
 import signout from '@/assets/icons/export.svg'
+import theme from '@/assets/icons/theme.svg'
 
 export const icons = {
     add: add,
@@ -63,6 +64,7 @@ export const icons = {
     checkmark: checkmark,
     cross: cross,
     undo: undo,
+    theme: theme,
     // Same
     signout: signout,
     export: signout
