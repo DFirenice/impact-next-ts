@@ -1,9 +1,10 @@
 'use client'
 
 import { SelectionProps, Option } from './Selection.types'
-
 import { useState, useRef, useEffect } from 'react'
+
 import Icon from '@/components/UI/Icon'
+
 import css from './styles.module.css'
 
 const Selection = ({

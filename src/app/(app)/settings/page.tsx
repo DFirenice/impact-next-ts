@@ -1,30 +1,38 @@
-'use client'
+import Heading from '@/components/Heading'
+import DemoSelection from '@/components/DemoSelection/DemoSelection'
+import Selection from '@/components/UI/Selection/Selection'
 
-import { usePathname } from "next/navigation"
-
-import Heading from "@/components/Heading"
-import RoutingPanel from "@/components/routing/RoutingPanel/RoutingPanel"
-
-import type { Ttabs } from '@app-types/RoutingPanel'
 import css from './styles.module.css'
 
-const SettingsTabs: Ttabs = [
-    { branch: '/appearance', tabName: 'Appearance' },
-    { branch: '/general', tabName: 'General' },
-    { branch: '/privacy', tabName: 'Privacy & Account' }
-]
-
 const SettingsPage = () => {
-    const currentPath = usePathname()
-
-    return <section className={css.container}>
+    const drawerExtra = ['Recent chats', 'Recent Projects', 'Updated Tasks']
+    
+    return <div className={css.settings}>
         <div>
-            <Heading level={2} size="larger">Settings</Heading>
+            <Heading size="large">Appearance</Heading>
+            <p data-font-accent="medium">Change how Impact looks and feels in your browser.</p>
+        </div>
+        {/* Themes */}
+        <div>
             <div>
-                <RoutingPanel path={currentPath} tabs={SettingsTabs}/>
+                <span data-font-weight="bold">Interface theme</span>
+                <span data-font-accent="medium">Change how Impact looks and feels in your browser.</span>
+            </div>
+            <div className='block_aligned'>
+                <DemoSelection imageSrc='https://images.unsplash.com/photo-1726534168836-59dff8524925?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' subtext='Auto managed'/>
+                <DemoSelection imageSrc='https://images.unsplash.com/photo-1726534168836-59dff8524925?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' subtext='Dark'/>
+                <DemoSelection imageSrc='https://images.unsplash.com/photo-1726534168836-59dff8524925?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' subtext='Light'/>
             </div>
         </div>
-    </section>
+        {/* Drawer extra */}
+        <div className={css.inline_category}>
+            <div>
+                <span data-font-weight="bold">Sidebar feature</span>
+                <span data-font-accent="medium">What shows in the desktops sidebar</span>
+            </div>
+            <Selection initial={drawerExtra[0]} options={drawerExtra}/>
+        </div>
+    </div>
 }
 
 export default SettingsPage
