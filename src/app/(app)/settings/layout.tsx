@@ -4,10 +4,11 @@ import { usePathname } from "next/navigation"
 
 import Heading from "@/components/Heading"
 import RoutingPanel from "@/components/routing/RoutingPanel/RoutingPanel"
+import Search from "@/components/UI/Search/Search"
+import Icon from "@/components/UI/Icon"
 
 import type { Ttabs } from '@app-types/RoutingPanel'
 import css from './styles.module.css'
-import Icon from "@/components/UI/Icon"
 
 const SettingsTabs: Ttabs = [
     { branch: '/appearance', tabName: 'Appearance' },
@@ -20,12 +21,15 @@ const layout = ({ children }: { children: React.ReactNode }) => {
 
     return <section className={css.container}>
         <div className={css.navigation}>
-            <Heading level={2} size="larger">
-                <div className='block_aligned'>
-                    <Icon size='large' id='gear'/>
-                    <span>Settings</span>
-                </div>
-            </Heading>
+            <div className="inline_heading">
+                <Heading level={2} size="larger">
+                    <div className='block_aligned'>
+                        <Icon size='large' id='gear'/>
+                        <span>Settings</span>
+                    </div>
+                </Heading>
+                <Search value='' onChange={() => {}} text="Look for a setting..."/>
+            </div>
             <div>
                 <RoutingPanel path={currentPath} tabs={SettingsTabs}/>
             </div>

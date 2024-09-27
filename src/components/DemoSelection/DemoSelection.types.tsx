@@ -1,4 +1,6 @@
 export type Tprops = {
     imageSrc: string
-    subtext?: string | React.ReactElement
+    value?: string | React.ReactElement
+    active?: boolean
+    func: () => void
 }

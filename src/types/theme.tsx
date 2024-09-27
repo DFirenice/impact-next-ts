@@ -1,0 +1,1 @@
+export type Tthemes = 'default' | 'dark' | 'light'
