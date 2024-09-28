@@ -9,14 +9,12 @@ const useTheme = () => {
         () => (localStorage.getItem('theme') as Tthemes) || 'dark'
     )
 
-    // 'default' theme initializer
-    // useEffect(() => {
-        // const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-        // setTheme(systemTheme)
-    // }, [])
-
     useEffect(() => {
-        document.documentElement.setAttribute('data-theme', theme)
+        const definedTheme = theme === 'system' ?
+            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+            : theme
+        
+        document.documentElement.setAttribute('data-theme', definedTheme)
         localStorage.setItem('theme', theme)
     }, [theme])
 
