@@ -7,6 +7,7 @@ const TypeTag = ({ status }: { status: TagTypes }) => {
         <div
             className={css.tag}
             style={{ '--_clr-main': typeTags[status].color } as React.CSSProperties}
+            id="tag"
         >
             <span>{typeTags[status].type}</span>
         </div>

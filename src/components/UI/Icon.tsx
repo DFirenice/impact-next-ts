@@ -26,6 +26,7 @@ export default function Icon({ id, size = 'normal', styles }: IconProps) {
           width={imgSizes.width}
           height={imgSizes.height}
           alt={id}
+          id='icon'
         />
       )
     } else { return 'Error :(' }

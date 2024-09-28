@@ -34,6 +34,33 @@
     --clr-loading-glow: rgb(255, 0, 0);
 }
 
+html[data-theme="light"] {
+  /* Basic colors */
+  --clr-dp-00: hsl(0 0% 96%); /* Lighter base (#F4F4F4) */
+  --clr-dp-02: hsl(0 0% 92%); /* (#EBEBEB) */
+  --clr-dp-04: hsl(0 0% 88%); /* (#E1E1E1) */
+  --clr-dp-06: hsl(0 0% 84%); /* (#D7D7D7) */
+  --clr-dp-08: hsl(0 0% 80%); /* (#CCCCCC) */
+  --clr-dp-12: hsl(0 0% 75%); /* (#BFBFBF) */
+  
+  --clr-blue-02: hsl(210 100% 65%);
+  /* Accent colors (Black text for contrast) */
+  --clr-white-high: hsl(0 0% 0%);
+  --clr-white-medium: hsl(0 0% 20%);
+  --clr-disabled: hsl(0 0% 50%);  
+  /* Loader */  
+  --clr-loading-glow: rgb(255, 100, 100);
+
+  *:not(#tag, .statusTag, .btn):not(#tag *, .statusTag *) {
+    color: var(--clr-primary-dark)
+  }
+
+  .btn-dark { --clr-primary-white: var(--clr-primary-dark) }
+  .btn-disabled { --_disabled-clr: hsla(from var(--_initial-clr) h s l / .38) }
+
+  #icon { filter: brightness(.17) }
+}
+
 * {
     color: var(--clr-primary-white);
     box-sizing: border-box;
