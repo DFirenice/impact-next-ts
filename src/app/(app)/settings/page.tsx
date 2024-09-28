@@ -13,7 +13,16 @@ const SettingsPage = () => {
     const { theme: globalTheme, setTheme } = useTheme()
     
     const drawerExtra = ['Recent chats', 'Recent Projects', 'Updated Tasks']
-    const themeOptions = ['Default', 'Dark', 'Light']
+    const themeOptions = [{
+        theme: 'System',
+        src: '/images/system_skeleton.webp'
+    }, {
+        theme: 'Dark',
+        src: '/images/dark_skeleton.webp'
+    }, {
+        theme: 'Light',
+        src: '/images/light_skeleton.webp'
+    }]
     
     return <div className={css.settings}>
         <div>
@@ -27,9 +36,9 @@ const SettingsPage = () => {
                 <span data-font-accent="medium">Change how Impact looks and feels in your browser.</span>
             </div>
             <div className='block_aligned'>
-                {themeOptions.map(theme => {
+                {themeOptions.map(({ theme, src }) => {
                     return <DemoSelection
-                        imageSrc='https://images.unsplash.com/photo-1726534168836-59dff8524925?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                        imageSrc={src}
                         value={theme}
                         active={theme.toLowerCase() === globalTheme}
                         func={() => { setTheme(theme.toLowerCase() as Tthemes) }}

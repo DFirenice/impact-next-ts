@@ -18,6 +18,7 @@ const DemoSelection = ({
             onClick={func}
         >
             <Image
+                draggable='false'
                 src={imageSrc} alt={`${value}`}
                 width={225} height={140}
                 style={{ width: '100%', height: '100%' }}

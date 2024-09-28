@@ -11,8 +11,8 @@ const useTheme = () => {
 
     // 'default' theme initializer
     // useEffect(() => {
-    //     const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-    //     setTheme(systemTheme)
+        // const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        // setTheme(systemTheme)
     // }, [])
 
     useEffect(() => {

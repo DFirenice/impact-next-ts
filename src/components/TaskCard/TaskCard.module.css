@@ -1,17 +1,15 @@
 .card {
     background: var(--clr-dp-02);
-    border: 2px solid transparent;
+    border: 2px solid var(--clr-dp-08);
     border-radius: var(--radius-low);
     max-width: 300px;
     width: 100%;
     height: max-content;
     padding-block: 1.25rem;
     gap: .75rem;
-
-    &:hover {
-        border-color: var(--clr-dp-08);
-        cursor: pointer;
-    }
+    
+    cursor: pointer;
+    &:hover { border-bottom-color: var(--clr-disabled) }
 }
 
 .priority, .wrapper { padding-inline: 1.5rem }
