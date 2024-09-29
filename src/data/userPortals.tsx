@@ -13,7 +13,7 @@ export const userPortals: userPortals = [
         title: "All Chats & Groups",
         subtext: "Your private chats & projects' groups",
         icon: "chats",
-        link: "/chats"
+        link: "/UNDEVELOPED"
     },
     {
         title: "Create new...",
@@ -31,19 +31,19 @@ export const userPortals: userPortals = [
         title: "Last updates & commits",
         subtext: "Project G, Project X have recent changes!",
         icon: "nodes",
-        link: "/projects"
+        link: "/UNDEVELOPED"
     },
     {
         title: "View Projects",
         subtext: "Manage your active projects",
         icon: "folder",
-        link: "/projets/common"
+        link: "/projects"
     },
     {
         title: "View Archive",
         subtext: "View your archived projects",
         icon: "archive",
-        link: "/projects/archive"
+        link: "/projects/archived"
     },
     {
         title: "Create new sandbox",
@@ -51,9 +51,9 @@ export const userPortals: userPortals = [
         icon: "collection"
     },
     {
-        title: "Settings & Account",
-        subtext: "Manage account and customize Impact as you wish!",
+        title: "Settings",
+        subtext: "Customize your Impact as you wish!",
         icon: "gear",
-        link: "/profile/settings"
+        link: "/settings"
     },
 ]
