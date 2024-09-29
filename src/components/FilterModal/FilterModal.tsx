@@ -1,8 +1,6 @@
 import { useTagsFilter } from "@/hooks/useTagsFilter"
 
 import Tag from "@/components/UI/Tag/Tag"
-import Heading from "../Heading"
-import Icon from "@/components/UI/Icon"
 import Btn from "@/components/UI/Btn/Btn"
 
 import availableTags from "@/data/tags"
@@ -13,13 +11,7 @@ const FilterModal = () => {
     
     return (
         <div className={css.container}>
-            <div>
-                <Heading size="large">
-                    <Icon id="filter"/>
-                    <span>Filters:</span>
-                </Heading>
-                <span data-font-accent="low">Suggested by Impact</span>
-            </div>
+            <span data-font-accent="low">Suggested by Impact</span>
             <div>
                 <ul>
                    {availableTags.map(

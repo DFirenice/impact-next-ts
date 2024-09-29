@@ -7,7 +7,7 @@
     --font-size-small: calc(var(--font-size-default) * .9);
     /* Primary colors */
     --clr-primary-white: hsl(0 0% 85%);
-    --clr-primary-dark: hsl(0 0% 7%);
+    --clr-primary-dark: hsl(0 0% 17%);
     --clr-primary-red: hsl(0 82% 41%);
     --clr-primary-yellow: hsl(36 92% 60%);
     --clr-primary-green: hsl(109 82% 40%) /* OLD: hsla(109, 82%, 40%, 1) */;
@@ -57,6 +57,7 @@ html[data-theme="light"] {
 
   .btn-dark { --clr-primary-white: var(--clr-primary-dark) }
   .btn-disabled { --_disabled-clr: hsla(from var(--_initial-clr) h s l / .38) }
+  .active_link { color: var(--clr-disabled) !important }
 
   #icon { filter: brightness(.17) }
 }

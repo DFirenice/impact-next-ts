@@ -69,7 +69,7 @@ const Profile = () => {
                         <span data-font-accent="low">@User's id</span>
                         <p>User's bio</p>
                     </div>
-                    <Btn>
+                    <Btn link='/settings/public'>
                         <span>Edit profile</span>
                         <Icon id='edit'/>
                     </Btn>

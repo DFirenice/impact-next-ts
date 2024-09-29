@@ -13,11 +13,9 @@
 }
 
 .settings {
-    & > div span {
-        display: flex;
-        margin-block: .5rem;
-    }
-
+    height: 100%;
+    overflow-y: auto;
+    
     & > div:not(:last-of-type) {
         border-bottom: 2px solid var(--clr-dp-08);
     }
@@ -33,6 +31,13 @@
 
 .inline_category {
     display: flex;
+    justify-content: space-between;
     flex-direction: row;
     gap: 3rem;
+
+}
+
+.category_description span {
+    display: flex;
+    margin-block: .5rem;
 }

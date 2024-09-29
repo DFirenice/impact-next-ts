@@ -1,6 +1,8 @@
 .container,
 .container h2 {
     display: flex;
+    justify-content: center;
+    text-align: center;
     gap: .75rem;
 }
 
@@ -16,5 +18,5 @@
         }
     }
 
-    & > button { margin-top: .75rem }
+    & > button { margin: .75rem auto 0 auto }
 }

@@ -11,13 +11,14 @@ import type { Ttabs } from '@app-types/RoutingPanel'
 import css from './styles.module.css'
 
 const SettingsTabs: Ttabs = [
+    { branch: '', tabName: 'General' },
     { branch: '/appearance', tabName: 'Appearance' },
-    { branch: '/general', tabName: 'General' },
-    { branch: '/privacy', tabName: 'Privacy & Account' }
+    { branch: '/privacy', tabName: 'Privacy' },
+    { branch: '/public', tabName: 'Public Profile' }
 ]
 
 const layout = ({ children }: { children: React.ReactNode }) => {
-    const currentPath = usePathname()
+    const currentPath = '/settings'
 
     return <section className={css.container}>
         <div className={css.navigation}>

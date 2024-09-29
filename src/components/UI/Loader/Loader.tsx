@@ -1,5 +1,6 @@
-import './Loader.css'
 import Heading from "@/components/Heading"
+
+import './Loader.css'
 
 export default function Loader ({ as = 'fixed' }: { as?: 'relative' | 'fixed' }) {
     return <section style={as === 'relative' ? { position: as, width: '100%' } : { position: as }} className="loader">

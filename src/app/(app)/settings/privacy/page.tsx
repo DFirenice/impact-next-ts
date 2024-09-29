@@ -1,6 +1,6 @@
 import NotFound from "@/components/NotFound/NotFound"
 
-const SettingsPage = () => {
+const PrivacyTab = () => {
     return <NotFound
         heading="Unavailable category "
         subtext='This category is still under development...'
@@ -8,4 +8,4 @@ const SettingsPage = () => {
     />
 }
 
-export default SettingsPage
+export default PrivacyTab

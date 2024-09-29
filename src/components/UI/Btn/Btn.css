@@ -16,11 +16,6 @@
     
     border: transparent .1rem solid;
 
-    & * {
-        color: inherit;
-        font-weight: inherit;
-    }
-
     &:disabled { cursor: default }
 }
 
