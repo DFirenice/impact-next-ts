@@ -1,0 +1,14 @@
+.container {
+    width: fit-content;
+    height: max-content;
+    aspect-ratio: 1;
+    
+    border-radius: 50%;
+    background: var(--clr-dp-04);
+    padding: 1.5em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

@@ -25,3 +25,13 @@
         & > section > * { transform: translateY(-75%) }
     }
 }
+
+.current_container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: auto;
+    border: 2px solid var(--clr-dp-04); /* temporary */
+    border-radius: var(--radius-low);
+    padding: 1rem 1.5rem;
+    width: 100%;
+}

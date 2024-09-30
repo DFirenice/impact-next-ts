@@ -1,12 +1,4 @@
-type HeadingProps = {
-    children: React.ReactNode
-    level?: 1 | 2 | 3 | 4 | 5 | 6
-    size?: 'massive'
-        | 'larger'
-        | 'large'
-        | 'small'
-        | 'default'
-}
+import type { HeadingProps } from "@/types/Heading.types"
 
 export default function Heading (
     { children,
