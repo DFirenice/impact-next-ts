@@ -1,14 +1,37 @@
 .container {
+    --_completion_percents: 67;
+    --_svg-size: 16dvh;
+
+    --_circle-radius: calc((var(--_svg-size) / 2) - 1em);
+    --_circle-circumference: calc(2 * 3.14159265358 * var(--_circle-radius));
+
+    position: relative;
     width: fit-content;
     height: max-content;
-    aspect-ratio: 1;
-    
     border-radius: 50%;
-    background: var(--clr-dp-04);
-    padding: 1.5em;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    & > svg {
+        transform: rotate(90deg);
+        fill: none;
+        stroke: url(#progressCard_color);
+        stroke-width: 1em;
+
+        stroke-dasharray: var(--_circle-circumference);
+
+        stroke-dashoffset: calc(
+            var(--_circle-circumference) * (1 - (var(--_completion_percents) / 100))
+        );
+    }
+}
+
+.content {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    min-width: 5em;
+    min-height: 5em;
 }

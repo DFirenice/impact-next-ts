@@ -1,4 +1,5 @@
 .planner {
+    overflow-y: auto;
     height: 100%;
     width: 100%;
 
@@ -11,8 +12,6 @@
         border-bottom: 2px solid var(--clr-dp-08);
     }
 }
-
-.dynamic_assignments { height: 100% }
 
 .assignments_container {
     display: flex;
