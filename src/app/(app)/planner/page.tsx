@@ -16,22 +16,15 @@ const PlannerPage = () => {
     // should be the hook which parses user tasks
     const getUserTasks = () => {
         return tempUserTasks.map(({ associates, body, heading, tags, priority, time }) => {
-            return <TaskCard
-                key={`taskCard_${heading}`}
-                priority={priority}
-                associates={associates}
-                body={body}
-                heading={heading}
-                tags={tags}
-                time={time}
-            />
+            const data = { associates, body, heading, tags, priority, time }
+            return <TaskCard data={data} key={`taskCard_${heading}`}/>
         })
     }
     
     const filteredUserTasks = getUserTasks().filter(task => {
         if (currentSwitch === 'All') { return task }
-        if (currentSwitch === 'Active') { return task.props.priority !== 'completed' }
-        else { return task.props.priority === 'completed' }
+        if (currentSwitch === 'Active') { return task.props.data.priority !== 'completed' }
+        else { return task.props.data.priority === 'completed' }
     })
     
     return <section className={css.dynamic_assignments}>
@@ -58,11 +51,13 @@ const PlannerPage = () => {
                             icon='checkmark'
                             heading="All Tasks Compelted"
                             subtext="Keep a good work!"
+                            shift={false}
                         /> // If tab is 'Completed'
                         : <NotFound
                             icon='checkmark'
                             heading="No Recent Compeletions"
                             subtext="Seems, like all your work has been reviewed and submitted"
+                            shift={false}
                         />
             }
         </div>

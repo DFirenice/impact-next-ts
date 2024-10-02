@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from "react"
 
 import StatusTag from "@/components/UI/StatusTag/StatusTag"
@@ -10,7 +12,8 @@ import useContextModal from "@/hooks/useContextModal"
 import type TaskCardProps from "./TaskCard.types"
 import css from './TaskCard.module.css'
 
-const TaskCard = ({ priority, tags, heading, body, time, associates }: TaskCardProps) => {
+const TaskCard = ({ data }: { data: TaskCardProps }) => {
+    const { priority, tags, heading, body, time, associates } = data
     const [ isModalOpen, setModalOpen ] = useState(false)
     
     // This sucks, i know

@@ -1,5 +1,7 @@
 import Heading from '@/components/Heading'
+import TaskCard from '@/components/TaskCard/TaskCard'
 
+import tempUserTasks from '@/data/tempUserTasks'
 import css from './style.module.css'
 
 const PlannerLayout = ({
@@ -15,17 +17,23 @@ const PlannerLayout = ({
         <section>
             <div>
                 <span data-font-accent="medium">As for today - {todaysDate}</span>
-                <Heading size='larger'>In Progress</Heading>
+                <Heading size='larger'>Current task overview</Heading>
             </div>
             <div className={css.current_container}>
                 <div className={css.current_statistics}>
-                    Performance graphs
-                    {completion}
-                    {completion}
+                    <div>
+                        {[
+                            completion,
+                            completion
+                        ]}
+                    </div>
+                    <TaskCard data={tempUserTasks[0]}/>
                 </div>
                 <div className={css.current_chats}>
-                    Tabs
-                    Project branches or chat
+                    Tabs / Tabs / Tabs
+                    <div className={css.chat}>
+                        {`Project's chat branches / It's chat`}
+                    </div>
                 </div>
             </div>
         </section>
