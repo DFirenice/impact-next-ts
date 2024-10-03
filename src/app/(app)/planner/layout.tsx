@@ -6,10 +6,12 @@ import css from './style.module.css'
 
 const PlannerLayout = ({
     children,
-    completion
+    completion,
+    chat
 }: {
     children: React.ReactNode
     completion: React.ReactNode
+    chat: React.ReactNode
 }) => {
     const todaysDate = new Date().toLocaleDateString()
     
@@ -30,9 +32,9 @@ const PlannerLayout = ({
                     <TaskCard data={tempUserTasks[0]}/>
                 </div>
                 <div className={css.current_chats}>
-                    Tabs / Tabs / Tabs
+                    Chat / Branches / Contributors
                     <div className={css.chat}>
-                        {`Project's chat branches / It's chat`}
+                        {chat}
                     </div>
                 </div>
             </div>

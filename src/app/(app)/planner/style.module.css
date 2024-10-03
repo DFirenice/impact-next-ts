@@ -39,7 +39,10 @@
 .current_statistics {
     gap: 2rem;
 
-    &, & > div:first-of-type { display: flex }
+    &, & > div:first-of-type {
+        display: flex;
+        justify-content: space-around;
+    }
 
     & > div:first-of-type {
         flex-direction: column;
@@ -50,8 +53,15 @@
 }
 
 .current_chats {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
     background: var(--clr-dp-02);
     border-radius: var(--radius-low);
-    padding: 1em;
+    padding: .75rem;
+    height: 100%;
     width: 100%;
 }
+
+/* Current chat */
+.chat { height: 100% }
