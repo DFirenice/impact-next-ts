@@ -38,6 +38,7 @@
 
     &::before {
         content: 'New unread messages!';
+        color: var(--clr-primary-white);
         background: var(--clr-primary-red);
         border-radius: var(--radius-low);
         position: absolute;
