@@ -37,7 +37,7 @@
     width: 100%;
 
     &::before {
-        content: 'New unread messages!';
+        content: 'New';
         color: var(--clr-primary-white);
         background: var(--clr-primary-red);
         border-radius: var(--radius-low);
@@ -49,6 +49,10 @@
 }
 
 .controls {
-    & * { border-radius: 0 !important }
+    & * {
+        border-radius: 0 !important;
+        background: transparent !important;
+    }
+
     & input { padding-block: 1rem !important }
 }

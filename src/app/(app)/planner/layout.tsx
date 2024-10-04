@@ -32,7 +32,6 @@ const PlannerLayout = ({
                     <TaskCard data={tempUserTasks[0]}/>
                 </div>
                 <div className={css.current_chats}>
-                    Chat / Branches / Contributors
                     <div className={css.chat}>
                         {chat}
                     </div>

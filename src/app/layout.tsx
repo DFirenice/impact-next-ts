@@ -10,17 +10,17 @@ import SessionWrapper from "@/components/SessionWrapper"
 import "./globals.css"
 import './main.css'
 
-const inter = Rubik({ subsets: ["latin"] });
+const inter = Rubik({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Impact Project",
   description: "Impact - powerful tool for your projects development"
-};
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
 
   return (
@@ -41,5 +41,5 @@ export default function RootLayout({
           </FModalsProvider>
         </html>
       </SessionWrapper>
-  );
+  )
 }
