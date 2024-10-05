@@ -2,17 +2,22 @@
     /* Customize through props */
     /* background: var(--clr-dp-04); */
     display: grid;
+    padding-inline: .5rem;
     gap: .25rem;
 }
 
 .tabs {
     --_tab-spacing: 1rem;
+    user-select: none;
     
     & > ul {
         display: flex;
         flex-direction: row;
         
-        & > li { padding-block: 1rem }
+        & > li {
+            padding-block: 1rem;
+            cursor: pointer;
+        }
         
         & > li > * {
             font-weight: initial;

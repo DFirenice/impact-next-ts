@@ -29,6 +29,9 @@
     display: flex;
     flex-direction: row;
     flex-wrap: auto;
+    min-height: 45dvh;
+    height: 45dvh;
+    max-height: 100%;
     /* border: 2px solid var(--clr-dp-04); */ /* temporary */
     border-radius: var(--radius-low);
     padding: 1rem 1.5rem;

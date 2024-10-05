@@ -7,7 +7,7 @@ import Icon from '@/components/UI/Icon'
 
 import type { routingPanelProps } from '@app-types/RoutingPanel'
 import { Ticons } from '@/types/icons'
-import css from './RoutingPanel.module.css'
+import css from '../RoutingPanel.module.css'
 
 const RoutingPanel = ({ path, tabs }: routingPanelProps) => {
     // console.log(path + tabs[0].link) => /projects/
