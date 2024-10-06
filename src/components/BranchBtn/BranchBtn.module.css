@@ -1,0 +1,38 @@
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: max-content;
+    overflow: hidden;
+    width: 100%;
+    background: var(--clr-dp-04);
+    border: 1px solid var(--clr-dp-08);
+    border-radius: var(--radius-low);
+    padding: 1rem 1.5rem;
+    gap: 1rem;
+    cursor: pointer;
+    margin: .25rem;
+
+    &::after {
+        position: absolute;
+        content: '>';
+        font-weight: 900;
+        transition: transform .3s, opacity .6s;
+        transform: translate(100%, -50%);
+        opacity: 0;
+        top: 50%;
+        right: 0;
+    }
+
+    &:hover {
+        &::after {
+            transform: translate(-200%, -50%);
+            opacity: 1;
+        }
+    }
+}
+
+.content {
+    & > * { width: 100% }
+}

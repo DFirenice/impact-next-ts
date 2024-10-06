@@ -2,6 +2,7 @@
 
 import Heading from '@/components/Heading'
 import TaskCard from '@/components/TaskCard/TaskCard'
+import BranchBtn from '@/components/BranchBtn/BranchBtn'
 
 import useComponentSwitcher from '@/hooks/useComponentSwitcher'
 
@@ -20,7 +21,16 @@ const PlannerLayout = ({
     const currentTaskTabs = [
         {
             tabName: 'Branches',
-            component: <div>All assignment branches should be listed here</div>
+            component: <div className={css.current_branches_container}>
+                {[...Array(3)].map(branch => {
+                    return <BranchBtn
+                        key={branch + Math.random() * 10}
+                        icon="collection"
+                        heading='Test'
+                        subtext="Test subtext"
+                    />
+                })}
+            </div>
         },
         {
             tabName: 'All Contributors',

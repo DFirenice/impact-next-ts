@@ -68,3 +68,9 @@
 
 /* Current chat */
 .chat { height: 100% }
+
+.current_branches_container {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}
