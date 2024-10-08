@@ -7,6 +7,7 @@ type TaskCardProps = {
     body: string,
     time: { starts: string, ends: string }
     associates: string[]
+    id: string
 }
 
 export default TaskCardProps

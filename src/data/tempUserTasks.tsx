@@ -2,6 +2,7 @@ import type TaskCardProps from "@/components/TaskCard/TaskCard.types"
 
 const tempUserTasks: TaskCardProps[] = [
     {
+        id: '1',
         priority: 'high',
         tags: ['bug', 'backend'],
         heading: 'JWT invalid generation',
@@ -13,6 +14,7 @@ const tempUserTasks: TaskCardProps[] = [
         associates: ["users' id"]
     },
     {
+        id: '2',
         priority: 'low',
         tags: ['backend'],
         heading: 'Make comments',
@@ -24,6 +26,7 @@ const tempUserTasks: TaskCardProps[] = [
         associates: ["users' id"]
     },
     {
+        id: '3',
         priority: 'low',
         tags: ['design', 'bug'],
         heading: 'Fix Context Modal',
@@ -35,6 +38,7 @@ const tempUserTasks: TaskCardProps[] = [
         associates: ["users' id"]
     },
     {
+        id: '4',
         priority: 'medium',
         tags: ['frontend', 'ui'],
         heading: 'Remove data cashing',
@@ -46,6 +50,7 @@ const tempUserTasks: TaskCardProps[] = [
         associates: ["users' id"]
     },
     {
+        id: '5',
         priority: 'completed',
         tags: ['frontend'],
         heading: 'User Assignment Cards',

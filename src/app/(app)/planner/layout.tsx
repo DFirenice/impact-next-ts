@@ -3,7 +3,9 @@
 import Heading from '@/components/Heading'
 import TaskCard from '@/components/TaskCard/TaskCard'
 import BranchBtn from '@/components/BranchBtn/BranchBtn'
+import { Draggable, Droppable } from 'react-beautiful-dnd'
 
+import { useState } from 'react'
 import useComponentSwitcher from '@/hooks/useComponentSwitcher'
 
 import tempUserTasks from '@/data/tempUserTasks'
@@ -18,6 +20,9 @@ const PlannerLayout = ({
     completion: React.ReactNode
     chat: React.ReactNode
 }) => {
+    // here, i want to have same in my ribbon of tasks below (in absolutely other component) for example
+    const [ CTask, setCTask ] = useState(tempUserTasks[0])
+
     const currentTaskTabs = [
         {
             tabName: 'Branches',
@@ -37,7 +42,7 @@ const PlannerLayout = ({
             component: (
                 <div>
                     <ul>
-                        {tempUserTasks[0].associates.map((username) => {
+                        {CTask.associates.map((username) => {
                             return <li key={`task_contributor_${username}`}>
                                 {username}
                             </li>
@@ -69,7 +74,24 @@ const PlannerLayout = ({
                         <div>
                             {[completion, completion]}
                         </div>
-                        <TaskCard data={tempUserTasks[0]} />
+                        <Droppable droppableId="currentTask">
+                            {(provided) => (
+                                <div {...provided.droppableProps} ref={provided.innerRef}>
+                                    <Draggable draggableId={CTask.id} index={0}>
+                                        {(provided) => (
+                                            <div
+                                                {...provided.dragHandleProps}
+                                                {...provided.draggableProps}
+                                                ref={provided.innerRef}
+                                            >
+                                                <TaskCard data={CTask}/>
+                                            </div>
+                                        )}
+                                    </Draggable>
+                                    {provided.placeholder}
+                                </div>
+                            )}
+                        </Droppable>
                     </div>
                     <div className={css.current_chats}>
                         {renderPanel()}

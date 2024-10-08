@@ -7,6 +7,7 @@ import Heading from "@/components/Heading"
 import Icon from "@/components/UI/Icon"
 import TypeTag from "@/components/UI/TypeTag/TypeTag"
 import Btn from "@/components/UI/Btn/Btn"
+
 import useContextModal from "@/hooks/useContextModal"
 
 import type TaskCardProps from "./TaskCard.types"

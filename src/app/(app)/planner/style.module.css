@@ -52,7 +52,7 @@
         gap: .75rem;
     }
     
-    & > div { height: 100% }
+    & > div > div { height: 100% }
 }
 
 .current_chats {
