@@ -3,14 +3,14 @@
 import Heading from '@/components/Heading'
 import TaskCard from '@/components/TaskCard/TaskCard'
 import BranchBtn from '@/components/BranchBtn/BranchBtn'
+import NotFound from '@/components/NotFound/NotFound'
 import { Draggable, Droppable } from 'react-beautiful-dnd'
 
-import { useState } from 'react'
+import { useCTask } from '@/contexts/CurrentTask'
 import useComponentSwitcher from '@/hooks/useComponentSwitcher'
 
-import tempUserTasks from '@/data/tempUserTasks'
 import css from './style.module.css'
-
+    
 const PlannerLayout = ({
     children,
     completion,
@@ -20,16 +20,15 @@ const PlannerLayout = ({
     completion: React.ReactNode
     chat: React.ReactNode
 }) => {
-    // here, i want to have same in my ribbon of tasks below (in absolutely other component) for example
-    const [ CTask, setCTask ] = useState(tempUserTasks[0])
-
+    const { CTask } = useCTask()
+    
     const currentTaskTabs = [
         {
             tabName: 'Branches',
             component: <div className={css.current_branches_container}>
-                {[...Array(3)].map(branch => {
+                {[...Array(3)].map((_, idx) => {
                     return <BranchBtn
-                        key={branch + Math.random() * 10}
+                        key={idx}
                         icon="collection"
                         heading='Test'
                         subtext="Test subtext"
@@ -42,7 +41,7 @@ const PlannerLayout = ({
             component: (
                 <div>
                     <ul>
-                        {CTask.associates.map((username) => {
+                        {CTask?.associates.map((username) => {
                             return <li key={`task_contributor_${username}`}>
                                 {username}
                             </li>
@@ -77,28 +76,42 @@ const PlannerLayout = ({
                         <Droppable droppableId="currentTask">
                             {(provided) => (
                                 <div {...provided.droppableProps} ref={provided.innerRef}>
-                                    <Draggable draggableId={CTask.id} index={0}>
-                                        {(provided) => (
-                                            <div
-                                                {...provided.dragHandleProps}
-                                                {...provided.draggableProps}
-                                                ref={provided.innerRef}
-                                            >
-                                                <TaskCard data={CTask}/>
-                                            </div>
-                                        )}
-                                    </Draggable>
+                                    {
+                                        CTask
+                                            && (
+                                                <Draggable draggableId={CTask?.id || 'CTaskUnset'} index={0}>
+                                                    {(provided) => (
+                                                        <div
+                                                            {...provided.dragHandleProps}
+                                                            {...provided.draggableProps}
+                                                            ref={provided.innerRef}
+                                                        >
+                                                            <TaskCard data={CTask}/>
+                                                        </div>
+                                                    )}
+                                                </Draggable>
+                                            )
+                                    } 
                                     {provided.placeholder}
                                 </div>
                             )}
                         </Droppable>
                     </div>
-                    <div className={css.current_chats}>
-                        {renderPanel()}
-                        <div className={css.chat}>
-                            {renderContent()}
+                    { CTask ? (
+                        <div className={css.current_chats}>
+                            {renderPanel()}
+                            <div className={css.chat}>
+                                {renderContent()}
+                            </div>
                         </div>
-                    </div>
+                    ) : (
+                        <NotFound
+                            icon='collection'
+                            heading='Current Task is Inactive'
+                            subtext='Drag and drop one here from your assignments list to begin'
+                            shift={false}
+                        />
+                    ) }
                 </div>
             </section>
             {children}

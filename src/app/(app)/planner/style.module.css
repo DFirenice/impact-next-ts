@@ -19,6 +19,8 @@
     align-items: stretch;
     gap: 1rem;
 
+    & > div { display: contents }
+
     /* this \/ sucks */
     &:has(section) > * { transform: translateY(25%) }
     & > * { height: auto }

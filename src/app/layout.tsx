@@ -5,6 +5,7 @@ import { SortingProvider } from "@/contexts/SortingContext"
 import { FindProvider } from '@/contexts/FindContext'
 import { TagsFilterProvider } from "@/contexts/TagsFilterContext"
 import { FModalsProvider } from "@/contexts/FModalsContext"
+import { CTaskProvider } from "@/contexts/CurrentTask"
 import SessionWrapper from "@/components/SessionWrapper"
 
 import "./globals.css"
@@ -30,11 +31,13 @@ export default function RootLayout({
             <SortingProvider>
               <FindProvider>
                 <TagsFilterProvider>
-                  <body className={inter.className}>
-                    {children}
-                    <div id="modals"></div>
-                    <div id="fmodals"></div>
-                  </body>
+                  <CTaskProvider>
+                    <body className={inter.className}>
+                      {children}
+                      <div id="modals"></div>
+                      <div id="fmodals"></div>
+                    </body>
+                  </CTaskProvider>
                 </TagsFilterProvider>
               </FindProvider>
             </SortingProvider>

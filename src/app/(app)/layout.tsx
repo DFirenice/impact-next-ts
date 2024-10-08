@@ -3,6 +3,7 @@
 import { DragDropContext } from "react-beautiful-dnd"
 import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
+import { useCTask } from "@/contexts/CurrentTask"
 import useTheme from "@/hooks/useTheme"
 
 import Drawer from '@/components/Drawer/Drawer'
@@ -16,10 +17,19 @@ export default function AppLayout ({ children }: { children: React.ReactNode }) 
     const { data: session } = useSession()
     const router = useRouter()
 
+    const { setCTask } = useCTask()
+
     // DND
     const handleDragEnd = (result: any) => {
         if (!result.destination) {
-            return console.log('abort current task')
+            return setCTask(null)
+        }
+
+        if(
+            result.source.droppableId === result.destination.droppableId
+            || result.source.index === result.destination.index
+        ) {
+            return
         }
     }
 
