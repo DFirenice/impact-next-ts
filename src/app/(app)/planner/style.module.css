@@ -19,11 +19,15 @@
     align-items: stretch;
     gap: 1rem;
 
-    & > div { display: contents }
+    & > div {
+        display: contents;
+    }
+    
+    & * { transition: all 1ms !important }
 
     /* this \/ sucks */
     &:has(section) > * { transform: translateY(25%) }
-    & > * { height: auto }
+    /* & > * { height: auto } */
 }
 
 /* Top part */
@@ -54,7 +58,7 @@
         gap: .75rem;
     }
     
-    & > div > div { height: 100% }
+    & > div { height: 100% }
 }
 
 .current_chats {
