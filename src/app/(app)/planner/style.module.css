@@ -58,7 +58,7 @@
         gap: .75rem;
     }
     
-    & > div { height: 100% }
+    & > div > div { height: 100% }
 }
 
 .current_chats {
@@ -75,7 +75,8 @@
 /* Current chat */
 .chat { height: 100% }
 
-.current_branches_container {
+.current_branches_container,
+.current_contributors_container > ul {
     display: flex;
     flex-direction: column;
     gap: .25rem;

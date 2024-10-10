@@ -29,8 +29,13 @@ const PlannerPage = () => {
             return  // If dropped in the same spot
         }
 
-        const task = tempUserTasks[result.source.index]
-        setCTask(task)
+        if (
+            result.destination?.droppableId === 'planner_current'
+            && result.source.droppableId === 'planner_assignments'
+        ) {
+            const task = tempUserTasks[result.source.index]
+            return setCTask(task)
+        }
     }
 
     return (

@@ -34,14 +34,15 @@ const TaskDashboard = () => {
         {
             tabName: 'All Contributors',
             component: (
-                <div>
-                    <ul>
-                        {CTask?.associates.map((username) => {
-                            return <li key={`task_contributor_${username}`}>
-                                {username}
-                            </li>
-                        })}
-                    </ul>
+                <div className={css.current_contributors_container}>
+                    {CTask?.associates.map((username) => {
+                        return <BranchBtn
+                            key={`task_contributor_${username}`}
+                            heading={username}
+                            subtext="Request person's info"
+                            icon='/images/light_skeleton.webp'
+                        />
+                    })}
                 </div>
             )
         },
