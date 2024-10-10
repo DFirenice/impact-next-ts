@@ -19,14 +19,14 @@ const PlannerPage = () => {
             !result.destination
             && result.source.droppableId !== 'planner_assignments'
         ) {
-            return setCTask(null)  // If dropped outside a valid area
+            return setCTask(null) // If dropped outside a valid area
         }
 
         if (
             result.source.droppableId === result.destination?.droppableId
             && result.source.index === result.destination.index
         ) {
-            return  // If dropped in the same spot
+            return // If dropped in the same spot
         }
 
         if (

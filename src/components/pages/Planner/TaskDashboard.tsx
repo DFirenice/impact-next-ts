@@ -70,28 +70,28 @@ const TaskDashboard = () => {
                         <ProgressCard value={68} size='larger' subtext='Work done'/>
                     </div>
                     {/* Current task, Droppable area */}
-                    {
-                        CTask && (
-                            <Droppable droppableId='planner_current'>
-                                {provided => (
-                                    <div {...provided.droppableProps} ref={provided.innerRef}>
-                                        <Draggable draggableId='planner_current_task' index={0}>
-                                            {provided => (
-                                                <div
-                                                    {...provided.draggableProps}
-                                                    {...provided.dragHandleProps}
-                                                    ref={provided.innerRef}
-                                                >
-                                                    <TaskCard data={CTask}/>
-                                                </div>
-                                            )}
-                                        </Draggable>
-                                        {provided.placeholder}
-                                    </div>
-                                )}
-                            </Droppable>
-                        )
-                    }
+                    <Droppable droppableId='planner_current'>
+                        {provided => (
+                            <div
+                                {...provided.droppableProps}
+                                ref={provided.innerRef}
+                            >
+                                {/* { CTask && <Draggable draggableId='planner_current_task' index={0}>
+                                    {provided => (
+                                        <div
+                                            {...provided.draggableProps}
+                                            {...provided.dragHandleProps}
+                                            ref={provided.innerRef}
+                                        >
+                                            <TaskCard data={CTask}/>
+                                        </div>
+                                    )}
+                                </Draggable> } */}
+                                { CTask && <TaskCard data={CTask}/> }
+                                {provided.placeholder}
+                            </div>
+                        )}
+                    </Droppable>
                 </div>
                 { CTask ? (
                     <div className={css.current_chats}>
