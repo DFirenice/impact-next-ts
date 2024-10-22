@@ -76,17 +76,6 @@ const TaskDashboard = () => {
                                 {...provided.droppableProps}
                                 ref={provided.innerRef}
                             >
-                                {/* { CTask && <Draggable draggableId='planner_current_task' index={0}>
-                                    {provided => (
-                                        <div
-                                            {...provided.draggableProps}
-                                            {...provided.dragHandleProps}
-                                            ref={provided.innerRef}
-                                        >
-                                            <TaskCard data={CTask}/>
-                                        </div>
-                                    )}
-                                </Draggable> } */}
                                 { CTask && <TaskCard data={CTask}/> }
                                 {provided.placeholder}
                             </div>

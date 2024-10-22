@@ -3,6 +3,7 @@
     --_initial-clr: var(--clr-dp-04);
     -webkit-user-drag: none;
     font-weight: 600;
+    font-size: var(--font-size-default);
     
     display: inline-flex;
     align-items: center;
@@ -17,6 +18,7 @@
     border: transparent .1rem solid;
 
     &:disabled { cursor: default }
+    & > *:is(p, span) { font-weight: initial }
 }
 
 .btn.btn-dark {

@@ -11,7 +11,7 @@ import SessionWrapper from "@/components/SessionWrapper"
 import "./globals.css"
 import './main.css'
 
-const inter = Rubik({ subsets: ["latin"] })
+const rubik = Rubik({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Impact Project",
@@ -32,7 +32,7 @@ export default function RootLayout({
               <FindProvider>
                 <TagsFilterProvider>
                   <CTaskProvider>
-                    <body className={inter.className}>
+                    <body className={rubik.className}>
                       {children}
                       <div id="modals"></div>
                       <div id="fmodals"></div>

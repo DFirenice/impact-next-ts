@@ -41,3 +41,13 @@
         border-radius: 50%;
     }
 }
+
+/* Panel wrapper */
+.routing_panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+
+    & > *:last-child { margin-block: .75rem }
+}
