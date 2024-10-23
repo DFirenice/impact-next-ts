@@ -5,7 +5,8 @@ experience over your projects in co-op
 ## Technologies used
 **Frontend:**
   - Next.js
-  - TypeScrpit
+  - TypeScript
+
 **Backend:**
   - Express.js
   - MongoDB
