@@ -1,0 +1,13 @@
+/node_modules
+.yarn/install-state.gz
+
+# Debug
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env*.local
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
