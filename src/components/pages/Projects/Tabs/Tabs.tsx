@@ -24,7 +24,7 @@ const ProjectsTabs: Ttabs = [
 ]
 
 const Tabs = () => {
-    const relativePath = '/projects'
+    const path = '/projects'
     
     const { findQuery, setFindQuery } = useFindQuery(),
         { sortingMethod, setSortingMethod } = useSorting(),
@@ -39,7 +39,7 @@ const Tabs = () => {
     
     return <>
         <div className={css.routing_panel}>
-            <RoutingPanel path={relativePath} tabs={ProjectsTabs}/>
+            <RoutingPanel path={path} tabs={ProjectsTabs}/>
             <div className={css.new_project}>
                 <Btn classes="btn-empty" link="/projects/new">
                     <Icon id="folder" size="small"/>

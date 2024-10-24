@@ -1,0 +1,23 @@
+.container {
+    width: 100%;
+    height: 100dvh;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 700px;
+    margin-inline: auto;
+    height: 100%;
+
+    & > h2:first-of-type { text-align: center }
+    & > div > *:is(span, p) {
+        line-height: 200%;
+        }
+    }
+
+/* Field chunks (containers) */
+.wrapper > div {
+    & > span { color: var(--clr-white-medium) }
+}

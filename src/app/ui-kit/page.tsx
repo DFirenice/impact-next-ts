@@ -11,6 +11,7 @@ import Field from '@/components/UI/Field/Field'
 import css from './styles.module.css'
 import { useRef, useState } from 'react'
 import Indicator from '@/components/UI/Indicator/Indicator'
+import RadioSelection from '@/components/UI/RadioSelection/RadioSelection'
 
 export default function UIKit () {
     // Fields | 'Assign To'
@@ -51,6 +52,23 @@ export default function UIKit () {
                         order="field-icon"
                     />
                     <Field text="Assign to..." ref={assignToRef}/>
+                </div>
+                <div className={`${css.samples} ${css.samples_column}`}>
+                    <Heading level={3}>Checkboxes</Heading>
+                    <RadioSelection options={[
+                            {
+                                value: 'Private',
+                                snippet: 'Only visible for you and shared collaborators',
+                                icon: 'lock'
+                            },
+                            {
+                                value: 'Public',
+                                snippet: 'Everyone can view you repo',
+                                icon: 'folder'
+                            }
+                        ]} name="RadioSelectionTest"
+                        direction="column"
+                    />
                 </div>
             </section>
             {/* Buttons */}

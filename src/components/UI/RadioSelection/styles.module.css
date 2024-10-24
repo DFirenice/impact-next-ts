@@ -1,0 +1,20 @@
+.container { width: 100% }
+
+.container,
+.container > label,
+.data {
+    display: flex;
+    gap: .5rem;
+}
+
+.container > label { cursor: pointer }
+
+.data {
+    align-items: center;
+    justify-content: center;
+    
+    & > div > * {
+        display: block;
+        width: 100%;
+    }
+}

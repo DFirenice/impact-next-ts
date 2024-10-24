@@ -46,24 +46,7 @@
     & * { color: inherit }
 }
 
-.dynamic_list_item {
-    position: relative;
-    color: var(--clr-primary-white) !important;
-
-    &:hover::after { opacity: .3 }
-
-    &::after {
-        content: '';
-        position: absolute;
-        background: var(--clr-primary-white);
-        transform: translateY(-50%);
-        border-radius: 50%;
-        width: .75ch;
-        height: .75ch;
-        top: 50%;
-        right: 1ch;
-    }
-}
+.dynamic_list_item { color: var(--clr-primary-white) !important }
 
 /* Modals */
 .modals {
@@ -154,3 +137,13 @@
 
 *[data-font-style="italic"] { font-style: italic }
 *[data-font-style="normal"] { font-style: normal }
+
+/* Fields & forms */
+*[data-optional] {
+    position: relative;
+    &::after {
+        content: '(Optional)';
+        color: var(--clr-disabled);
+        margin-inline: 1ch;
+    }
+}
