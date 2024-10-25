@@ -46,7 +46,7 @@
     & * { color: inherit }
 }
 
-.dynamic_list_item { color: var(--clr-primary-white) !important }
+.active_text { color: var(--clr-primary-white) !important }
 
 /* Modals */
 .modals {

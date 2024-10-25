@@ -56,7 +56,7 @@ const Tabs = () => {
                             return (
                                 <Btn
                                     key={`sortBy_${method}_tab`}
-                                    classes={`btn-none ${sortingMethod === method && 'dynamic_list_item'}`}
+                                    classes={`btn-none ${sortingMethod === method && 'active_text'}`}
                                     func={() => {setSortingMethod(method)}}
                                     data-active={sortingMethod == method && "true"}
                                 >

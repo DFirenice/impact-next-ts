@@ -1,3 +1,7 @@
+'use client'
+
+import { useState } from 'react'
+
 import Heading from '@/components/Heading'
 import Icon from '@/components/UI/Icon'
 
@@ -5,10 +9,18 @@ import type { props } from './RadioSelection.types'
 import css from './styles.module.css'
 
 const RadioSelection = ({ options, name, direction = 'row' }: props) => {
+    const [ checkedOption, setCheckedOption ] = useState<string>(options[0].value)
+
+    const handleClick = (idx: number) => () => {
+        setCheckedOption(options[idx].value)
+    }
+    
     return <div className={css.container} style={{ flexDirection: direction }}>
-        {options.map(({ value, snippet, icon }) => {
-            return <label key={`${name}_${value}_${snippet}`}>
+        {options.map(({ value, snippet, icon }, idx) => {
+            return <label key={`${name}_${value}_${snippet}`} onClick={handleClick(idx)}>
                 <input
+                    className={css.checkbox}
+                    checked={checkedOption == value}
                     type='radio'
                     name={name}
                 />

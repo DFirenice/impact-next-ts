@@ -37,7 +37,7 @@ const ProjectsPage = () => {
     // Filter by search query
     const filteredByQuery = applyFilter(findQuery, sortedProjects, 'name')
 
-    // Final: tag filtering
+    // Finally: tag filtering
     const filteredProjects = applyTags(filteredByQuery)
 
     return (
