@@ -1,6 +1,6 @@
 type UserTagProps = {
     avatar: string
-    fullname: string
+    tag: string
     func: () => void
 }
 

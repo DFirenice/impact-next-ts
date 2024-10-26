@@ -27,7 +27,7 @@ const NewProject  = () => {
                 <Field text='List contributors by their @tags'/>
                 <div>
                     {/* Dev test */}
-                    <UserTag avatar='' fullname='John Debartolo'/>
+                    <UserTag avatar='' tag='firenic' func={() => {}}/>
                 </div>
             </div>
             <div className={`${css.spaced} ${css.bordered}`}>
