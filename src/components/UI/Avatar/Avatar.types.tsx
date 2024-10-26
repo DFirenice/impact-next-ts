@@ -1,5 +1,5 @@
 export type AvatarProps = {
     src: string,
-    size?: number
+    size?: number | 'small'
     fallback?: string
 }

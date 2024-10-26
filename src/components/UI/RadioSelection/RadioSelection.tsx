@@ -8,11 +8,12 @@ import Icon from '@/components/UI/Icon'
 import type { props } from './RadioSelection.types'
 import css from './styles.module.css'
 
-const RadioSelection = ({ options, name, direction = 'row' }: props) => {
+const RadioSelection = ({ options, name, direction = 'row', setSelection }: props) => {
     const [ checkedOption, setCheckedOption ] = useState<string>(options[0].value)
 
     const handleClick = (idx: number) => () => {
         setCheckedOption(options[idx].value)
+        setSelection(options[idx].value)
     }
     
     return <div className={css.container} style={{ flexDirection: direction }}>

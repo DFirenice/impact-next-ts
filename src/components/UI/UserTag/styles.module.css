@@ -1,0 +1,25 @@
+.container {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    max-width: max-content;
+    height: 2.25rem;
+    max-height: max-content;
+    padding: .5rem .3rem .5rem .15rem;
+    background: var(--clr-dp-00);
+    border: var(--clr-dp-08) 2px solid;
+    border-radius: var(--radius-medium);
+    cursor: pointer;
+    gap: .5rem;
+
+    &::after {
+        position: relative;
+        content: '\2713';
+        color: var(--clr-disabled);
+        line-height: 0;
+        margin-inline: .25rem;
+    }
+
+    &:hover::after { content: '\2715' }
+}

@@ -9,8 +9,17 @@ type Tcase = {
     component: React.ReactNode
 }
 
-const useComponentSwitcher = (cases: Tcase[]) => {
-    const [activeTab, setActiveTab] = useState(0)
+const useComponentSwitcher = (cases: Tcase[], initial?: string) => {
+    const initialIndex = cases.findIndex(obj => obj.tabName === initial)
+    
+    const [activeTab, setActiveTab] = useState(
+        initial
+            ? initialIndex === -1 ? () => {
+                    console.warn(`"${initial}" tab does not exist!`)
+                    return 0
+                } : initialIndex
+            : 0
+    )
 
     // Render the panel (tabs)
     const renderPanel = () => (

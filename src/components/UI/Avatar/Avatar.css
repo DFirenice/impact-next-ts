@@ -1,13 +1,21 @@
 .avatar {
+    position: relative;
     display: inline-flex;
-    height: max-content;
-    width: max-content;
+    max-height: max-content;
     & img {
         border-radius: 50%;
-        /* max-width: 2.5rem;
-        max-height: 2.5rem; */
-        min-width: 2.5rem;
-        min-height: 2.5rem; 
+        height: 100%;
+        width: 100%;
         object-fit: cover;
     }
+}
+
+.avatar.normal {
+    min-width: 2.5rem;
+    min-height: 2.5rem;
+}
+
+.avatar.small {
+    min-width: 1.75rem;
+    min-height: 1.75rem;
 }

@@ -9,7 +9,7 @@ import Heading from '@/components/Heading'
 import TaskCard from '@/components/TaskCard/TaskCard'
 import NotFound from '@/components/NotFound/NotFound'
 import ProgressCard from '@/components/ProgressCard/ProgressCard'
-import { Droppable, Draggable } from 'react-beautiful-dnd'
+import { Droppable } from 'react-beautiful-dnd'
 
 import css from '@/app/(app)/planner/style.module.css'
 
@@ -52,7 +52,7 @@ const TaskDashboard = () => {
         }
     ]
     
-    const { renderPanel, renderContent } = useComponentSwitcher(currentTaskTabs)
+    const { renderPanel, renderContent } = useComponentSwitcher(currentTaskTabs, 'Recent Chat')
     const todaysDate = new Date().toLocaleDateString()
     
     return (
