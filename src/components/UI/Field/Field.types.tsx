@@ -7,6 +7,8 @@ export type FieldProps = {
     focused?: boolean
     order?: 'icon-field' | 'field-icon'
     func?: () => void
+    keyDownFunc?: (e: React.KeyboardEvent<HTMLInputElement>) => void
+    state?: [string, (newValue: string) => void]
 }
 
 export type IconSize = 'small' | 'normal' | 'large'

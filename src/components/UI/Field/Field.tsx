@@ -15,10 +15,14 @@ const Field = forwardRef<HTMLInputElement, FieldProps>((
         type = 'text',
         focused = false,
         order = 'icon-field',
-        func = undefined
+        func = undefined,
+        keyDownFunc = undefined,
+        state = undefined
     },
     ref
 ) => {
+    const [ value, setValue ] = state || ['', () => {}]
+
     let iconId:string | undefined = `${icon}`,
         iconSize:'small' | 'normal' | 'large' = 'normal'
 
@@ -41,6 +45,14 @@ const Field = forwardRef<HTMLInputElement, FieldProps>((
             type={type}
             placeholder={text}
             autoFocus={focused}
+            {...(state && {value: value})}
+            {...(state && {onChange: (e) => setValue(e.target.value.trim())})}
+            {...(keyDownFunc && {onKeyDown: e => {
+                // Not how it should work
+                // REFACTORING REQUIRED
+                state && setValue(e.target.value.trim())
+                keyDownFunc(e)
+            }})}
         />
     </div>
 })
