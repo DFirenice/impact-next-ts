@@ -11,7 +11,7 @@ const Search = ({ value, onChange, text = "Search..." }: SearchProps) => {
         onChange(event.target.value)
     }
     
-    return <div  className={css.search}>
+    return <div  className={`${css.search} field`}>
         <Icon id="search"/>
         <input placeholder={text} value={value} onChange={handleChange}/>
     </div>

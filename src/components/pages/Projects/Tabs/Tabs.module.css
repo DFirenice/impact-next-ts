@@ -40,6 +40,9 @@
         padding: .25rem;
         border-radius: 50%;
     }
+
+    /* Fixes incomplete btn height (2024-10-30 commit) */
+    &, & > button { height: 100% }
 }
 
 /* Panel wrapper */

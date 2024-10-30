@@ -81,6 +81,13 @@
     &:has(*) { background: hsl(from var(--clr-dp-02) h s l / 60%) }
 }
 
+/* Fields, inputs */
+.field {
+    &:focus-within {
+        outline: 1px solid var(--clr-white-medium);
+    }
+}
+
 /* Font sizes */
 *[data-font-size="massive"] { font-size: var(--font-size-massive) }
 *[data-font-size="larger"] { font-size: var(--font-size-larger) }

@@ -31,7 +31,7 @@ const Field = forwardRef<HTMLInputElement, FieldProps>((
         iconSize = icon[1] as IconSize
     }
 
-    return <div className={css.field}>
+    return <div className={`${css.field} field`}>
         {icon && <Btn classes="btn-none" {...(func ? {func: func} : {disabled: true})}>
                 <Icon id={iconId as Ticons} size={iconSize}/>
             </Btn>}
