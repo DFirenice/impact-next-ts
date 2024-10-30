@@ -39,13 +39,21 @@ const Selection = ({
                 onClick={() => setIsOpen(!isOpen)}
             >
                 <span>{selectedOption}</span>
-                <Icon id="chevron"/>
+                <Icon
+                    id="arrow"
+                    size='small'
+                    {...(isOpen && {styles: {
+                        filter: "brightness(.68)",
+                        transform: "rotate(180deg)"
+                    }})}
+                />
             </div>
 
             {isOpen && (
                 <ul className={css.options}>
                     {options.map((option, idx) => (
-                        <li role='option'
+                        <li
+                            role='option'
                             className={css.item}
                             key={`${option}-${idx}`}
                             onClick={() => handleChangeOption(option)}

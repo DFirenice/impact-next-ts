@@ -1,5 +1,6 @@
 import add from '@/assets/icons/add.svg'
 import archive from '@/assets/icons/archive.svg'
+import arrow from '@/assets/icons/arrow.svg'
 import bell from '@/assets/icons/bell.svg'
 import bin from '@/assets/icons/bin.svg'
 import broken_link from '@/assets/icons/broken_link.svg'
@@ -36,6 +37,7 @@ import lock from '@/assets/icons/lock.svg'
 export const icons = {
     add,
     archive,
+    arrow,
     bell,
     bin,
     broken_link,
