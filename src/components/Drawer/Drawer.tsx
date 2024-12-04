@@ -39,7 +39,7 @@ const Drawer = () => {
                     <div>
                         <span>Hello,</span>
                         <Link href="/profile" data-font-weight="bold">
-                            {` ${user?.name || 'Guest'}`}
+                            {` ${user?.name || 'Unauthenticated'}`}
                         </Link>
                     </div>
                     <Btn func={handleSignOut}><Icon id='signout'/></Btn>
@@ -52,7 +52,7 @@ const Drawer = () => {
                 <h3>Common</h3>
                 <div className={css.category_list}>
                     <RootLink link="/home"><Icon id="collection"/>Portal hub</RootLink>
-                    <RootLink link="/delibs"><Icon id="chats"/>Deliberations</RootLink>
+                    <Btn classes="btn-disabled"><Icon id="chats"/>Deliberations</Btn>
                     <RootLink link="/planner"><Icon id="calendar"/>Planner</RootLink>
                 </div>
             </div>

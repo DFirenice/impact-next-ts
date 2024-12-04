@@ -6,4 +6,5 @@
     padding: .5rem .75rem;
     display: inline-flex;
     pointer-events: none;
+    white-space: nowrap;
 }

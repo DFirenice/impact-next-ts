@@ -1,6 +1,5 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import { scaleBand, scaleLinear } from '@visx/scale'
 import { useTooltip } from '@visx/tooltip'
 import { localPoint } from '@visx/event'
@@ -92,7 +91,7 @@ const ActivityMap: React.FC<Props> = ({ data, width, height }) => {
                     )
                 })}
             </svg>
-            { tooltipOpen &&(
+            { tooltipOpen && (
                 <div
                     className={css_tooltip.tooltip}
                     style={{
