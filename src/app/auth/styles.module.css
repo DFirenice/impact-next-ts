@@ -39,7 +39,9 @@
         /* Accessing fields */
         & > div:first-of-type > * {
             margin-top: .5rem;
-            & > input { padding-block: 1.25rem }
+            background: transparent;
+            border: hsla(from var(--clr-disabled) h s l / 18%) 1px solid;
+            & > input { padding-block: 1rem }
         }
     }
 }

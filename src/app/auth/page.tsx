@@ -13,7 +13,7 @@ import css from './styles.module.css'
 
 type logMethods = 'login' | 'signup'
 
-const LogInForm = () => { 
+const SignUpForm = () => { 
     const [ isPswrdVisible, setPswrdVisible ] = useState(false),
         swapPswrdVisibility = () => { setPswrdVisible(prev => !prev) }
 
@@ -40,12 +40,12 @@ const LogInForm = () => {
                     type={isPswrdVisible ? 'text' : 'password'}
                 />
             </div>
-            <Btn classes="btn-fill">Log In</Btn>
+            <Btn classes="btn-fill">Sign Up</Btn>
         </form>
     )
 }
 
-const SignUpForm = () => {
+const LogInForm = () => {
     const [ isPswrdVisible, setPswrdVisible ] = useState(false),
         swapPswrdVisibility = () => { setPswrdVisible(prev => !prev) }
         
@@ -64,7 +64,7 @@ const SignUpForm = () => {
                     func={swapPswrdVisibility}
                 />
             </div>
-            <Btn classes="btn-fill">Sign Up</Btn>
+            <Btn classes="btn-fill">Log In</Btn>
         </form>
     )
 }

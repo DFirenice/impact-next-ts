@@ -88,6 +88,8 @@
     }
 }
 
+input { transition: border-color 1s }
+
 /* Font sizes */
 *[data-font-size="massive"] { font-size: var(--font-size-massive) }
 *[data-font-size="larger"] { font-size: var(--font-size-larger) }
