@@ -6,7 +6,7 @@ import { FindProvider } from '@/contexts/FindContext'
 import { TagsFilterProvider } from "@/contexts/TagsFilterContext"
 import { FModalsProvider } from "@/contexts/FModalsContext"
 import { CTaskProvider } from "@/contexts/CurrentTask"
-import SessionWrapper from "@/components/SessionWrapper"
+import SessionWrapper from "@/components/SessionWrapper" // Next auth
 
 import "./globals.css"
 import './main.css'

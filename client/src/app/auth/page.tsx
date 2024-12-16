@@ -11,7 +11,7 @@ import { useState } from 'react'
 
 import css from './styles.module.css'
 
-type logMethods = 'login' | 'signup'
+type authMethods = 'login' | 'signup'
 
 const SignUpForm = () => { 
     const [ isPswrdVisible, setPswrdVisible ] = useState(false),
@@ -70,9 +70,9 @@ const LogInForm = () => {
 }
 
 const Auth = () => {
-    const [ logMethod, setLogMethod ] = useState<logMethods>('login')
+    const [ logMethod, setLogMethod ] = useState<authMethods>('login')
     
-    const changeLogMethod = (method:logMethods) => () => { setLogMethod(method) }
+    const changeLogMethod = (method:authMethods) => () => { setLogMethod(method) }
     const continueWithGithub = () => { signIn('github', { callbackUrl: '/home' }) }
 
     return <section className={css.auth}>
