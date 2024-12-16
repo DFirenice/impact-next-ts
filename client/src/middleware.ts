@@ -7,9 +7,12 @@ import type { NextRequest } from 'next/server'
 import axios from 'axios'
 
 export async function middleware(req: NextRequest) {
-    const redirect = () => NextResponse.redirect(new URL('/', req.url))
+    const redirect = () => NextResponse.redirect(new URL('/auth', req.url))
     // Allowed routes, without auth
-    if (req.nextUrl.pathname === '/') {
+    if (
+        req.nextUrl.pathname === '/' ||
+        req.nextUrl.pathname === '/auth'
+    ) {
         return NextResponse.next()
     }
 
