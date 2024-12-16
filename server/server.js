@@ -3,6 +3,7 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
+const jwt = require('jsonwebtoken')
 
 const cors = require('cors')
 const app = express()
@@ -27,3 +28,15 @@ mongoose.connect(process.env.DB_URI)
             console.log(`[Success] Server is running on port: ${process.env.SERVER_PORT}`)
         })
 }).catch(err => console.log(err))
+
+app.post('/verify', (req, res) => {
+    const token = req.cookies.jwt
+
+    jwt.verify(token, process.env.JWT_SECRET_KEY, function (err, decoded) {
+        if (!err) { return res.status(200).send({ verified: true }) }
+        return res.status(401).send({
+            verified: false,
+            validation_err: err
+        })
+    })
+})
