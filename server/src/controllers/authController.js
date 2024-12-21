@@ -15,7 +15,7 @@ const handleErrors = (err) => {
     const errors  = { username: '', email: '', password: '', root: '' }
 
     // On login errors
-    if (err.message === 'Incorrect username or email!') { errors.root = err.message }
+    if (err.message === 'Incorrect email!') { errors.root = err.message }
     if (err.message === 'Incorrect password!') { errors.password = err.message }
     
      // Handle validation errors
@@ -45,14 +45,14 @@ module.exports.login_get = (req, res) => {
 }
 
 module.exports.login_post = async (req, res) => {
-    const { username, email, password } = req.body
+    const { email, password } = req.body
 
     try {
-        const user = await User.login({ username, email, password })
+        const user = await User.login({ email, password })
         const token = createToken(user._id)
 
         res.cookie('jwt', token, { maxAge: maxCookieAge, httpOnly: true })
-        res.status(200).send({ user: { id: user._id }})
+        res.status(200).send({ user })
     }
 
     catch (err) {
@@ -72,8 +72,14 @@ module.exports.signup_post = async (req, res) => {
         const user = await User.create({ username, email, password })
         const token = createToken(user._id)
 
+        // Removing password field
+        const response = { ...user.toObject() }
+        delete response.password
+
+        console.log(response)
+
         res.cookie('jwt', token, { maxAge: maxCookieAge, httpOnly: true })
-        res.status(201).send(user)
+        res.status(201).send({ user: response })
     }
     
     catch (err) {

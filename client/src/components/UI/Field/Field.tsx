@@ -32,14 +32,22 @@ const Field = forwardRef<HTMLInputElement, FieldProps>((
     }
 
     return <div className={`${css.field} field`}>
-        {icon && <Btn classes="btn-none" {...(func ? {func: func} : {disabled: true})}>
-            <Icon id={iconId as Ticons} size={iconSize}/>
-        </Btn>}
+        {
+            icon && (
+                <Btn
+                    classes="btn-none"
+                    type="button" // Prevents form from submission
+                    {...(func ? { func } : {disabled: true})}
+                >
+                    <Icon id={iconId as Ticons} size={iconSize}/>
+                </Btn>
+            )
+        }
         <input
             ref={ref}
             style={
                 (order === 'field-icon' && icon)
-                    ? {order: '-1'}
+                    ? { order: '-1' }
                     : undefined
                 }
             type={type}
