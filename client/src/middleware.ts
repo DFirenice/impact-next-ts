@@ -1,4 +1,4 @@
-// AUTH MIDDLEWARE:
+// AUTH MIDDLEWARE: (Not yet implemented with NextAuth)
 //  Allows to enter private routes,
 //  While been based on user's JWT token
 
@@ -21,7 +21,7 @@ export async function middleware(req: NextRequest) {
 
     // Trying to verify the JWT
     try {
-        const response = await axios.post('http://localhost:8080/verify',
+        const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/verify`,
             { token: token.value },
             { withCredentials: true }
         )

@@ -9,7 +9,10 @@ const cors = require('cors')
 const app = express()
 
 // Routes
-const authRouter = require('./src/routes/authRouter')
+const authRouter = require('./src/routes/api/authRouter')
+
+// Utils
+const { genAccessToken, genRefreshToken } = require('./src/utils/genTokens')
 
 app.use(express.json())
 app.use(cookieParser())
@@ -18,7 +21,7 @@ app.use(cors({
     credentials: true
 }))
 
-app.use(authRouter)
+app.use('/api/auth', authRouter)
 
 // Connection to the DB
 mongoose.connect(process.env.DB_URI)
@@ -29,7 +32,8 @@ mongoose.connect(process.env.DB_URI)
         })
 }).catch(err => console.log(err))
 
-app.post('/verify', (req, res) => {
+// Private routes protection (old)
+app.post('/api/verify', (req, res) => {
     const token = req.cookies.jwt
 
     jwt.verify(token, process.env.JWT_SECRET_KEY, function (err, decoded) {
@@ -39,4 +43,24 @@ app.post('/verify', (req, res) => {
             validation_err: err
         })
     })
+})
+
+// JWT Refresh token validation
+
+// LATER TO-DO: PUT GENERATION FUNCS INTO UTILS FOLDER
+// ALONGSIDE ONE IN authController.js
+
+app.post('/refresh-token', (req, res) => {
+    const refreshToken = req.body.token
+
+    if (!refreshToken) return res.status(403).json({ message: 'Refresh token required!' })
+
+    try {
+        const decoded = jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET_KEY)
+        const accessToken = genAccessToken(decoded.id)
+        const newRefreshToken = genRefreshToken(decoded.id)
+        res.json({ accessToken, refreshToken: newRefreshToken })
+    }
+    
+    catch (err) { res.status(403).json({ message: 'Refresh token invalid or expired!' }) }
 })

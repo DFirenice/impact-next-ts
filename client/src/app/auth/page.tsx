@@ -36,7 +36,7 @@ const SignUpForm = () => {
 
         if (password === confirmPswrd) {
             try {
-                const res = await axios.post('http://localhost:8080/signup', {
+                const res = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_AUTH_URL}/signup`, {
                     username,
                     email,
                     password
@@ -82,21 +82,20 @@ const SignUpForm = () => {
 
 const LogInForm = () => {
     const [ isPswrdVisible, setPswrdVisible ] = useState(false),
-        [ login, setLogin ] = useState(''),
+        [ email, setEmail ] = useState(''),
         [ password, setPassword ] = useState('')
 
     const swapPswrdVisibility = () => { setPswrdVisible(prev => !prev) }
     const handleLogin = async (e: TSubmission) => {
         e.preventDefault()
 
-        try {
-            const res = await axios.post('http://localhost:8080/login', {
-                email: login,
-                password
-            })
-            // User doc
-            console.log(res.data)
-        } catch(err) { handlePostErrors(err) }
+        const result = await signIn('credentials', {
+            email,
+            password,
+            redirect: false
+        })
+
+        console.log(result)
     }
     
     return (
@@ -105,7 +104,7 @@ const LogInForm = () => {
                 <Field
                     text="your@email.example"
                     icon="user"
-                    state={[ login, setLogin ]}
+                    state={[ email, setEmail ]}
                 />
                 <Field  
                     text="Password"

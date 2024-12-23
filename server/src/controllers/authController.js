@@ -1,14 +1,7 @@
 const User = require('../models/User')
 const jwt = require('jsonwebtoken')
 
-const maxCookieAge = 3 * 24 * 60 * 1000
-
-const createToken = (id) => {
-    return jwt.sign(
-        { id }, process.env.JWT_SECRET_KEY,
-        { expiresIn: maxCookieAge }
-    )
-}
+const { genAccessToken, genRefreshToken } = require('../utils/genTokens')
 
 // Errors handler
 const handleErrors = (err) => {
@@ -40,19 +33,16 @@ const handleErrors = (err) => {
     return errors
 }
 
-module.exports.login_get = (req, res) => {
-    res.send('[Controller] LOGIN GET REQUEST HANDLED!')
-}
-
 module.exports.login_post = async (req, res) => {
     const { email, password } = req.body
 
     try {
         const user = await User.login({ email, password })
-        const token = createToken(user._id)
 
-        res.cookie('jwt', token, { maxAge: maxCookieAge, httpOnly: true })
-        res.status(200).send({ user })
+        const token = genAccessToken(user._id)
+        const refresh = genRefreshToken(user._id)
+
+        res.status(200).send({ user, token, refresh })
     }
 
     catch (err) {
@@ -61,16 +51,12 @@ module.exports.login_post = async (req, res) => {
     }
 }
 
-module.exports.signup_get = (req, res) => {
-    res.send('[Controller] SIGNUP GET REQUEST HANDLED!')
-}
-
 module.exports.signup_post = async (req, res) => {
     const { username, email, password } = req.body
 
     try {
         const user = await User.create({ username, email, password })
-        const token = createToken(user._id)
+        const token = genAccessToken(user._id)
 
         // Removing password field
         const response = { ...user.toObject() }
@@ -78,7 +64,7 @@ module.exports.signup_post = async (req, res) => {
 
         console.log(response)
 
-        res.cookie('jwt', token, { maxAge: maxCookieAge, httpOnly: true })
+        // res.cookie('jwt', token, { maxAge: maxAcessTokenAge, httpOnly: true })
         res.status(201).send({ user: response })
     }
     
