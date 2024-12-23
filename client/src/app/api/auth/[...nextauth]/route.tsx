@@ -14,7 +14,7 @@ const handler = NextAuth({
                 // Authorizing user on backend
                 try {
                     const { data } = await axios.post(
-                        `http://localhost:8080/api/auth/login`,
+                        `${process.env.NEXT_PUBLIC_BACKEND_AUTH_URL}/login`,
                         { email: credentials?.email, password: credentials?.password }
                     )
                     // Returning 'user'
@@ -47,7 +47,7 @@ const handler = NextAuth({
                 try {
                     // Refreshing both if accessToken expired
                     const res = await axios.post(
-                        `http://localhost:8080/refresh-token`,
+                        `${process.env.NEXT_PUBLIC_BACKEND_URL}/refresh-token`,
                         { token: token.refreshToken }
                     )
 
