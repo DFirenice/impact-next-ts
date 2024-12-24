@@ -20,7 +20,7 @@ const handler = NextAuth({
                     // Returning 'user'
                     return {
                         id: data.user._id,
-                        username: data.user.username,
+                        name: data.user.username,
                         email: data.user.email,
                         jwt: data.token, // Acess token
                         refresh: data.refresh // Refresh token
@@ -36,7 +36,7 @@ const handler = NextAuth({
         // Auth Process:
         // authorize() (in CredentialsProvider) --> jwt() --> session() --> useSession()
         async jwt({ token, user }) {
-            const isAccessTokenExpired = Date.now() > (token.accessTokenExpires || 0)
+            const isAccessTokenExpired = Date.now() > (token.accessTokenExpires as number || 0) 
 
             if (user) {
                 token.accessToken = user.jwt

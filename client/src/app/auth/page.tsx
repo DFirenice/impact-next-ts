@@ -88,14 +88,11 @@ const LogInForm = () => {
     const swapPswrdVisibility = () => { setPswrdVisible(prev => !prev) }
     const handleLogin = async (e: TSubmission) => {
         e.preventDefault()
-
-        const result = await signIn('credentials', {
+        signIn('credentials', {
             email,
             password,
-            redirect: false
+            callbackUrl: '/home'
         })
-
-        console.log(result)
     }
     
     return (
