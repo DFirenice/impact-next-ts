@@ -36,12 +36,16 @@ const SignUpForm = () => {
 
         if (password === confirmPswrd) {
             try {
-                const res = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_AUTH_URL}/signup`, {
+                const { data } = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_AUTH_URL}/signup`, {
                     username,
                     email,
                     password
                 })
-                console.log(res.data)
+                signIn('credentials', {
+                    email: data.user.email,
+                    password,
+                    callbackUrl: '/home'
+                })
             } catch(err) { handlePostErrors(err) }
         } else {
             // Display error 

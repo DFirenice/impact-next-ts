@@ -56,16 +56,15 @@ module.exports.signup_post = async (req, res) => {
 
     try {
         const user = await User.create({ username, email, password })
-        const token = genAccessToken(user._id)
 
-        // Removing password field
+        const token = genAccessToken(user._id)
+        const refresh = genRefreshToken(user._id)
+
+        // Removing password
         const response = { ...user.toObject() }
         delete response.password
 
-        console.log(response)
-
-        // res.cookie('jwt', token, { maxAge: maxAcessTokenAge, httpOnly: true })
-        res.status(201).send({ user: response })
+        res.status(201).send({ user: response, token, refresh })
     }
     
     catch (err) {

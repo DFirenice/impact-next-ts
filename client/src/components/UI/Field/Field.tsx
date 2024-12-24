@@ -38,6 +38,7 @@ const Field = forwardRef<HTMLInputElement, FieldProps>((
                     classes="btn-none"
                     type="button" // Prevents form from submission
                     {...(func ? { func } : {disabled: true})}
+                    tabIndex={-1}
                 >
                     <Icon id={iconId as Ticons} size={iconSize}/>
                 </Btn>
