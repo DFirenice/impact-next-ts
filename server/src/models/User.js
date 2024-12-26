@@ -22,7 +22,8 @@ const userSchema = new mongoose.Schema({
         minlength: [8, 'Password must be at least 8 chars!'],
         required: [true, 'Password is required!'],
         type: String
-    }
+    },
+    avatarUrl: { type: String }
 })
 
 userSchema.pre('save', async function (next) {

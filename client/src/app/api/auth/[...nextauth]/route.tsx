@@ -22,6 +22,7 @@ const handler = NextAuth({
                         id: data.user._id,
                         name: data.user.username,
                         email: data.user.email,
+                        avatarUrl: data.user.avatarUrl,
                         jwt: data.token, // Acess token
                         refresh: data.refresh // Refresh token
                     }
@@ -42,7 +43,10 @@ const handler = NextAuth({
                 token.accessToken = user.jwt
                 token.accessTokenExpires = Date.now() + 15 * 60 * 1000 // 15 mins
                 token.refreshToken = user.refresh
-                token.user = user
+                // Removing Refresh Token
+                const cleanedUser = { ...user }
+                delete cleanedUser.refresh
+                token.user = cleanedUser
             } else if (isAccessTokenExpired) {
                 try {
                     // Refreshing both if accessToken expired

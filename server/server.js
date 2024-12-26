@@ -2,14 +2,19 @@ require('dotenv').config()
 
 const express = require('express')
 const mongoose = require('mongoose')
-const cookieParser = require('cookie-parser')
 const jwt = require('jsonwebtoken')
 
+// Middlewares
+const cookieParser = require('cookie-parser')
+const protectRoutes = require('./src/middleware/protectRoutes')
 const cors = require('cors')
+
+// Instances
 const app = express()
 
 // Routes
-const authRouter = require('./src/routes/api/authRouter')
+const authRouter = require('./src/routes/authRouter')
+const userRouter = require('./src/routes/userRouter')
 
 // Utils
 const { genAccessToken, genRefreshToken } = require('./src/utils/genTokens')
@@ -18,10 +23,10 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
     origin: 'http://localhost:3000',
-    credentials: true
+    credentials: false
 }))
 
-app.use('/api/auth', authRouter)
+app.use('/auth', authRouter)
 
 // Connection to the DB
 mongoose.connect(process.env.DB_URI)
@@ -32,24 +37,7 @@ mongoose.connect(process.env.DB_URI)
         })
 }).catch(err => console.log(err))
 
-// Private routes protection (old)
-app.post('/api/verify', (req, res) => {
-    const token = req.cookies.jwt
-
-    jwt.verify(token, process.env.JWT_SECRET_KEY, function (err, decoded) {
-        if (!err) { return res.status(200).send({ verified: true }) }
-        return res.status(401).send({
-            verified: false,
-            validation_err: err
-        })
-    })
-})
-
-// JWT Refresh token validation
-
-// LATER TO-DO: PUT GENERATION FUNCS INTO UTILS FOLDER
-// ALONGSIDE ONE IN authController.js
-
+// Refresh token validation
 app.post('/refresh-token', (req, res) => {
     const refreshToken = req.body.token
 
@@ -64,3 +52,8 @@ app.post('/refresh-token', (req, res) => {
     
     catch (err) { res.status(403).json({ message: 'Refresh token invalid or expired!' }) }
 })
+
+// Routes protection: authenticated requests only,
+// See comments in middleware/protectRoutes.js
+app.use('/api', protectRoutes)
+app.use('/api', userRouter)

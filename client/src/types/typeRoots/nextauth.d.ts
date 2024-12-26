@@ -13,6 +13,7 @@ declare module "next-auth" {
         id?: string
         jwt?: string, // Acess token
         refresh?: string // Refresh token
+        avatarUrl?: string | null
     }
 }
 

@@ -48,7 +48,7 @@ const SignUpForm = () => {
                 })
             } catch(err) { handlePostErrors(err) }
         } else {
-            // Display error 
+            // Display dismatch error
         }
     }
 
@@ -125,7 +125,7 @@ const Auth = () => {
     const [ logMethod, setLogMethod ] = useState<authMethods>('login')
     
     const changeLogMethod = (method:authMethods) => () => { setLogMethod(method) }
-    const continueWithGithub = () => { signIn('github', { callbackUrl: '/home' }) }
+    const continueWithGithub = () => { /* SignIn with Git */ }
 
     return <section className={css.auth}>
         <div className={css.wrapper}>
