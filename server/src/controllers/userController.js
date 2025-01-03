@@ -1,4 +1,3 @@
-const fs = require('fs').promises
 const multer = require('multer')
 const { createClient } = require('@supabase/supabase-js')
 
@@ -15,7 +14,7 @@ module.exports.upload_avatar_post = async (req, res) => {
     }
 
     const fileExtension = req.file.originalname.split('.').pop()
-    const fileName = `${req.body.userId}-${Date.now()}.${fileExtension}`
+    const fileName = `${req.body.userId}.${fileExtension}`
     
     // Upload to Supabase
     const { data, error } = await supabase.storage
@@ -30,10 +29,10 @@ module.exports.upload_avatar_post = async (req, res) => {
     }
 
     // Getting public url to an image on success
-    const { publicUrl } = await supabase.storage.from('avatars').getPublicUrl(fileName)
+    const publicUrl = await supabase.storage.from('avatars').getPublicUrl(fileName)
 
     res.status(200).json({
         message: 'Avatar changed successfully!',
-        publicUrl
+        publicUrl: publicUrl.data.publicUrl
     })
 }

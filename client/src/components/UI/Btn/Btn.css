@@ -81,6 +81,11 @@
     }
 }
 
+.btn-pretty {
+    font-weight: normal;
+    padding: .75rem 1rem;
+}
+
 .btn.btn-none {
     color: var(--clr-white-medium);
     /* border-radius: initial; */

@@ -37,8 +37,9 @@ const AppearanceTab = () => {
                 <span data-font-accent="medium">Change how Impact looks and feels in your browser.</span>
             </div>
             <div className='block_aligned'>
-                {themeOptions.map(({ theme, src }) => {
+                {themeOptions.map(({ theme, src }, idx) => {
                     return <DemoSelection
+                        key={`theme_demo_${idx}`}
                         imageSrc={src}
                         value={theme}
                         active={theme.toLowerCase() === globalTheme}
@@ -51,7 +52,7 @@ const AppearanceTab = () => {
         <div className={css.inline_category}>
             <div className={css.category_description}>
                 <span data-font-weight="bold">Sidebar feature</span>
-                <span data-font-accent="medium">What shows in the desktops sidebar</span>
+                <span data-font-accent="medium">What to show in your sidebar</span>
             </div>
             <Selection initial={drawerExtra[0]} options={drawerExtra}/>
         </div>

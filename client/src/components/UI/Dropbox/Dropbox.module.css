@@ -1,0 +1,30 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    padding: 1rem;
+
+    & > input { display: none }
+    & > label {
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        border: 1px dashed var(--clr-disabled);
+        border-radius: var(--radius-low);
+        padding: .75rem;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.inline_heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: .75rem;
+
+    & > img { filter: brightness(.6) }
+}

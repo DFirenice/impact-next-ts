@@ -73,6 +73,7 @@
 }
 
 .fmodals_container {
+    overflow: hidden;
     width: 100dvw;
     height: 100dvh;
     

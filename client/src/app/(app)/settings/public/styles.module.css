@@ -1,0 +1,9 @@
+.modal {
+    display: flex;
+    flex-direction: column;
+    background: var(--clr-dp-04);
+    border-radius: var(--radius-low);
+    padding: 1.5rem .75rem .75rem .75rem;
+    min-height: 30dvh;
+    height: 30dvh;
+}
