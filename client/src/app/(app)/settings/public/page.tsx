@@ -1,23 +1,68 @@
 'use client'
 
+import authApiClient from '@root/lib/authApiClient'
 import useFModal from '@/hooks/useFModal'
+import { useRef, useState, useEffect } from 'react'
 
 import Heading from '@/components/Heading'
 import Dropbox from '@/components/UI/Dropbox/Dropbox'
 import Btn from '@/components/UI/Btn/Btn'
 
+import type { TDropboxInput } from '@/components/UI/Dropbox/Dropbox.types'
 import AvatarModalCSS from './styles.module.css'
 import css from '../styles.module.css'
 
 const PublicProfileTab = () => {
-    const { addFModal } = useFModal()
+    const selectedAvatarRef = useRef<TDropboxInput>(null)
+    const [ preview, setPreview ] = useState<string>()
+    const { addFModal, closeFModals } = useFModal()
 
-    const handleOpenModel = () => {
+    // Avatar store & upload
+    const changeSelectedAvatar = (newAvatar: TDropboxInput) => {
+        selectedAvatarRef.current = newAvatar
+        if (newAvatar) {
+            const objectUrl = URL.createObjectURL(newAvatar as File)
+            setPreview(objectUrl)
+        }
+    }
+
+    // Cleaning up memo from unmounted / replaced url
+    useEffect(() => {
+        return () => {
+            if (preview) URL.revokeObjectURL(preview) 
+        }
+    }, [preview])
+
+    const handleUpload = async () => {
+        // NOTE: Implement If avatar check and error toasts
+        const selectedAvatar = selectedAvatarRef.current
+        if (!selectedAvatar) { return alert('No file selected!') }
         
+        const formData = new FormData()
+        formData.append('avatar', selectedAvatar as File)
+
+        try {
+            const res = await authApiClient.post(
+                '/upload-avatar', formData,
+                { headers: { 'Content-Type': 'multipart/form-data' } }
+            )
+            
+            console.log(res.data)
+
+        } catch (err) {
+            console.log('Error uploading avatar: ', err)
+            alert('Error uploading new avatar!') // Replace to toast
+        }
+    }
+    
+    const handleOpenModel = () => {
         const AvatarModal = () => {
             return <div className={AvatarModalCSS.modal}>
-                <Heading size="large">Select an image</Heading>
-                <Dropbox/>
+                <Dropbox onFileSelect={changeSelectedAvatar} selection="single" />
+                <div className={css.inline_container}>
+                    <Btn func={closeFModals}>Cancel</Btn>
+                    <Btn func={handleUpload} classes="btn-fill">Upload</Btn>
+                </div>
             </div>
         }
         
@@ -37,7 +82,7 @@ const PublicProfileTab = () => {
                 <span>Change your profile picture</span>
             </div>
             <div className={css.inline_container}>
-                <Btn classes="btn-none">Remove avatar</Btn>
+                <Btn classes="btn-none btn-pretty">Remove avatar</Btn>
                 <Btn classes="btn-dark btn-pretty" func={handleOpenModel}>Change Avatar</Btn>
             </div>
         </div>

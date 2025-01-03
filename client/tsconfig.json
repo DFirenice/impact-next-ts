@@ -18,9 +18,10 @@
       }
     ],
     "paths": {
+      "@root/*": ["./*"],
       "@/*": ["./src/*"],
       "@app-types/*": ["./src/types/*"],
-      "@app-pages/*": ["./src/components/pages/*"]
+      "@app-pages/*": ["./src/components/pages/*"],
     },
     "typeRoots": ["./node_modules/@types", "./types/typeRoots"]
   },

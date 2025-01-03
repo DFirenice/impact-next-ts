@@ -48,6 +48,13 @@
 
 .active_text { color: var(--clr-primary-white) !important }
 
+.text_underlined {
+    color: inherit;
+    font: inherit;
+    text-decoration: underline;
+    text-underline-offset: .25em;
+}
+
 /* Modals */
 .modals {
     position: absolute;

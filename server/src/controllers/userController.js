@@ -1,5 +1,6 @@
 const multer = require('multer')
 const { createClient } = require('@supabase/supabase-js')
+const jwt = require('jsonwebtoken')
 
 // Using Service Role to bypass RLS
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_SECRET)
@@ -13,8 +14,11 @@ module.exports.upload_avatar_post = async (req, res) => {
         return res.status(400).json({ message: 'No file provided!' })
     }
 
+    const token = req.headers.authorization?.split(' ')[1]
+    const { id: userId } = jwt.decode(token)
+
     const fileExtension = req.file.originalname.split('.').pop()
-    const fileName = `${req.body.userId}.${fileExtension}`
+    const fileName = `${userId}.${fileExtension}`
     
     // Upload to Supabase
     const { data, error } = await supabase.storage
