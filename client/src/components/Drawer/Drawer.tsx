@@ -14,14 +14,13 @@ import RootLink from '@/components/RootLink'
 import css from './Drawer.module.css'
 
 const Drawer = () => {
-    const { addFModal, fModalPortal } = useFModal()
-    
+    const { addFModal } = useFModal()
     const { data: session } = useSession()
     const user = session?.user
 
     const handleSignOut = () => {
         addFModal(<ConfirmationModal
-            func={ () => { signOut({ callbackUrl: '/' }) } }
+            func={() => signOut({ callbackUrl: '/' })}
             buttonType='btn-reject'
             content={{
                 heading: 'About to logout?',
@@ -43,7 +42,6 @@ const Drawer = () => {
                         </Link>
                     </div>
                     <Btn func={handleSignOut}><Icon id='signout'/></Btn>
-                    { fModalPortal() }
                 </div>
                 <Search value="" onChange={() => {}}/>
             </div>
@@ -108,4 +106,4 @@ const Drawer = () => {
     </section>
 }
 
-export default Drawer   
+export default Drawer

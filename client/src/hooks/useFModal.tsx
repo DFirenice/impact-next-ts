@@ -4,23 +4,20 @@ import { createPortal } from "react-dom"
 const useFModal = () => {
     const { modals, setModals } = useFModalsContext()
 
-    // Add
-    const addFModal = (newModals: React.ReactNode) => {
-        setModals(newModals)
-    }
+    // Adding a new modal
+    const addFModal = (newModal: React.ReactNode) => { setModals(newModal) }
     
-    // Close
+    // Closing the modal
     const closeFModals = () => { setModals(null) }
-
-    // Initialize portal
+    
+    // Initializing portal
     const fModalPortal = () => {
         const handleCloseModal = (e: React.MouseEvent<HTMLDivElement>) => {
             if (modals) {
-                e.target === e.currentTarget
-                    && setModals(null)
+                if (e.target === e.currentTarget) closeFModals()
             }
         }
-        
+    
         return modals ? createPortal(
             <div
                 className="fmodals_container"

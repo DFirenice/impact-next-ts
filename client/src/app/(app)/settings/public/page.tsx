@@ -14,7 +14,8 @@ import css from '../styles.module.css'
 
 const PublicProfileTab = () => {
     const selectedAvatarRef = useRef<TDropboxInput>(null)
-    const [ preview, setPreview ] = useState<string>()
+    const [preview, setPreview] = useState<string>()
+
     const { addFModal, closeFModals } = useFModal()
 
     // Avatar store & upload
@@ -26,67 +27,73 @@ const PublicProfileTab = () => {
         }
     }
 
-    // Cleaning up memo from unmounted / replaced url
+    // Cleaning up memo from unmounted / replaced URL
     useEffect(() => {
         return () => {
-            if (preview) URL.revokeObjectURL(preview) 
+            if (preview) URL.revokeObjectURL(preview)
         }
     }, [preview])
 
+    // Avatar
     const handleUpload = async () => {
-        // NOTE: Implement If avatar check and error toasts
         const selectedAvatar = selectedAvatarRef.current
-        if (!selectedAvatar) { return alert('No file selected!') }
-        
+        if (!selectedAvatar) {
+            return alert('No file selected!')
+        }
+
         const formData = new FormData()
         formData.append('avatar', selectedAvatar as File)
 
         try {
             const res = await authApiClient.post(
-                '/upload-avatar', formData,
+                '/upload-avatar',
+                formData,
                 { headers: { 'Content-Type': 'multipart/form-data' } }
             )
-            
             console.log(res.data)
-
         } catch (err) {
             console.log('Error uploading avatar: ', err)
-            alert('Error uploading new avatar!') // Replace to toast
+            alert('Error uploading new avatar!') // Replace with toast
         }
     }
-    
-    const handleOpenModel = () => {
-        const AvatarModal = () => {
-            return <div className={AvatarModalCSS.modal}>
+
+    // Avatar
+    const handleOpenModal = () => {
+        const AvatarModal = () => (
+            <div className={AvatarModalCSS.modal}>
                 <Dropbox onFileSelect={changeSelectedAvatar} selection="single" />
                 <div className={css.inline_container}>
                     <Btn func={closeFModals}>Cancel</Btn>
                     <Btn func={handleUpload} classes="btn-fill">Upload</Btn>
                 </div>
             </div>
-        }
-        
-        addFModal(<AvatarModal/>)
+        )
+
+        addFModal(<AvatarModal />)
     }
 
-    return <div className={css.settings}>
-        {/* Intro */}
-        <div>
-            <Heading size="large">Your Public Profile</Heading>
-            <p data-font-accent="medium">Manage your public data which is visible to all who can see your profile</p>
-        </div>
-        {/* Avatar */}
-        <div className={css.inline_category}>
-            <div className={css.category_description}>
-                <span>Avatar</span>
-                <span>Change your profile picture</span>
+    return (
+        <>
+            <div className={css.settings}>
+                {/* Intro */}
+                <div>
+                    <Heading size="large">Your Public Profile</Heading>
+                    <p data-font-accent="medium">Manage your public data which is visible to all who can see your profile</p>
+                </div>
+                {/* Avatar */}
+                <div className={css.inline_category}>
+                    <div className={css.category_description}>
+                        <span>Avatar</span>
+                        <span>Change your profile picture</span>
+                    </div>
+                    <div className={css.inline_container}>
+                        <Btn classes="btn-none btn-pretty">Remove avatar</Btn>
+                        <Btn classes="btn-dark btn-pretty" func={handleOpenModal}>Change Avatar</Btn>
+                    </div>
+                </div>
             </div>
-            <div className={css.inline_container}>
-                <Btn classes="btn-none btn-pretty">Remove avatar</Btn>
-                <Btn classes="btn-dark btn-pretty" func={handleOpenModel}>Change Avatar</Btn>
-            </div>
-        </div>
-    </div>
+        </>
+    )
 }
 
 export default PublicProfileTab

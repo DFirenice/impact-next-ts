@@ -23,5 +23,6 @@ export const useFModals = () => {
     if (!context) {
         throw new Error('useFModals must be used within FindProvider')
     }
+
     return context
 }
