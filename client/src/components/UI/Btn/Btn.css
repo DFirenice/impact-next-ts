@@ -86,19 +86,6 @@
     padding: .75rem 1rem;
 }
 
-.btn.btn-none {
-    color: var(--clr-white-medium);
-    /* border-radius: initial; */
-    background: transparent;
-    padding: 0;
-
-    &:hover {
-        color: var(--clr-primary-white);
-        background: transparent;
-        padding: 0;
-    }
-}
-
 .btn-active {
     background: var(--clr-dp-00);
     &:hover { background: var(--clr-dp-00) }
@@ -112,6 +99,24 @@
     background: var(--_disabled-clr) !important;
     border-color: var(--_disabled-clr) !important;
     color: var(--clr-disabled) !important;
+}
+
+.btn.btn-none {
+    color: var(--clr-white-medium);
+    /* border-radius: initial; */
+    background: transparent;
+    padding: 0;
+
+    &:hover {
+        color: var(--clr-primary-white);
+        background: transparent;
+        padding: 0;
+    }
+}
+
+.btn-none.btn-disabled {
+    background: transparent !important;
+    border: none !important;
 }
 
 .btn-icon-only { padding: .5rem .75rem }

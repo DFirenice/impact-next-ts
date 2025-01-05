@@ -89,7 +89,7 @@ const PublicProfileTab = () => {
                         <span>Change your profile picture</span>
                     </div>
                     <div className={css.inline_container}>
-                        <Btn classes="btn-none btn-pretty">Remove avatar</Btn>
+                        <Btn classes="btn-dark btn-disabled btn-pretty ">Remove avatar</Btn>
                         <Btn classes="btn-dark btn-pretty" func={handleOpenModal}>Change Avatar</Btn>
                     </div>
                 </div>
