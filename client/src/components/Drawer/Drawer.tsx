@@ -14,7 +14,7 @@ import RootLink from '@/components/RootLink'
 import css from './Drawer.module.css'
 
 const Drawer = () => {
-    const { addFModal } = useFModal()
+    const { addFModal, fModalPortal } = useFModal()
     const { data: session } = useSession()
     const user = session?.user
 
@@ -32,6 +32,7 @@ const Drawer = () => {
     }
     
     return <>
+        { fModalPortal() }
         <section className={css.drawer}>
             <div className={css.wrapper}>
                 {/* Account & Search */}

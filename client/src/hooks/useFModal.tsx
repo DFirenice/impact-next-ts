@@ -2,15 +2,13 @@ import { useFModals as useFModalsContext } from "@/contexts/FModalsContext"
 import { createPortal } from "react-dom"
 import { useRef } from "react"
 
-type TFModalConfig = {
-    cleanupCallback?: () => void
-}
+type TFModalConfig = { cleanupCallback?: () => void }
 
 const useFModal = (config?: TFModalConfig) => {
     const { cleanupCallback } = config || {}
     const { modals, setModals } = useFModalsContext()
 
-    // Memorizing to prevent 
+    // Memorizing to prevent from opening other instances
     const currentModalRef = useRef<React.ReactNode>(null)
     
     // Replacing new modal, memorizing new
@@ -26,16 +24,13 @@ const useFModal = (config?: TFModalConfig) => {
     }
     
     // Initializing portal
+    // REQUIRES TO BE INITIALIZED FOR EACH NEW MODAL
     const fModalPortal = () => {
-        if (!modals && (currentModalRef.current !== modals)) return null
-        
         const handleCloseModal = (e: React.MouseEvent<HTMLDivElement>) => {
-            if (modals) {
-                if (e.target === e.currentTarget) closeFModals()
-            }
+            if (modals && e.target === e.currentTarget) closeFModals()
         }
     
-        return createPortal(
+        if (modals && currentModalRef.current === modals) return createPortal(
             <div
                 className="fmodals_container"
                 onClick={handleCloseModal}
