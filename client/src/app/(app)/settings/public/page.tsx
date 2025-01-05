@@ -16,7 +16,8 @@ const PublicProfileTab = () => {
     const selectedAvatarRef = useRef<TDropboxInput>(null)
     const [preview, setPreview] = useState<string>()
 
-    const { addFModal, closeFModals } = useFModal()
+    const cleanupCallback = () => { selectedAvatarRef.current = null }
+    const { addFModal, closeFModals, fModalPortal } = useFModal({ cleanupCallback })
 
     // Avatar store & upload
     const changeSelectedAvatar = (newAvatar: TDropboxInput) => {
@@ -74,6 +75,7 @@ const PublicProfileTab = () => {
 
     return (
         <>
+            { fModalPortal() }
             <div className={css.settings}>
                 {/* Intro */}
                 <div>
