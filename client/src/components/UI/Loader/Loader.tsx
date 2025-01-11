@@ -1,8 +1,9 @@
+import React from 'react'
 import Heading from "@/components/Heading"
 
 import './Loader.css'
 
-export default function Loader ({ as = 'fixed' }: { as?: 'relative' | 'fixed' }) {
+const Loader = React.memo(({ as = 'fixed' }: { as?: 'relative' | 'fixed' }) => {
     return <section style={as === 'relative' ? { position: as, width: '100%' } : { position: as }} className="loader">
         <div>
             <span style={{ '--order': '1' } as React.CSSProperties}></span>
@@ -15,4 +16,8 @@ export default function Loader ({ as = 'fixed' }: { as?: 'relative' | 'fixed' })
             <p data-font-accent="medium">Loading. . .</p>
         </div>
     </section>
-}
+})
+
+Loader.displayName = "Loader"
+
+export default Loader

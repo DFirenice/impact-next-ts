@@ -9,4 +9,6 @@ router.post(
     userController.upload_avatar_post
 )
 
+router.get('/get-user', userController.get_user)
+
 module.exports = router

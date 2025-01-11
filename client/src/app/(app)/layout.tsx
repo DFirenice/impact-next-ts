@@ -2,14 +2,15 @@
 
 import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
-import useFModal from "@/hooks/useFModal"
 import useTheme from "@/hooks/useTheme"
 
 import Drawer from '@/components/Drawer/Drawer'
 
 import css from './styles.module.css'
 
-export default function AppLayout ({ children }: { children: React.ReactNode }) {
+type TChildren = { children: React.ReactNode }
+
+export default function AppLayout ({ children }: TChildren) {
     useTheme() // Theme Initializer
     
     const { data: session } = useSession()

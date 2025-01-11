@@ -17,6 +17,7 @@ import css from './style.module.css'
 const Profile = () => {
     const { data: session } = useSession()
     const activityContainer = useRef<HTMLDivElement>(null)
+    const user = session?.user
 
     // State to hold the container dimensions
     const [ containerSize, setContainerSize ] = useState({ width: 0, height: 0 })
@@ -62,12 +63,12 @@ const Profile = () => {
     
     return <section className={css.container}>
             <div className={css.banner}>
-                <Avatar size={window.innerHeight * 0.1} src={session?.user?.image as string}/>
+                <Avatar size={window.innerHeight * 0.1} src={user?.avatarUrl as string}/>
                 <div className="inline_heading block_aligned">
                     <div>
-                        <Heading size="large">{session?.user?.name || 'Guest'}</Heading>
-                        <span data-font-accent="low">@User's id</span>
-                        <p>User's bio</p>
+                        <Heading size="large">{user?.name || 'Unauthenticated'}</Heading>
+                        <span data-font-accent="low">@User&apos;s id</span>
+                        <p>User&apos;s about me</p>
                     </div>
                     <Btn link='/settings/public'>
                         <span>Edit profile</span>

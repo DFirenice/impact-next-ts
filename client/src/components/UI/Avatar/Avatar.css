@@ -2,6 +2,7 @@
     position: relative;
     display: inline-flex;
     max-height: max-content;
+    aspect-ratio: 1;
     & img {
         border-radius: 50%;
         height: 100%;

@@ -2,7 +2,10 @@ const multer = require('multer')
 const { createClient } = require('@supabase/supabase-js')
 const jwt = require('jsonwebtoken')
 
-// Using Service Role to bypass RLS
+const mongoose = require('mongoose')
+const { ObjectId } = require('mongoose').Types
+
+// Establishing connection & using Service Role to bypass RLS
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_SECRET)
 
 // Multer configuration
@@ -33,10 +36,36 @@ module.exports.upload_avatar_post = async (req, res) => {
     }
 
     // Getting public url to an image on success
-    const publicUrl = await supabase.storage.from('avatars').getPublicUrl(fileName)
+    const URLresonse = await supabase.storage.from('avatars').getPublicUrl(fileName)
+    const publicUrl = URLresonse?.data.publicUrl || ''
+
+    try {
+        const usersCollection = mongoose.connection.collection('users')
+        await usersCollection.findOneAndUpdate(
+            { _id: new ObjectId(userId) },
+            { $set: { avatarUrl: publicUrl } }
+        )
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ message: `Error updating user's avatar!: ${err}` })
+    }
 
     res.status(200).json({
         message: 'Avatar changed successfully!',
-        publicUrl: publicUrl.data.publicUrl
+        publicUrl
     })
+}
+
+module.exports.get_user = async (req, res) => {
+    const token = req.headers.authorization?.split(' ')[1]
+    const { id: userId } = jwt.decode(token)
+
+    try {
+        const usersCollection = mongoose.connection.collection('users')
+        const user = await usersCollection.findOne({ _id: new ObjectId(userId) })
+        res.status(200).json({ user })
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ message: `Error obtaining user!: ${err}` })
+    }
 }

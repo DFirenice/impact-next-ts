@@ -38,7 +38,7 @@ const Drawer = () => {
                 {/* Account & Search */}
                 <div className={css.account}>
                     <div>
-                        <Link href="/profile"><Avatar src={user?.image as string}/></Link>
+                        <Link href="/profile"><Avatar src={user?.avatarUrl || ''}/></Link>
                         <div>
                             <span>Hello,</span>
                             <Link href="/profile" data-font-weight="bold">
