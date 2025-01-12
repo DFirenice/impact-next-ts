@@ -57,6 +57,7 @@ module.exports.upload_avatar_post = async (req, res) => {
 }
 
 module.exports.get_user = async (req, res) => {
+    console.log('Request on get user made!', Date.now().toLocaleString()) // debug
     const token = req.headers.authorization?.split(' ')[1]
     const { id: userId } = jwt.decode(token)
 

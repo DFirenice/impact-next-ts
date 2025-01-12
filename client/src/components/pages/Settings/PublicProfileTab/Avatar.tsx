@@ -3,6 +3,7 @@
 import authApiClient from '@root/lib/authApiClient'
 import useFModal from '@/hooks/useFModal'
 import { useRef, useState, useEffect } from 'react'
+import useRefreshSession from '@root/src/hooks/useRefreshSession'
 
 import Dropbox from '@/components/UI/Dropbox/Dropbox'
 import Btn from '@/components/UI/Btn/Btn'
@@ -16,6 +17,7 @@ import css from '@/app/(app)/settings/styles.module.css'
 const AvatarSection = () => {
     const selectedAvatarRef = useRef<TDropboxInput>(null)
     const [ preview, setPreview ] = useState<string>('')
+    const { refreshSession } = useRefreshSession()
 
     const cleanupCallback = () => { selectedAvatarRef.current = null }
     const { addFModal, closeFModals, fModalPortal } = useFModal({ cleanupCallback })
@@ -55,6 +57,7 @@ const AvatarSection = () => {
                 { headers: { 'Content-Type': 'multipart/form-data' } }
             )
             console.log(res.data) // debug
+            refreshSession()
 
         } catch (err) {
             console.log('Error uploading avatar: ', err)

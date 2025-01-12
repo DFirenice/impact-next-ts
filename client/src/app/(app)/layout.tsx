@@ -4,9 +4,7 @@ import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import useTheme from "@/hooks/useTheme"
 
-import Drawer from '@/components/Drawer/Drawer'
-
-import css from './styles.module.css'
+import App from "./App"
 
 type TChildren = { children: React.ReactNode }
 
@@ -17,10 +15,7 @@ export default function AppLayout ({ children }: TChildren) {
     const router = useRouter()
 
     if (session !== null) {
-        return <div className={css.layout}>
-            <Drawer/>
-            { children }
-        </div>
+        return <App>{children}</App>
     }
     
     router.replace('/auth')
