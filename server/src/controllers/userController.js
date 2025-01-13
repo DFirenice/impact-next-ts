@@ -86,7 +86,7 @@ module.exports.remove_avatar_post = async (req, res) => {
     const user = await usersCollection.findOne({ _id: new ObjectId(userId) })
 
     if (!user?.avatarUrl) { return res.status(404).json({ message: `User has already no avatar!` }) }  
-    const fileName = user.avatarUrl.split('/')[-1]
+    const fileName = user.avatarUrl.split('/').pop()
     
     const { data, error } = await supabase.storage
         .from('avatars')
