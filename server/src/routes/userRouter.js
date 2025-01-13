@@ -12,4 +12,6 @@ router.post(
 
 router.get('/get-user', userController.get_user)
 
+router.delete('/remove-avatar', userController.remove_avatar_post)
+
 module.exports = router

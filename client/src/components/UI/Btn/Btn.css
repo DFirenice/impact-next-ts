@@ -91,7 +91,7 @@
     &:hover { background: var(--clr-dp-00) }
 }
 
-.btn-disabled {
+.btn-disabled, .btn:disabled {
     --_disabled-clr: hsl(from var(--_initial-clr) h s 15%);
 
     pointer-events: none;
@@ -114,7 +114,7 @@
     }
 }
 
-.btn-none.btn-disabled {
+.btn-none.btn-disabled, .btn-none:disabled {
     background: transparent !important;
     border: none !important;
 }

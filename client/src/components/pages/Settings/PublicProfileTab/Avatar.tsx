@@ -1,9 +1,11 @@
+// App > Settings > Avatar (section)
+
 'use client'
 
 import authApiClient from '@root/lib/authApiClient'
 import useFModal from '@/hooks/useFModal'
 import { useRef, useState, useEffect } from 'react'
-import useRefreshSession from '@root/src/hooks/useRefreshSession'
+import { useSession } from 'next-auth/react'
 
 import Dropbox from '@/components/UI/Dropbox/Dropbox'
 import Btn from '@/components/UI/Btn/Btn'
@@ -15,9 +17,11 @@ import AvatarModalCSS from '@/app/(app)/settings/public/styles.module.css'
 import css from '@/app/(app)/settings/styles.module.css'
 
 const AvatarSection = () => {
+    const { data: session, update: updateSession } = useSession()
+    const user = session?.user
+    
     const selectedAvatarRef = useRef<TDropboxInput>(null)
     const [ preview, setPreview ] = useState<string>('')
-    const { refreshSession } = useRefreshSession()
 
     const cleanupCallback = () => { selectedAvatarRef.current = null }
     const { addFModal, closeFModals, fModalPortal } = useFModal({ cleanupCallback })
@@ -40,6 +44,20 @@ const AvatarSection = () => {
         }
     }, [ preview ])
 
+    // Avatar removal
+    const handleRemoveAvatar = async () => {
+        if (user?.avatarUrl) {
+            await authApiClient.delete('/remove-avatar')
+            updateSession({
+                ...session,
+                user: {
+                    ...session?.user,
+                    avatarUrl: undefined
+                }
+            })
+        }
+    }
+    
     // Avatar upload
     const handleUpload = async () => {
         const selectedAvatar = selectedAvatarRef.current
@@ -56,8 +74,13 @@ const AvatarSection = () => {
                 formData,
                 { headers: { 'Content-Type': 'multipart/form-data' } }
             )
-            console.log(res.data) // debug
-            refreshSession()
+            updateSession({
+                ...session,
+                user: {
+                    ...session?.user,
+                    avatarUrl: res.data.publicUrl
+                }
+            })
 
         } catch (err) {
             console.log('Error uploading avatar: ', err)
@@ -113,7 +136,7 @@ const AvatarSection = () => {
                 <span>Change your profile picture</span>
             </div>
             <div className={css.inline_container}>
-                <Btn classes="btn-dark btn-disabled btn-pretty ">Remove avatar</Btn>
+                <Btn classes="btn-dark btn-pretty" disabled={!session?.user.avatarUrl} func={handleRemoveAvatar}>Remove avatar</Btn>
                 <Btn classes="btn-dark btn-pretty" func={handleOpenModal}>Change Avatar</Btn>
             </div>
         </div>

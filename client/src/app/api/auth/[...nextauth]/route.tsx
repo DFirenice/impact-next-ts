@@ -36,7 +36,10 @@ const handler = NextAuth({
     callbacks: {
         // Auth Process:
         // authorize() (in CredentialsProvider) --> jwt() --> session() --> useSession()
-        async jwt({ token, user }) {
+        async jwt({ token, user, trigger, session }) {
+            // Forced data update on session 'update' trigger
+            if (trigger === "update") { return { ...token, user: session.user } }
+            
             const isAccessTokenExpired = Date.now() > (token.accessTokenExpires as number || 0) 
 
             if (user) {
